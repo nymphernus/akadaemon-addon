@@ -1,0 +1,60 @@
+# Creative Tab
+itemGroup.akadaemon=Akadaemon Addon
+
+# Items
+item.world_ring.name=Ring of the World
+item.composite_mod.name=Composite Modifier
+item.expansion_chip.name=Expansion Microchip
+item.solar_amulet.name=Solar Amulet
+item.miner_belt.name=Miner's Belt
+item.golden_schnitzel.name=Golden Schnitzel
+tile.thaum_transformer.name=Thaumic Transformer
+item.cobalt_dust.name=Cobalt Dust
+item.ardite_dust.name=Ardite Dust
+item.ender_dust.name=Ender Dust
+item.iridium_composite.name=Iridium Composite
+tile.amber_fiber.name=Amber Fiber
+item.wand_cap_manullyn.name=Manullyn Cap
+item.wand_rod_iridium.name=Iridium Rod
+item.Wand.manullyn.cap=Manullyn Bossed
+item.Wand.iridium.rod=Iridium
+
+# Tooltips
+tooltip.world_ring.desc=A mystical relic that protects its wearer.
+tooltip.world_ring.extra=Grants: Night Vision, Water Breathing, and Fire Resistance.
+
+tooltip.composite_mod.desc=Upgrades of equipment condition.
+tooltip.composite_mod.extra=Adds the Unbreakable trait to tools.
+
+tooltip.expansion_chip.desc=Upgrades tool logic for more flexibility.
+tooltip.expansion_chip.extra=Adds +1 Modifier Slot.
+
+tooltip.solar_amulet.desc=Harnesses energy to power your equipment.
+tooltip.solar_amulet.extra=Charges IC2 items and restores Vis to wands.
+tooltip.solar_amulet.goggles=Allows you to see what is hidden
+
+tooltip.miner_belt.desc=The ultimate tool for underground exploration.
+tooltip.miner_belt.extra=Grants: Haste II and a togglable Magnet (Shift+Right Click).
+
+tooltip.golden_schnitzel.desc=A royal delicacy.
+tooltip.golden_schnitzel.extra=Removes negative effects, restores health and gives great strength.
+
+# Technical
+akadaemon.modifier.unbreakable=Unbreakable
+
+tc.research_category.AKADAEMON=Akadaemon Addon
+tc.research_name.AKADAEMON_WAND=Iridium Wand
+tc.research_text.AKADAEMON_WAND=Technomagic in your hands
+tc.research_page.AKADAEMON_WAND.1=Iridium and Manullin are two metals from different worlds. By combining them with magic, you created the perfect instrument.
+
+tc.research_name.TECH_ACCESSORIES=Artifacts of the worlds
+tc.research_text.TECH_ACCESSORIES=Rings, amulets and belts
+tc.research_page.TECH_ACCESSORIES.1=These artifacts use the power of the sun and the depths of the earth to help the owner.
+
+tc.research_name.KNOWLEDGE_CRAFT=Synthesis of knowledge
+tc.research_text.KNOWLEDGE_CRAFT=Creating Knowledge Snippets
+tc.research_page.KNOWLEDGE_CRAFT.1=Now you can recreate lost knowledge using gold and ender dust.
+
+tc.research_name.TECH_DEVICES=Technomagical devices
+tc.research_text.TECH_DEVICES=Energy and signaling
+tc.research_page.TECH_DEVICES.1=By studying energy transmission methods, you created a transformer capable of converting magical currents and a fiber that resonates with the energy of the Edge and Amber.

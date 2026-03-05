@@ -1,0 +1,48 @@
+buildscript {
+    repositories {
+        maven { url "https://nexus.gtnewhorizons.com/repository/public/" }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath files('libs_gradle/retrofuturagradle-1.4.9.jar')
+    }
+}
+
+apply plugin: 'com.gtnewhorizons.retrofuturagradle'
+
+version = "1.2"
+group = "com.akadaemon.addon"
+archivesBaseName = "akadaemon"
+
+minecraft {
+    mcVersion.set("1.7.10")
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+processResources {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    filesMatching("mcmod.info") {
+        expand(
+                "version": project.version,
+                "mcversion": "1.7.10"
+        )
+    }
+}
+
+tasks.named("jar", Jar).configure {
+    archiveClassifier.set("")
+}

@@ -1,0 +1,60 @@
+# Creative Tab
+itemGroup.akadaemon=Аддон Akadaemon
+
+# Items
+item.world_ring.name=Кольцо Мира
+item.composite_mod.name=Композитный модификатор
+item.expansion_chip.name=Микросхема расширения
+item.solar_amulet.name=Солнечный амулет
+item.miner_belt.name=Пояс шахтера
+item.golden_schnitzel.name=Золотой шницель
+tile.thaum_transformer.name=Таум-трансформатор
+item.cobalt_dust.name=Кобальтовая пыль
+item.ardite_dust.name=Ардитовая пыль
+item.ender_dust.name=Пыль Края
+item.iridium_composite.name=Иридиевый композит
+tile.amber_fiber.name=Янтарное волокно
+item.wand_cap_manullyn.name=Мануллиновый наконечник
+item.wand_rod_iridium.name=Иридиевый стержень
+item.Wand.manullyn.cap=Окаймленный Мануллином
+item.Wand.iridium.rod=Иридиевый
+
+# Tooltips
+tooltip.world_ring.desc=Мистическая реликвия, оберегающая владельца.
+tooltip.world_ring.extra=Дарует: Ночное зрение, Подводное дыхание и Огнестойкость.
+
+tooltip.composite_mod.desc=Улучшает состояние инструментов.
+tooltip.composite_mod.extra=Добавляет инструменту свойство "Неразрушимость".
+
+tooltip.expansion_chip.desc=Улучшает логику инструмента для большей гибкости.
+tooltip.expansion_chip.extra=Добавляет +1 слот для модификатора.
+
+tooltip.solar_amulet.desc=Накапливает солнечную энергию для питания вашего снаряжения.
+tooltip.solar_amulet.extra=Заряжает предметы IC2 и восстанавливает Вис в палочках.
+
+tooltip.miner_belt.desc=Незаменимый инструмент для подземных исследований.
+tooltip.miner_belt.extra=Дарует: Спешку II и переключаемый Магнит (Shift+ПКМ).
+
+tooltip.golden_schnitzel.desc=Королевский деликатес.
+tooltip.golden_schnitzel.extra=Снимает негативные эффекты, восстанавливает здоровье и дает огромную силу.
+
+# Technical
+akadaemon.modifier.unbreakable=Неразрушимость
+
+# Thaumcraft Research
+tc.research_category.AKADAEMON=Аддон Akadaemon
+tc.research_name.AKADAEMON_WAND=Иридиевая палочка
+tc.research_text.AKADAEMON_WAND=Техномагия в ваших руках
+tc.research_page.AKADAEMON_WAND.1=Иридий и мануллин — два металла из разных миров. Объединив их с помощью магии, вы создали совершенный инструмент.
+
+tc.research_name.TECH_ACCESSORIES=Артефакты миров
+tc.research_text.TECH_ACCESSORIES=Кольца, амулеты и пояса
+tc.research_page.TECH_ACCESSORIES.1=Эти артефакты используют силу солнца и недр земли, чтобы помогать своему владельцу.
+
+tc.research_name.KNOWLEDGE_CRAFT=Синтез знаний
+tc.research_text.KNOWLEDGE_CRAFT=Создание фрагментов знаний
+tc.research_page.KNOWLEDGE_CRAFT.1=Теперь вы можете воссоздавать утерянные знания, используя золото и пыль Края.
+
+tc.research_name.TECH_DEVICES=Техномагические устройства
+tc.research_text.TECH_DEVICES=Энергия и сигналы
+tc.research_page.TECH_DEVICES.1=Изучая методы передачи энергии, вы создали трансформатор, способный преобразовывать магические токи, и волокно, резонирующее с энергией Края и янтаря.
