@@ -1,11 +1,13 @@
 package com.akadaemon.addon;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class ExternalItems {
+    public static ItemStack emptyBucket;
     public static ItemStack ingotManullyn, ingotCobalt, ingotArdite;
     public static ItemStack iridiumOre;
     public static ItemStack energyCrystal;
@@ -19,9 +21,11 @@ public class ExternalItems {
 
     public static ItemStack qHelmet, qChest, qLegs, qBoots;
 
-    public static ItemStack knowledgeFragment, amber, blockTube, blockAmber, thaumIngot;
+    public static ItemStack knowledgeFragment, amber, blockTube, blockAmber, thaumIngot, quicksilver;
 
     public static void init() {
+        emptyBucket = new ItemStack(Items.bucket);
+
         Item tinkerMaterials = GameRegistry.findItem("TConstruct", "materials");
         ingotManullyn = new ItemStack(tinkerMaterials, 1, 5);
         ingotCobalt = new ItemStack(tinkerMaterials, 1, 3);
@@ -45,6 +49,7 @@ public class ExternalItems {
         Item resourceItem = (Item) Item.itemRegistry.getObject("Thaumcraft:ItemResource");
         knowledgeFragment = new ItemStack(resourceItem, 1, 9);
         amber = new ItemStack(resourceItem, 1, 6);
+        quicksilver = new ItemStack(resourceItem, 1, 3);
         thaumIngot = new ItemStack(resourceItem, 1, 2);
 
         blockTube = createStackFromName("Thaumcraft:blockTube", 0);

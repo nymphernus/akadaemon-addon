@@ -4,7 +4,7 @@ itemGroup.akadaemon=Akadaemon Addon
 # Items
 item.world_ring.name=Ring of the World
 item.composite_mod.name=Composite Modifier
-item.expansion_chip.name=Expansion Microchip
+item.expansion_chip.name=Expansion Chip
 item.solar_amulet.name=Solar Amulet
 item.miner_belt.name=Miner's Belt
 item.golden_schnitzel.name=Golden Schnitzel
@@ -14,40 +14,59 @@ item.ardite_dust.name=Ardite Dust
 item.ender_dust.name=Ender Dust
 item.iridium_composite.name=Iridium Composite
 tile.amber_fiber.name=Amber Fiber
-item.wand_cap_manullyn.name=Manullyn Cap
-item.wand_rod_iridium.name=Iridium Rod
-item.Wand.manullyn.cap=Manullyn Bossed
+item.wand_cap_manullyn.name=Manullyn Wand Cap
+item.wand_rod_iridium.name=Iridium Wand Rod
+item.Wand.manullyn.cap=Manullyn-capped
 item.Wand.iridium.rod=Iridium
 item.mythril_ingot.name=Mythril Ingot
-tile.block_mythril.name=Mythril Block
-item.titan_ingot.name=Titan Ingot
-tile.block_titan.name=Titan Block
-item.adamantit_ingot.name=Adamantit Ingot
-tile.block_adamantit.name=Adamantit Block
+tile.block_mythril.name=Block of Mythril
+item.titan_ingot.name=Titanium Ingot
+tile.block_titan.name=Block of Titanium
+item.adamantit_ingot.name=Adamantite Ingot
+tile.block_adamantit.name=Block of Adamantite
+tile.ethereal_photon_block.name=Ethereal Photon
+tile.glacial_quicksilver_block.name=Glacial Quicksilver
+item.bucket_ethereal_photon.name=Ethereal Photon Bucket
+item.bucket_glacial_quicksilver.name=Glacial Quicksilver Bucket
 
-ic2.mythril_quantum_helmet=Quantum-Mythril Helmet
-ic2.mythril_quantum_chest=Quantum-Mythril Carapace
-ic2.mythril_quantum_legs=Quantum-Mythril Knemids
-ic2.mythril_quantum_boots=Quantum-Mythril Boots
+# Fluids
+fluid.glacial_quicksilver=Glacial Quicksilver
+fluid.ethereal_photon=Ethereal Photon
+fluid.liquid_ice=Molten Ice
+fluid.liquid_snow=Molten Snow
+fluid.liquid_quicksilver=Liquid Quicksilver
+fluid.liquid_lapis=Molten Lapis
+fluid.liquid_glowstone=Liquid Glowstone
+fluid.liquid_amber=Liquid Amber
+
+ic2.mythril_quantum_helmet=Mythril Quantum Helmet
+ic2.mythril_quantum_chest=Mythril Quantum Breastplate
+ic2.mythril_quantum_legs=Mythril Quantum Leggings
+ic2.mythril_quantum_boots=Mythril Quantum Boots
 
 # Tooltips
+tooltip.akadaemon.armor.0=§6Stabilizes the mind and reveals secrets
+tooltip.akadaemon.armor.1=§6Energy flows through your tools
+tooltip.akadaemon.armor.2=§6Space warps beneath your feet
+tooltip.akadaemon.armor.3=§6Gravity is just a suggestion
+
 tooltip.world_ring.desc=A mystical relic that protects its wearer.
 tooltip.world_ring.extra=Grants: Night Vision, Water Breathing, and Fire Resistance.
 
-tooltip.composite_mod.desc=Upgrades of equipment condition.
-tooltip.composite_mod.extra=Adds the Unbreakable trait to tools.
+tooltip.composite_mod.desc=Improves the condition of tools.
+tooltip.composite_mod.extra=Adds the "Unbreakable" property to the tool.
 
-tooltip.expansion_chip.desc=Upgrades tool logic for more flexibility.
-tooltip.expansion_chip.extra=Adds +1 Modifier Slot.
+tooltip.expansion_chip.desc=Enhances tool logic for greater flexibility.
+tooltip.expansion_chip.extra=Adds +1 modifier slot.
 
-tooltip.solar_amulet.desc=Harnesses energy to power your equipment.
-tooltip.solar_amulet.extra=Charges IC2 items and restores Vis to wands.
+tooltip.solar_amulet.desc=Gathers solar energy to power your equipment.
+tooltip.solar_amulet.extra=Charges IC2 items and restores Vis in wands.
 
-tooltip.miner_belt.desc=The ultimate tool for underground exploration.
-tooltip.miner_belt.extra=Grants: Haste II and a togglable Magnet (Shift+Right Click).
+tooltip.miner_belt.desc=An indispensable tool for underground exploration.
+tooltip.miner_belt.extra=Grants: Haste II and a toggleable Magnet (Shift+RMB).
 
 tooltip.golden_schnitzel.desc=A royal delicacy.
-tooltip.golden_schnitzel.extra=Removes negative effects, restores health and gives great strength.
+tooltip.golden_schnitzel.extra=Removes negative effects, restores health, and grants immense strength.
 
 # Technical
 akadaemon.modifier.unbreakable=Unbreakable
@@ -55,62 +74,65 @@ akadaemon.modifier.unbreakable=Unbreakable
 # Thaumcraft Research
 tc.research_category.AKADAEMON=Akadaemonica
 
-tc.research_name.AKADAEMON_WAND=Manullin-Iridium Rod
-tc.research_text.AKADAEMON_WAND=Technomagic in your hands
-tc.research_page.AKADAEMON_WAND.1=Iridium and Manullin are two metals from different worlds. By combining them with magic, you created the perfect instrument.
+tc.research_name.AKADAEMON_WAND=Manullyn-Iridium Wand
+tc.research_text.AKADAEMON_WAND=Technomancy in your hands
+tc.research_page.AKADAEMON_WAND.1=Iridium and Manullyn — two metals from different worlds. By combining them through magic, you have created the ultimate tool.
 
-tc.research_name.KNOWLEDGE_CRAFT=Knowledge Synthesis
-tc.research_text.KNOWLEDGE_CRAFT=Creating Knowledge Fragments
-tc.research_page.KNOWLEDGE_CRAFT.1=Now you can recreate lost knowledge using gold and Ender dust. This synthesis allows for a more stable path to discovery.
+tc.research_name.KNOWLEDGE_CRAFT=Synthesis of Knowledge
+tc.research_text.KNOWLEDGE_CRAFT=Crafting fragments of lore
+tc.research_page.KNOWLEDGE_CRAFT.1=You can now recreate lost knowledge using gold and Ender dust.
 
-tc.research_name.TINKER_MODS=Akadaemon's Augmentations
-tc.research_text.TINKER_MODS=Modularity and Efficiency
-tc.research_page.TINKER_MODS.1=By studying the structure of Mithril, I realized it could serve as a perfect substrate for complex microcircuits. Composite modifiers and expansion chips will allow you to elevate your equipment to a whole new level...
+tc.research_name.TINKER_MODS=Akadaemon Enhancements
+tc.research_text.TINKER_MODS=Modularity and efficiency
+tc.research_page.TINKER_MODS.1=By studying the structure of Mythril, you realized it could be used as a substrate for complex microcircuits. Composite modifiers and expansion chips will allow you to take your equipment to the next level...
 
-tc.research_name.MINER_BELT=Belt of the Great Miner
+tc.research_name.MINER_BELT=Miner's Belt
 tc.research_text.MINER_BELT=Heart of the mountain on your hip
-tc.research_page.MINER_BELT.1=Digging deep means exposing yourself to danger. By studying the properties of earth aspects and combining them with magnetic resonance mechanisms, you created this belt. It not only fills your hands with incredible power, accelerating block mining, but also possesses a powerful magical magnet. Now, no rare nugget or piece of dust will fall into lava; they will leap straight into your bag.
+tc.research_page.MINER_BELT.1=To dig deep is to expose oneself to danger. By studying the properties of earth aspects and combining them with magnetic resonance mechanisms, you created this belt. It not only fills your arms with incredible strength, accelerating block mining, but also possesses a powerful magical magnet. Now, not a single rare nugget or piece of dust will fall into the lava; they will jump straight into your bag.
 
-tc.research_name.TRINITY_ALLOYS=The Trinity of Alloys
+tc.research_name.TRINITY_ALLOYS=Trinity of Alloys
 tc.research_text.TRINITY_ALLOYS=Alchemy beyond the possible
-tc.research_page.TRINITY_ALLOYS.1=Your investigations into technomancy have led to a startling discovery: rare metals from other dimensions and worlds, when correctly catalyzed, are capable of transmutation. These ingots will serve as the foundation for your most ambitious projects, from advanced wands to quantum-grade armor.
+tc.research_page.TRINITY_ALLOYS.1=Your investigations into technomancy have led to a startling discovery: rare metals from other dimensions and worlds are capable of transmutation under the right catalysis. These ingots will become the foundation for your most ambitious projects, from advanced wands to quantum armor.
 
 tc.research_name.WORLD_RING=Ring of the World
 tc.research_text.WORLD_RING=Unity with nature
-tc.research_page.WORLD_RING.1=By creating this ring, you have learned to adapt your body to any environment. Utilizing the magical properties of Mythril, the ring maintains a constant field around the wearer that allows for underwater breathing, seeing in the deepest darkness, and ignoring the heat of molten lava. A true blessing for any explorer of alien worlds.
+tc.research_page.WORLD_RING.1=By creating this ring, you have learned to adapt your body to any environment. Utilizing the magical properties of Mythril, the ring creates a constant field around the wearer that allows breathing underwater, seeing in the deepest darkness, and ignoring the heat of molten lava. A true blessing for an explorer of other worlds.
 
 tc.research_name.SOLAR_AMULET=Solar Amulet
-tc.research_text.SOLAR_AMULET=Pure celestial energy
-tc.research_page.SOLAR_AMULET.1=This amulet is a marvel of technomagic. It is capable of capturing sunlight and converting it directly into two types of energy: electrical energy for charging equipment in your inventory and magical energy for restoring Vis in your wands. As long as the sun shines, your power is limitless. Your armor will also slowly regenerate while worn.
+tc.research_text.SOLAR_AMULET=Pure energy of the heavens
+tc.research_page.SOLAR_AMULET.1=This amulet is a marvel of technomancy. It is capable of capturing sunlight and converting it simultaneously into two types of energy: electrical for charging mechanisms in your inventory and magical for restoring the charge of your wands. As long as the sun shines, your power is limitless. Ordinary armor also gradually regenerates while worn.
 
 tc.research_name.THAUM_TRANSFORMER=Thaumic Transformer
 tc.research_text.THAUM_TRANSFORMER=Magic in volts
-tc.research_page.THAUM_TRANSFORMER.1=For a long time, mages and engineers sought a way to convert pure magic into electrical current. The Thaumic Transformer solves this task. By absorbing aspects from nearby nodes or when connected to a generator, it allows you to charge both electrical devices and magic wands within it.
+tc.research_page.THAUM_TRANSFORMER.1=For a long time, mages and engineers sought a way to convert pure magic into electrical current. The Thaumic Transformer solves this problem. By absorbing aspects from nearby nodes or when connected to a generator, it allows for the charging of both electrical devices and magic wands.
 
 tc.research_name.AMBER_FIBER=Amber Fiber
 tc.research_text.AMBER_FIBER=Wireless alchemy
-tc.research_page.AMBER_FIBER.1=By studying the structure of amber, you created a special crystalline conductor. Amber Fiber is capable of capturing Essentia from alchemical devices below it and instantly transferring it to suitable jars within a 10-block radius. No more labyrinths of tubes — only pure magical translation.
+tc.research_page.AMBER_FIBER.1=By studying the structure of amber, you created a special crystalline conductor. Amber fiber is capable of capturing essence from alchemical devices beneath it and instantly transferring it to suitable jars within a 10-block radius. No more labyrinths of pipes — only pure magical transmission.
 
 tc.research_name.TECH_QUANTUM=Mythril Quantum Armor
-tc.research_text.TECH_QUANTUM=The pinnacle of technomagical protection
-tc.research_page.TECH_QUANTUM.1=A standard Quantum Suit is perfect from an engineering standpoint but empty in terms of magic. By replacing core components with Mythril, you created armor that not only protects against any damage but also grants true flight, a Vis discount, and incredible speed that leaves only sparks of the End behind.
+tc.research_text.TECH_QUANTUM=The pinnacle of technomagic protection
+tc.research_page.TECH_QUANTUM.1=A standard quantum suit is perfect from an engineering standpoint but empty in terms of magic. By replacing the core components with Mythril, you have created armor that not only protects against any damage but also grants true flight, mental stabilization, a Vis discount, and incredible speed that leaves only sparks of the Void behind.
 
 # Lore
-tc.research_name.AKADAEMON_LORE=The Legacy of Akadaemon
-tc.research_text.AKADAEMON_LORE=Awakening of Ancient Knowledge
+tc.research_name.AKADAEMON_LORE=Legacy of Akadaemon
+tc.research_text.AKADAEMON_LORE=Awakening of ancient knowledge
 tc.research_page.AKADAEMON_LORE.1=<IMG>akadaemon:textures/gui/lore_image.png:0:0:256:256:0.5</IMG>
-tc.research_page.AKADAEMON_LORE.2=§l§nChapter I: The Search<BR><BR>§rYou found these notes scribbled in the margins of an ancient grimoire. They speak of a "Great Synthesis" — a moment when the cold steel of machines gains a soul through the magic of Vis. The author, one Akadaemon, claims that the metals we know are just the tip of the iceberg. If one could learn to bind volts and aspects, they could create something that transcends both magic and technology. Your curiosity is piqued... it is time to see how deep this rabbit hole goes.
-tc.research_page.AKADAEMON_LORE.3=§l§nChapter II: The Rift<BR><BR>§rSuccess with alloys has confirmed Akadaemon's theories. Iridium from distant stars and metals from the Nether do not just coexist — they resonate. It turns out that Mithril is capable of holding a colossal amount of energy, acting as an ideal stabilizer for unstable quantum structures. This is the key to creating equipment that not only protects the body but commands reality itself.
-tc.research_page.AKADAEMON_LORE.4=§l§nChapter III: The Awakening<BR><BR>§rBe warned, however: the records mention that working with such matters requires absolute precision. The slightest error in catalysis, and the Mithril will turn into useless slag—or worse, it will consume the Vis from the surrounding aura, triggering a magical backlash. Now that the foundations are clear, it is time to ascend toward the peak — Quantum Synthesis.
+tc.research_page.AKADAEMON_LORE.2=§l§nChapter I: The Search<BR><BR>§rYou found these notes in the margins of an old grimoire. They speak of a "great synthesis" — the moment when the cold steel of machines gains a soul through the magic of Vis. The author, a certain Akadaemon, claims that the metals familiar to us are but the tip of the iceberg. If one learns to bind volts and aspects, one can create something that surpasses both magic and technology. Your curiosity is piqued... it is time to see how deep this rabbit hole goes.
+tc.research_page.AKADAEMON_LORE.3=§l§nChapter II: The Rift<BR><BR>§rSuccess with alloys has confirmed Akadaemon's theory. Iridium from distant stars and metals from the Nether do not just coexist — they resonate. It turns out that Mythril is capable of holding a colossal volume of energy, acting as an ideal stabilizer for unstable quantum structures. This is the key to creating equipment that not only protects the body but also manipulates the reality around it.
+tc.research_page.AKADAEMON_LORE.4=§l§nChapter III: Awakening<BR><BR>§rBe warned, however: the records mention that working with such materials requires perfect precision. The slightest error in catalysis — and the Mythril will turn into useless slag or, worse, drain the Vis from the nearby aura, causing a magical backlash. Now that the foundations are clear, it is time to move toward the summit: Quantum Synthesis.
 
-chat.akadaemon.dragon_egg=§5§oAs you touch the cold stone, the echo of a foreign mind pierces your silence...
+chat.akadaemon.dragon_egg=§5§oYou touch the cold stone, and the echo of a foreign mind pierces your silence...
 tc.research_name.AKADAEMON_FINAL=The Creator's End
 tc.research_text.AKADAEMON_FINAL=Truth hidden in the void
+tc.research_page.AKADAEMON_FINAL.1=§rThe death of the great beast revealed a truth no textbook could ever describe. As the Dragon's spirit dissipated, the sharp scent of ozone and scorched parchment lingered for a moment. It was not a beast... it was a vessel. <BR> Akadaemon did not perish in the Quantum Core explosion — she became part of it, gaining the immortality she craved at the cost of her own humanity. Her people, warped by the energy of the End, became what we call Endermen. Shadows in the void, they aimlessly rearrange blocks, trying to piece together the shards of their creator's mind. Now that the Dragon is slain, I hold her final records...
+tc.research_page.AKADAEMON_FINAL.2=§r§lEntry 384§r<BR><BR>§o"Station 'End' is functioning perfectly. In this vacuum, the Aura does not resist my instruments. The obsidian stabilizers maintain the resonance of the Crystals, creating an ideal field for the Mythril cores. My apprentices are frightened — they say the void peers into their souls, and their bodies stretch unnaturally. Fools. We are building the cradle of a new civilization where magic and quantum physics shall become one. Today, we begin the calibration of the Void Reactor."§r
+tc.research_page.AKADAEMON_FINAL.3=§r§lEntry 396§r<BR><BR>§o"Urgent! The Mythril catalyst has entered an uncontrollable resonance. The Crystals are draining Vis from my engineers faster than we can supply power. A quantum rupture has occurred — space around us collapsed, forming this floating island amidst eternal darkness. I hear screams... or is it the cracking of reality? Those who didn't die instantly have begun to change. Their minds are shattering into binary code and the whisper of the End. I am trying to hold the core... it pulls me in... I feel my bones merging with obsidian..."§r
+tc.research_page.AKADAEMON_FINAL.4=§r§lEntry ...the final one§r<BR><BR>§o"...I can no longer feel my fingers. Only wings. Great wings woven from shadows and quantum noise. My loyal servants... they are now but black shadows, doomed to endlessly move the debris of my pride, trying to piece together a shattered world. I have become the guardian. I have become the jailer. If anyone reads this — know that Quantum Synthesis is possible, but it demands not just energy, but the very essence of being. I am Akadaemon, and this is my eternal imprisonment within the body of a beast."§r
 
-tc.research_page.AKADAEMON_FINAL.1=§rThe death of the great beast revealed a truth no textbook could ever describe. As the Dragon's spirit dissipated, the sharp scent of ozone and scorched parchment lingered for a moment. It was not a beast... it was a vessel. <BR> Akadaemon did not perish in the Quantum Core explosion—he became part of it, gaining the immortality he craved at the cost of his own humanity. His people, warped by the energy of the End, became what we call Endermen. Shadows in the void, they aimlessly rearrange blocks, trying to piece together the shards of their creator's mind. Now that the Dragon is slain, I hold his final records...
-tc.research_page.AKADAEMON_FINAL.2=§r§l§nEntry 384§r<BR><BR>§o"Station 'End' is functioning perfectly. In this vacuum, the Aura does not resist my instruments. The obsidian stabilizers maintain the resonance of the Crystals, creating an ideal field for the Mithril cores. My apprentices are frightened—they say the void peers into their souls, and their bodies stretch unnaturally. Fools. We are building the cradle of a new civilization, where magic and quantum physics shall become one. Today, we begin the calibration of the Void Reactor."§r
-tc.research_page.AKADAEMON_FINAL.3=§r§l§nEntry 396§r<BR><BR>§o"Urgent! The Mithril catalyst has entered an uncontrollable resonance. The Crystals are draining Vis from my engineers faster than we can supply power. A quantum rupture has occurred—space around us collapsed, forming this floating island amidst eternal darkness. I hear screams... or is it the cracking of reality? Those who didn't die instantly have begun to change. Their minds are shattering into binary code and the whisper of the End. I am trying to hold the core... it pulls me in... I feel my bones merging with obsidian..."§r
-tc.research_page.AKADAEMON_FINAL.4=§r§l§nEntry ...the final one§r<BR><BR>§o"...I can no longer feel my fingers. Only wings. Great wings woven from shadows and quantum noise. My loyal servants... they are now but black shadows, doomed to endlessly move the debris of my pride, trying to piece together a shattered world. I have become the guardian. I have become the jailer. If anyone reads this—know that Quantum Synthesis is possible, but it demands not just energy, but the very essence of being. I am Akadaemon, and this is my eternal imprisonment within the form of a beast."§r
-
-
+tc.research_name.AKADAEMON_FLUIDS=Alchemical States
+tc.research_text.AKADAEMON_FLUIDS=Freezing mercury and photon energy
+tc.research_page.AKADAEMON_FLUIDS.1=Your research into thermodynamics and alchemy has led to a curious discovery: certain magical substances behave quite unusually under the extreme temperatures of a Smeltery. You have managed to stabilize mercury using ice and awaken amber's energy with light. Below are the precise formulas for these alloys.
+tc.research_page.AKADAEMON_FLUIDS.2=§n§lGlacial Quicksilver Formula:§r<BR><BR>- Molten Ice (500mb)<BR>- Molten Snow (125mb)<BR>- Liquid Quicksilver (250mb)<BR>- Molten Lapis (125mb)<BR><BR>Mix in a Smeltery until a homogeneous mass is obtained.
+tc.research_page.AKADAEMON_FLUIDS.3=§n§lEthereal Photon Formula:§r<BR><BR>- Liquid Glowstone (500mb)<BR>- Liquid Amber (500mb)<BR><BR>The result is unstable, but extremely energy-efficient.
 
