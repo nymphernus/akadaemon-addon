@@ -40,9 +40,9 @@ public class ItemWorldRing extends Item implements IBauble {
     @Override
     public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
         if (!player.worldObj.isRemote) {
-            player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 20, 0, true));
-            player.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 20, 0, true));
-            player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 20, 0, true));
+            player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 200, 0, true));
+            player.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 200, 0, true));
+            player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 200, 0, true));
         }
     }
 

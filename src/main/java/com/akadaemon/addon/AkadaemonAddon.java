@@ -27,7 +27,7 @@ import java.util.List;
 public class AkadaemonAddon {
     public static final String MODID = "akadaemon";
     public static final String NAME = "Akadaemon Addon";
-    public static final String VERSION = "1.4.1";
+    public static final String VERSION = "1.5";
     public static final Logger logger = LogManager.getLogger(NAME);
 
     public static Item compositeMod, expansionChip, worldRing, solarAmulet, minerBelt, goldenSchnitzel;
@@ -177,6 +177,7 @@ public class AkadaemonAddon {
     public void postInit(FMLPostInitializationEvent event) {
         ExternalItems.init();
         ThaumcraftIntegration.init();
+        net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(new ThaumcraftIntegration());
         MainRecipes.init();
         ThaumcraftAspects.register();
         if (ConfigHandler.enableOreDump) { OreDump.init(); }

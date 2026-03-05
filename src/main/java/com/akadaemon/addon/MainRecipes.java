@@ -19,23 +19,6 @@ import static com.akadaemon.addon.AkadaemonAddon.*;
 
 public class MainRecipes {
     public static void init() {
-        // Композитный модификатор
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(compositeMod),
-                "MMM",
-                "TTT",
-                "AAA",
-                'M', "blockMithril",
-                't', "blockTitan",
-                'A', "blockAdamantit"));
-        // Расширительная микросхема
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(expansionChip),
-                "MAM",
-                " E ",
-                "CAC",
-                'C', ExternalItems.carbonPlate,
-                'E', ExternalItems.energyCrystal,
-                'A', ExternalItems.advCircuit,
-                'M', "ingotMithril"));
         // Шницель
         GameRegistry.addShapelessRecipe(new ItemStack(goldenSchnitzel), Blocks.gold_block, Items.cooked_beef);
         // Слиток алюмита

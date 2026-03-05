@@ -53,7 +53,7 @@ tooltip.golden_schnitzel.extra=Removes negative effects, restores health and giv
 akadaemon.modifier.unbreakable=Unbreakable
 
 # Thaumcraft Research
-tc.research_category.AKADAEMON=Akadaemon Addon
+tc.research_category.AKADAEMON=Akadaemonica
 
 tc.research_name.AKADAEMON_WAND=Manullin-Iridium Rod
 tc.research_text.AKADAEMON_WAND=Technomagic in your hands
@@ -62,6 +62,10 @@ tc.research_page.AKADAEMON_WAND.1=Iridium and Manullin are two metals from diffe
 tc.research_name.KNOWLEDGE_CRAFT=Knowledge Synthesis
 tc.research_text.KNOWLEDGE_CRAFT=Creating Knowledge Fragments
 tc.research_page.KNOWLEDGE_CRAFT.1=Now you can recreate lost knowledge using gold and Ender dust. This synthesis allows for a more stable path to discovery.
+
+tc.research_name.TINKER_MODS=Akadaemon's Augmentations
+tc.research_text.TINKER_MODS=Modularity and Efficiency
+tc.research_page.TINKER_MODS.1=By studying the structure of Mithril, I realized it could serve as a perfect substrate for complex microcircuits. Composite modifiers and expansion chips will allow you to elevate your equipment to a whole new level...
 
 tc.research_name.MINER_BELT=Belt of the Great Miner
 tc.research_text.MINER_BELT=Heart of the mountain on your hip
@@ -90,3 +94,23 @@ tc.research_page.AMBER_FIBER.1=By studying the structure of amber, you created a
 tc.research_name.TECH_QUANTUM=Mythril Quantum Armor
 tc.research_text.TECH_QUANTUM=The pinnacle of technomagical protection
 tc.research_page.TECH_QUANTUM.1=A standard Quantum Suit is perfect from an engineering standpoint but empty in terms of magic. By replacing core components with Mythril, you created armor that not only protects against any damage but also grants true flight, a Vis discount, and incredible speed that leaves only sparks of the End behind.
+
+# Lore
+tc.research_name.AKADAEMON_LORE=The Legacy of Akadaemon
+tc.research_text.AKADAEMON_LORE=Awakening of Ancient Knowledge
+tc.research_page.AKADAEMON_LORE.1=<IMG>akadaemon:textures/gui/lore_image.png:0:0:256:256:0.5</IMG>
+tc.research_page.AKADAEMON_LORE.2=§l§nChapter I: The Search<BR><BR>§rYou found these notes scribbled in the margins of an ancient grimoire. They speak of a "Great Synthesis" — a moment when the cold steel of machines gains a soul through the magic of Vis. The author, one Akadaemon, claims that the metals we know are just the tip of the iceberg. If one could learn to bind volts and aspects, they could create something that transcends both magic and technology. Your curiosity is piqued... it is time to see how deep this rabbit hole goes.
+tc.research_page.AKADAEMON_LORE.3=§l§nChapter II: The Rift<BR><BR>§rSuccess with alloys has confirmed Akadaemon's theories. Iridium from distant stars and metals from the Nether do not just coexist — they resonate. It turns out that Mithril is capable of holding a colossal amount of energy, acting as an ideal stabilizer for unstable quantum structures. This is the key to creating equipment that not only protects the body but commands reality itself.
+tc.research_page.AKADAEMON_LORE.4=§l§nChapter III: The Awakening<BR><BR>§rBe warned, however: the records mention that working with such matters requires absolute precision. The slightest error in catalysis, and the Mithril will turn into useless slag—or worse, it will consume the Vis from the surrounding aura, triggering a magical backlash. Now that the foundations are clear, it is time to ascend toward the peak — Quantum Synthesis.
+
+chat.akadaemon.dragon_egg=§5§oAs you touch the cold stone, the echo of a foreign mind pierces your silence...
+tc.research_name.AKADAEMON_FINAL=The Creator's End
+tc.research_text.AKADAEMON_FINAL=Truth hidden in the void
+
+tc.research_page.AKADAEMON_FINAL.1=§rThe death of the great beast revealed a truth no textbook could ever describe. As the Dragon's spirit dissipated, the sharp scent of ozone and scorched parchment lingered for a moment. It was not a beast... it was a vessel. <BR> Akadaemon did not perish in the Quantum Core explosion—he became part of it, gaining the immortality he craved at the cost of his own humanity. His people, warped by the energy of the End, became what we call Endermen. Shadows in the void, they aimlessly rearrange blocks, trying to piece together the shards of their creator's mind. Now that the Dragon is slain, I hold his final records...
+tc.research_page.AKADAEMON_FINAL.2=§r§l§nEntry 384§r<BR><BR>§o"Station 'End' is functioning perfectly. In this vacuum, the Aura does not resist my instruments. The obsidian stabilizers maintain the resonance of the Crystals, creating an ideal field for the Mithril cores. My apprentices are frightened—they say the void peers into their souls, and their bodies stretch unnaturally. Fools. We are building the cradle of a new civilization, where magic and quantum physics shall become one. Today, we begin the calibration of the Void Reactor."§r
+tc.research_page.AKADAEMON_FINAL.3=§r§l§nEntry 396§r<BR><BR>§o"Urgent! The Mithril catalyst has entered an uncontrollable resonance. The Crystals are draining Vis from my engineers faster than we can supply power. A quantum rupture has occurred—space around us collapsed, forming this floating island amidst eternal darkness. I hear screams... or is it the cracking of reality? Those who didn't die instantly have begun to change. Their minds are shattering into binary code and the whisper of the End. I am trying to hold the core... it pulls me in... I feel my bones merging with obsidian..."§r
+tc.research_page.AKADAEMON_FINAL.4=§r§l§nEntry ...the final one§r<BR><BR>§o"...I can no longer feel my fingers. Only wings. Great wings woven from shadows and quantum noise. My loyal servants... they are now but black shadows, doomed to endlessly move the debris of my pride, trying to piece together a shattered world. I have become the guardian. I have become the jailer. If anyone reads this—know that Quantum Synthesis is possible, but it demands not just energy, but the very essence of being. I am Akadaemon, and this is my eternal imprisonment within the form of a beast."§r
+
+
+

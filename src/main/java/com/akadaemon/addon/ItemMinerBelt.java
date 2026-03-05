@@ -45,7 +45,7 @@ public class ItemMinerBelt extends Item implements IBauble {
         if (player instanceof EntityPlayer) {
             EntityPlayer p = (EntityPlayer) player;
 
-            p.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 20, 1, true));
+            p.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 200, 1, true));
 
             if (itemstack.hasTagCompound() && itemstack.getTagCompound().getBoolean("MagnetOn")) {
                 List<EntityItem> items = p.worldObj.getEntitiesWithinAABB(EntityItem.class, p.boundingBox.expand(7.0D, 7.0D, 7.0D));

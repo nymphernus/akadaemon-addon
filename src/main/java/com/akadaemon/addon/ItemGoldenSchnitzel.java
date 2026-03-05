@@ -25,19 +25,8 @@ public class ItemGoldenSchnitzel extends ItemFood {
     @Override
     protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
         if (!world.isRemote) {
-            java.util.Collection<PotionEffect> activeEffects = player.getActivePotionEffects();
-            java.util.List<Integer> toRemove = new java.util.ArrayList<Integer>();
-
-            for (PotionEffect effect : activeEffects) {
-                if (Potion.potionTypes[effect.getPotionID()].isBadEffect()) {
-                    toRemove.add(effect.getPotionID());
-                }
-            }
-            for (Integer id : toRemove) {
-                player.removePotionEffect(id);
-            }
-            player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 2000, 1, false));
-            player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 40, 2, false));
+            player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 2000, 1, true));
+            player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 100, 2, true));
         }
     }
 

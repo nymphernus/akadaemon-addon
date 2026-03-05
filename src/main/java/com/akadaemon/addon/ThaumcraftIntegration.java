@@ -1,9 +1,14 @@
 package com.akadaemon.addon;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -15,6 +20,7 @@ import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.api.wands.WandCap;
 import thaumcraft.api.wands.WandRod;
+import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
 
@@ -129,7 +135,26 @@ public class ThaumcraftIntegration {
                 new AspectList().add(Aspect.ENTROPY, 40).add(Aspect.EARTH, 40).add(Aspect.FIRE, 10),
                 "MEM", "ARA", "MEM", 'R', "blockAdamantit", 'M', "ingotMithril", 'E', Items.ender_pearl, 'A', ExternalItems.amber);
 
-        // Палочка
+        IArcaneRecipe recipeChip = ThaumcraftApi.addArcaneCraftingRecipe("TINKER_MODS", new ItemStack(expansionChip),
+                new AspectList().add(Aspect.ORDER, 30).add(Aspect.FIRE, 20),
+                "MAM",
+                " E ",
+                "CAC",
+                'C', ExternalItems.carbonPlate,
+                'E', ExternalItems.energyCrystal,
+                'A', ExternalItems.advCircuit,
+                'M', "ingotMithril");
+
+        IArcaneRecipe recipeMod = ThaumcraftApi.addArcaneCraftingRecipe("TINKER_MODS", new ItemStack(compositeMod),
+                new AspectList().add(Aspect.ENTROPY, 50).add(Aspect.WATER, 30).add(Aspect.EARTH, 40),
+                "MMM",
+                "TTT",
+                "AAA",
+                'M', "blockMithril",
+                'T', "blockTitan",
+                'A', "blockAdamantit");
+
+                // Палочка
         IArcaneRecipe recipeCap = ThaumcraftApi.addArcaneCraftingRecipe("AKADAEMON_WAND", new ItemStack(wandCapManullyn),
                 new AspectList().add(Aspect.FIRE, 20).add(Aspect.ENTROPY, 20),
                 "MWM", "M M", 'M', "ingotManyullyn", 'W', "ingotMithril");
@@ -185,6 +210,7 @@ public class ThaumcraftIntegration {
                 .setParents("AKADAEMON_WAND")
                 .setConcealed()
                 .setSpecial()
+                .setRound()
                 .registerResearchItem();
 
         new ResearchItem("MINER_BELT", CAT_ID,
@@ -201,7 +227,7 @@ public class ThaumcraftIntegration {
                 .setParents("TRINITY_ALLOYS").setRound().setConcealed().registerResearchItem();
 
         new ResearchItem("KNOWLEDGE_CRAFT", CAT_ID,
-                new AspectList().add(Aspect.MIND, 10).add(Aspect.ORDER, 5), 3, 0, 1, ExternalItems.knowledgeFragment)
+                new AspectList().add(Aspect.MIND, 10).add(Aspect.ORDER, 5), 3, 2, 1, ExternalItems.knowledgeFragment)
                 .setPages(new ResearchPage("tc.research_page.KNOWLEDGE_CRAFT.1"), new ResearchPage(recipeKnowledge)).setParentsHidden("TRINITY_ALLOYS").setSecondary().registerResearchItem();
         new ResearchItem("THAUM_TRANSFORMER", CAT_ID,
                 new AspectList().add(Aspect.MECHANISM, 10).add(Aspect.ENERGY, 20).add(Aspect.EXCHANGE, 10), -3, 0, 3, new ItemStack(thaumTransformer))
@@ -209,6 +235,37 @@ public class ThaumcraftIntegration {
         new ResearchItem("AMBER_FIBER", CAT_ID,
                 new AspectList().add(Aspect.VOID, 10).add(Aspect.ENERGY, 10).add(Aspect.MAGIC, 10), -3, 2, 3, new ItemStack(amberFiber))
                 .setPages(new ResearchPage("tc.research_page.AMBER_FIBER.1"), new ResearchPage(recipeFiber)).setParentsHidden("TRINITY_ALLOYS").registerResearchItem();
+        new ResearchItem("TINKER_MODS", CAT_ID,
+                new AspectList().add(Aspect.CRAFT, 10).add(Aspect.TOOL, 10).add(Aspect.MINE, 10), 4, 0, 1, new ItemStack(expansionChip))
+                .setPages(new ResearchPage("tc.research_page.TINKER_MODS.1"), new ResearchPage(recipeChip), new ResearchPage(recipeMod)).setParentsHidden("TRINITY_ALLOYS").setSecondary().registerResearchItem();
+
+
+        new ResearchItem("AKADAEMON_LORE", CAT_ID,
+                new AspectList(),
+                2, 0,0,
+                new ResourceLocation("akadaemon", "textures/items/lore_tome.png"))
+                .setRound()
+                .setStub()
+                .setAutoUnlock()
+                .setPages(
+                        new ResearchPage("tc.research_page.AKADAEMON_LORE.1"),
+                        new ResearchPage("tc.research_page.AKADAEMON_LORE.2"),
+                        new ResearchPage("TRINITY_ALLOYS", "tc.research_page.AKADAEMON_LORE.3"),
+                        new ResearchPage("AKADAEMON_WAND", "tc.research_page.AKADAEMON_LORE.4"))
+                .registerResearchItem();
+
+        new ResearchItem("AKADAEMON_FINAL", CAT_ID,
+                new AspectList(),
+                0, -4,0,
+                new ResourceLocation("akadaemon", "textures/items/item_book.png"))
+                .setSpecial()
+                .setHidden()
+                .setPages(
+                        new ResearchPage("tc.research_page.AKADAEMON_FINAL.1"),
+                        new ResearchPage("tc.research_page.AKADAEMON_FINAL.2"),
+                        new ResearchPage("tc.research_page.AKADAEMON_FINAL.3"),
+                        new ResearchPage("tc.research_page.AKADAEMON_FINAL.4"))
+                .registerResearchItem();
     }
 
     private static ItemStack createWand(WandRod rod, WandCap cap) {
@@ -216,5 +273,25 @@ public class ThaumcraftIntegration {
         ((ItemWandCasting) wand.getItem()).setRod(wand, rod);
         ((ItemWandCasting) wand.getItem()).setCap(wand, cap);
         return wand;
+    }
+
+    @SubscribeEvent
+    public void onItemPickup(EntityItemPickupEvent event) {
+        ItemStack stack = event.item.getEntityItem();
+        if (stack != null && stack.getItem() == Item.getItemFromBlock(Blocks.dragon_egg)) {
+            EntityPlayer player = event.entityPlayer;
+            String researchKey = "AKADAEMON_FINAL";
+            if (!Thaumcraft.proxy.getResearchManager().isResearchComplete(player.getCommandSenderName(), researchKey)) {
+                if (!player.worldObj.isRemote) {
+                    Thaumcraft.proxy.getResearchManager().completeResearch(player, researchKey);
+
+                    String localizedMessage = net.minecraft.util.StatCollector.translateToLocal("chat.akadaemon.dragon_egg");
+                    player.addChatMessage(new ChatComponentText(localizedMessage));
+
+                    player.worldObj.playSoundAtEntity(player, "portal.travel", 0.6F, 0.7F);
+                    player.worldObj.playSoundAtEntity(player, "random.orb", 1.0F, 0.5F);
+                }
+            }
+        }
     }
 }
