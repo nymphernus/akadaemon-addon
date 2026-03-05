@@ -9,21 +9,22 @@ public class TileAmberFiber extends TileEntity implements IAspectContainer {
 
     @Override
     public void updateEntity() {
-        if (this.worldObj == null || this.worldObj.isRemote) return;
-        if (this.worldObj.getTotalWorldTime() % 5 != 0) return;
+        if (worldObj == null || worldObj.isRemote || worldObj.getTotalWorldTime() % 10 != 0) return;
 
-        TileEntity device = this.worldObj.getTileEntity(this.xCoord, this.yCoord - 1, this.zCoord);
+        TileEntity device = worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
 
-        if (device instanceof IAspectContainer) {
+        if (device instanceof IAspectContainer && !(device instanceof TileAmberFiber)) {
             IAspectContainer container = (IAspectContainer) device;
             AspectList aspects = container.getAspects();
 
             if (aspects != null && aspects.size() > 0) {
-                Aspect aspect = aspects.getAspects()[0];
-
-                if (aspects.getAmount(aspect) > 0) {
-                    if (transferEssentia(aspect)) {
-                        container.takeFromContainer(aspect, 1);
+                for (Aspect aspect : aspects.getAspects()) {
+                    if (aspects.getAmount(aspect) > 0) {
+                        if (transferEssentia(aspect)) {
+                            container.takeFromContainer(aspect, 1);
+                            worldObj.markBlockForUpdate(xCoord, yCoord - 1, zCoord);
+                            break;
+                        }
                     }
                 }
             }
@@ -31,70 +32,42 @@ public class TileAmberFiber extends TileEntity implements IAspectContainer {
     }
 
     private boolean transferEssentia(Aspect aspect) {
-        int radius = 8;
-        IAspectContainer emptyJar = null;
+        int radius = 10;
+        for (Object obj : worldObj.loadedTileEntityList) {
+            TileEntity tile = (TileEntity) obj;
 
-        for (int x = -radius; x <= radius; x++) {
-            for (int y = -radius; y <= radius; y++) {
-                for (int z = -radius; z <= radius; z++) {
-                    if (x == 0 && z == 0 && (y == 0 || y == -1)) continue;
+            double dist = tile.getDistanceFrom(xCoord, yCoord, zCoord);
+            if (dist > radius * radius) continue;
 
-                    TileEntity tile = this.worldObj.getTileEntity(this.xCoord + x, this.yCoord + y, this.zCoord + z);
+            if (tile == this || (tile.xCoord == xCoord && tile.zCoord == zCoord)) continue;
 
-                    if (tile instanceof IAspectContainer) {
-                        IAspectContainer jar = (IAspectContainer) tile;
+            if (tile instanceof IAspectContainer && !(tile instanceof TileAmberFiber)) {
+                IAspectContainer jar = (IAspectContainer) tile;
 
-                        if (jar.getAspects().getAmount(aspect) > 0 && jar.doesContainerAccept(aspect)) {
-                            if (jar.addToContainer(aspect, 1) == 0) return true;
-                        }
-
-                        if (emptyJar == null && jar.getAspects().size() == 0 && jar.doesContainerAccept(aspect)) {
-                            emptyJar = jar;
-                        }
+                if (jar.doesContainerAccept(aspect)) {
+                    int leftover = jar.addToContainer(aspect, 1);
+                    if (leftover == 0) {
+                        return true;
                     }
                 }
             }
         }
-
-        if (emptyJar != null) {
-            return emptyJar.addToContainer(aspect, 1) == 0;
-        }
-
         return false;
     }
 
-    @Override
-    public AspectList getAspects() { return new AspectList(); }
-
-    @Override
-    public void setAspects(AspectList aspects) {}
-
-    @Override
-    public boolean doesContainerAccept(Aspect tag) { return true; }
+    @Override public AspectList getAspects() { return new AspectList(); }
+    @Override public void setAspects(AspectList aspects) {}
+    @Override public boolean doesContainerAccept(Aspect tag) { return true; }
 
     @Override
     public int addToContainer(Aspect tag, int amount) {
-        if (transferEssentia(tag)) return 0;
+        if (transferEssentia(tag)) return amount - 1;
         return amount;
     }
 
-    @Override
-    public boolean takeFromContainer(Aspect tag, int amount) { return false; }
-
-    @Override
-    public boolean takeFromContainer(AspectList ot) { return false; }
-
-    @Override
-    public boolean doesContainerContainAmount(Aspect tag, int amount) { return false; }
-
-    @Override
-    public boolean doesContainerContain(AspectList ot) { return false; }
-
-    @Override
-    public int containerContains(Aspect tag) {
-        return 0;
-    }
-    public boolean containerContainsAmount(Aspect tag, int amount) {
-        return false;
-    }
+    @Override public boolean takeFromContainer(Aspect tag, int amount) { return false; }
+    @Override public boolean takeFromContainer(AspectList ot) { return false; }
+    @Override public boolean doesContainerContainAmount(Aspect tag, int amount) { return false; }
+    @Override public boolean doesContainerContain(AspectList ot) { return false; }
+    @Override public int containerContains(Aspect tag) { return 0; }
 }

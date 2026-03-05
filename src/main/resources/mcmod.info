@@ -2,7 +2,7 @@
 {
   "modid": "akadaemon",
   "name": "Akadaemon Addon",
-  "description": "TechnoMagic Mini Addon",
+  "description": "TechnoMagic Addon",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "https://github.com/nymphernus",

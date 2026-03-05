@@ -18,6 +18,17 @@ item.wand_cap_manullyn.name=Manullyn Cap
 item.wand_rod_iridium.name=Iridium Rod
 item.Wand.manullyn.cap=Manullyn Bossed
 item.Wand.iridium.rod=Iridium
+item.mythril_ingot.name=Mythril Ingot
+tile.block_mythril.name=Mythril Block
+item.titan_ingot.name=Titan Ingot
+tile.block_titan.name=Titan Block
+item.adamantit_ingot.name=Adamantit Ingot
+tile.block_adamantit.name=Adamantit Block
+
+ic2.mythril_quantum_helmet=Quantum-Mythril Helmet
+ic2.mythril_quantum_chest=Quantum-Mythril Carapace
+ic2.mythril_quantum_legs=Quantum-Mythril Knemids
+ic2.mythril_quantum_boots=Quantum-Mythril Boots
 
 # Tooltips
 tooltip.world_ring.desc=A mystical relic that protects its wearer.
@@ -31,7 +42,6 @@ tooltip.expansion_chip.extra=Adds +1 Modifier Slot.
 
 tooltip.solar_amulet.desc=Harnesses energy to power your equipment.
 tooltip.solar_amulet.extra=Charges IC2 items and restores Vis to wands.
-tooltip.solar_amulet.goggles=Allows you to see what is hidden
 
 tooltip.miner_belt.desc=The ultimate tool for underground exploration.
 tooltip.miner_belt.extra=Grants: Haste II and a togglable Magnet (Shift+Right Click).
@@ -42,19 +52,41 @@ tooltip.golden_schnitzel.extra=Removes negative effects, restores health and giv
 # Technical
 akadaemon.modifier.unbreakable=Unbreakable
 
+# Thaumcraft Research
 tc.research_category.AKADAEMON=Akadaemon Addon
-tc.research_name.AKADAEMON_WAND=Iridium Wand
+
+tc.research_name.AKADAEMON_WAND=Manullin-Iridium Rod
 tc.research_text.AKADAEMON_WAND=Technomagic in your hands
 tc.research_page.AKADAEMON_WAND.1=Iridium and Manullin are two metals from different worlds. By combining them with magic, you created the perfect instrument.
 
-tc.research_name.TECH_ACCESSORIES=Artifacts of the worlds
-tc.research_text.TECH_ACCESSORIES=Rings, amulets and belts
-tc.research_page.TECH_ACCESSORIES.1=These artifacts use the power of the sun and the depths of the earth to help the owner.
+tc.research_name.KNOWLEDGE_CRAFT=Knowledge Synthesis
+tc.research_text.KNOWLEDGE_CRAFT=Creating Knowledge Fragments
+tc.research_page.KNOWLEDGE_CRAFT.1=Now you can recreate lost knowledge using gold and Ender dust. This synthesis allows for a more stable path to discovery.
 
-tc.research_name.KNOWLEDGE_CRAFT=Synthesis of knowledge
-tc.research_text.KNOWLEDGE_CRAFT=Creating Knowledge Snippets
-tc.research_page.KNOWLEDGE_CRAFT.1=Now you can recreate lost knowledge using gold and ender dust.
+tc.research_name.MINER_BELT=Belt of the Great Miner
+tc.research_text.MINER_BELT=Heart of the mountain on your hip
+tc.research_page.MINER_BELT.1=Digging deep means exposing yourself to danger. By studying the properties of earth aspects and combining them with magnetic resonance mechanisms, you created this belt. It not only fills your hands with incredible power, accelerating block mining, but also possesses a powerful magical magnet. Now, no rare nugget or piece of dust will fall into lava; they will leap straight into your bag.
 
-tc.research_name.TECH_DEVICES=Technomagical devices
-tc.research_text.TECH_DEVICES=Energy and signaling
-tc.research_page.TECH_DEVICES.1=By studying energy transmission methods, you created a transformer capable of converting magical currents and a fiber that resonates with the energy of the Edge and Amber.
+tc.research_name.TRINITY_ALLOYS=The Trinity of Alloys
+tc.research_text.TRINITY_ALLOYS=Alchemy beyond the possible
+tc.research_page.TRINITY_ALLOYS.1=Your investigations into technomancy have led to a startling discovery: rare metals from other dimensions and worlds, when correctly catalyzed, are capable of transmutation. These ingots will serve as the foundation for your most ambitious projects, from advanced wands to quantum-grade armor.
+
+tc.research_name.WORLD_RING=Ring of the World
+tc.research_text.WORLD_RING=Unity with nature
+tc.research_page.WORLD_RING.1=By creating this ring, you have learned to adapt your body to any environment. Utilizing the magical properties of Mythril, the ring maintains a constant field around the wearer that allows for underwater breathing, seeing in the deepest darkness, and ignoring the heat of molten lava. A true blessing for any explorer of alien worlds.
+
+tc.research_name.SOLAR_AMULET=Solar Amulet
+tc.research_text.SOLAR_AMULET=Pure celestial energy
+tc.research_page.SOLAR_AMULET.1=This amulet is a marvel of technomagic. It is capable of capturing sunlight and converting it directly into two types of energy: electrical energy for charging equipment in your inventory and magical energy for restoring Vis in your wands. As long as the sun shines, your power is limitless. Your armor will also slowly regenerate while worn.
+
+tc.research_name.THAUM_TRANSFORMER=Thaumic Transformer
+tc.research_text.THAUM_TRANSFORMER=Magic in volts
+tc.research_page.THAUM_TRANSFORMER.1=For a long time, mages and engineers sought a way to convert pure magic into electrical current. The Thaumic Transformer solves this task. By absorbing aspects from nearby nodes or when connected to a generator, it allows you to charge both electrical devices and magic wands within it.
+
+tc.research_name.AMBER_FIBER=Amber Fiber
+tc.research_text.AMBER_FIBER=Wireless alchemy
+tc.research_page.AMBER_FIBER.1=By studying the structure of amber, you created a special crystalline conductor. Amber Fiber is capable of capturing Essentia from alchemical devices below it and instantly transferring it to suitable jars within a 10-block radius. No more labyrinths of tubes — only pure magical translation.
+
+tc.research_name.TECH_QUANTUM=Mythril Quantum Armor
+tc.research_text.TECH_QUANTUM=The pinnacle of technomagical protection
+tc.research_page.TECH_QUANTUM.1=A standard Quantum Suit is perfect from an engineering standpoint but empty in terms of magic. By replacing core components with Mythril, you created armor that not only protects against any damage but also grants true flight, a Vis discount, and incredible speed that leaves only sparks of the End behind.

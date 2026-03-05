@@ -16,7 +16,7 @@ public class BlockAmberFiber extends BlockContainer {
         this.setHardness(0.5F);
         this.setStepSound(soundTypeGlass);
         this.setBlockTextureName(AkadaemonAddon.MODID + ":amber_fiber");
-        // this.setBlockBounds(0.3125F, 0.0F, 0.3125F, 0.6875F, 0.125F, 0.6875F);
+        this.setCreativeTab(AkadaemonAddon.tabAkadaemon);
         this.setBlockBounds(0.3125F, -0.0625F, 0.3125F, 0.6875F, 0.0625F, 0.6875F);
     }
 

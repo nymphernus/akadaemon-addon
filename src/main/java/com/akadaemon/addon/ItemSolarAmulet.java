@@ -46,7 +46,7 @@ public class ItemSolarAmulet extends Item implements IBauble {
                     if (stack != null && stack.getItem() instanceof ItemWandCasting) {
                         ItemWandCasting wand = (ItemWandCasting) stack.getItem();
                         for (Aspect aspect : Aspect.getPrimalAspects()) {
-                            wand.addVis(stack, aspect, 10, true);
+                            wand.addVis(stack, aspect, 5, true);
                         }
                     }
                 }
@@ -60,7 +60,7 @@ public class ItemSolarAmulet extends Item implements IBauble {
                 ItemStack armor = player.inventory.armorInventory[i];
 
                 if (armor != null && armor.isItemDamaged() && !(armor.getItem() instanceof ic2.api.item.IElectricItem)) {
-                    armor.setItemDamage(armor.getItemDamage() - 1);
+                    armor.setItemDamage(armor.getItemDamage() - 2);
                 }
             }
         }
@@ -68,7 +68,7 @@ public class ItemSolarAmulet extends Item implements IBauble {
 
     private void chargeIC2(ItemStack stack) {
         if (stack != null && stack.getItem() instanceof IElectricItem) {
-            ElectricItem.manager.charge(stack, 1000, 4, false, false);
+            ElectricItem.manager.charge(stack, 500, 4, false, false);
         }
     }
 
@@ -77,7 +77,11 @@ public class ItemSolarAmulet extends Item implements IBauble {
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
         list.add(StatCollector.translateToLocal("tooltip.solar_amulet.desc"));
         list.add(EnumChatFormatting.GOLD + StatCollector.translateToLocal("tooltip.solar_amulet.extra"));
-        list.add(EnumChatFormatting.AQUA + StatCollector.translateToLocal("tooltip.solar_amulet.goggles"));
+    }
+
+    @Override
+    public String getItemStackDisplayName(ItemStack stack) {
+        return EnumChatFormatting.GOLD + super.getItemStackDisplayName(stack);
     }
 
     @Override

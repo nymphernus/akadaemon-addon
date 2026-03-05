@@ -45,7 +45,7 @@ public class ItemMinerBelt extends Item implements IBauble {
         if (player instanceof EntityPlayer) {
             EntityPlayer p = (EntityPlayer) player;
 
-            p.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 40, 1, true));
+            p.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 20, 1, true));
 
             if (itemstack.hasTagCompound() && itemstack.getTagCompound().getBoolean("MagnetOn")) {
                 List<EntityItem> items = p.worldObj.getEntitiesWithinAABB(EntityItem.class, p.boundingBox.expand(7.0D, 7.0D, 7.0D));
@@ -65,10 +65,15 @@ public class ItemMinerBelt extends Item implements IBauble {
         list.add(EnumChatFormatting.GOLD + StatCollector.translateToLocal("tooltip.miner_belt.extra"));
 
         if (stack.hasTagCompound() && stack.getTagCompound().getBoolean("MagnetOn")) {
-            list.add(EnumChatFormatting.GREEN + "Magnet: ACTIVE");
+            list.add(EnumChatFormatting.GREEN + "" + EnumChatFormatting.BOLD + "Magnet: ACTIVE");
         } else {
-            list.add(EnumChatFormatting.RED + "Magnet: INACTIVE");
+            list.add(EnumChatFormatting.RED + "" + EnumChatFormatting.BOLD + "Magnet: INACTIVE");
         }
+    }
+
+    @Override
+    public String getItemStackDisplayName(ItemStack stack) {
+        return EnumChatFormatting.DARK_GREEN + super.getItemStackDisplayName(stack);
     }
 
     @Override public BaubleType getBaubleType(ItemStack itemstack) { return BaubleType.BELT; }

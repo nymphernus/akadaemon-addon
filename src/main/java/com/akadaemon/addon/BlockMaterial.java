@@ -5,8 +5,8 @@ import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
 import thaumcraft.api.crafting.IInfusionStabiliser;
 
-public class BlockMythrilMaterial extends Block implements IInfusionStabiliser {
-    public BlockMythrilMaterial(Material material) {
+public class BlockMaterial extends Block implements IInfusionStabiliser {
+    public BlockMaterial(Material material) {
         super(material);
     }
 

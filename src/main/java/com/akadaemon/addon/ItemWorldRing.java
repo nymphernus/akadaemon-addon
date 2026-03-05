@@ -2,16 +2,17 @@ package com.akadaemon.addon;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.StatCollector;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.entity.player.EntityPlayer;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.util.StatCollector;
+
 import java.util.List;
 
 public class ItemWorldRing extends Item implements IBauble {
@@ -27,20 +28,21 @@ public class ItemWorldRing extends Item implements IBauble {
     }
 
     @Override
+    public String getItemStackDisplayName(ItemStack stack) {
+        return EnumChatFormatting.BLUE + super.getItemStackDisplayName(stack);
+    }
+
+    @Override
     public BaubleType getBaubleType(ItemStack itemstack) {
-        return BaubleType.RING; // Слот кольца в интерфейсе Baubles
+        return BaubleType.RING;
     }
 
     @Override
     public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
-        // Каждые 10 тиков (полсекунды) обновляем эффекты
         if (!player.worldObj.isRemote) {
-            // Ночное зрение (ID 16)
-            player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 300, 0, true));
-            // Подводное дыхание (ID 13)
-            player.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 300, 0, true));
-            // Огнестойкость (ID 12)
-            player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 300, 0, true));
+            player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 20, 0, true));
+            player.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 20, 0, true));
+            player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 20, 0, true));
         }
     }
 

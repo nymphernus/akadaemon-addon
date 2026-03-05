@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ItemGoldenSchnitzel extends ItemFood {
     public ItemGoldenSchnitzel() {
-        super(5, 1.2F, false); // 5 единиц голода (2.5 окорочка)
+        super(9, 1.2F, false);
         this.setAlwaysEdible();
         this.setUnlocalizedName("golden_schnitzel");
         this.setTextureName(AkadaemonAddon.MODID + ":golden_schnitzel");
@@ -25,8 +25,18 @@ public class ItemGoldenSchnitzel extends ItemFood {
     @Override
     protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
         if (!world.isRemote) {
-            player.clearActivePotions();
-            player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 6000, 1, false));
+            java.util.Collection<PotionEffect> activeEffects = player.getActivePotionEffects();
+            java.util.List<Integer> toRemove = new java.util.ArrayList<Integer>();
+
+            for (PotionEffect effect : activeEffects) {
+                if (Potion.potionTypes[effect.getPotionID()].isBadEffect()) {
+                    toRemove.add(effect.getPotionID());
+                }
+            }
+            for (Integer id : toRemove) {
+                player.removePotionEffect(id);
+            }
+            player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 2000, 1, false));
             player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 40, 2, false));
         }
     }
@@ -36,5 +46,16 @@ public class ItemGoldenSchnitzel extends ItemFood {
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
         list.add(StatCollector.translateToLocal("tooltip.golden_schnitzel.desc"));
         list.add(EnumChatFormatting.YELLOW + StatCollector.translateToLocal("tooltip.golden_schnitzel.extra"));
+    }
+
+    @Override
+    public String getItemStackDisplayName(ItemStack stack) {
+        return EnumChatFormatting.YELLOW + super.getItemStackDisplayName(stack);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean hasEffect(ItemStack stack) {
+        return true;
     }
 }
