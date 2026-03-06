@@ -23,6 +23,8 @@ public class TinkersRecipes {
         Smeltery.addMelting(Blocks.glowstone, 0, 600, new FluidStack(AkadaemonAddon.fluidGlowstone, blockAmount));
         Smeltery.addMelting(ExternalItems.amber, AkadaemonAddon.blockEtherealPhoton, 0, 800, new FluidStack(AkadaemonAddon.fluidAmber, resAmount));
 
+        Smeltery.addMelting(new ItemStack(Items.redstone), Blocks.redstone_block, 0, 400, new FluidStack(AkadaemonAddon.fluidRedstone, resAmount));
+
 
 
         Smeltery.addAlloyMixing(
@@ -39,6 +41,12 @@ public class TinkersRecipes {
                 new FluidStack(AkadaemonAddon.fluidAmber, 500)
         );
 
+        Smeltery.addAlloyMixing(
+                new FluidStack(AkadaemonAddon.fluidActiveRedstone, 1000),
+                new FluidStack(AkadaemonAddon.fluidRedstone, 750),
+                new FluidStack(AkadaemonAddon.fluidAmber, 250)
+        );
+
         TConstructRegistry.getTableCasting().addCastingRecipe(
                 new ItemStack(AkadaemonAddon.bucketGlacialQuicksilver),
                 new FluidStack(AkadaemonAddon.fluidGlacialQuicksilver, 1000),
@@ -50,6 +58,14 @@ public class TinkersRecipes {
         TConstructRegistry.getTableCasting().addCastingRecipe(
                 new ItemStack(AkadaemonAddon.bucketEtherealPhoton),
                 new FluidStack(AkadaemonAddon.fluidEtherealPhoton, 1000),
+                ExternalItems.emptyBucket,
+                true,
+                20
+        );
+
+        TConstructRegistry.getTableCasting().addCastingRecipe(
+                new ItemStack(AkadaemonAddon.bucketActiveRedstone),
+                new FluidStack(AkadaemonAddon.fluidActiveRedstone, 1000),
                 ExternalItems.emptyBucket,
                 true,
                 20

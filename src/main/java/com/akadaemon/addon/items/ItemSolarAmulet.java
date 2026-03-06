@@ -3,6 +3,7 @@ package com.akadaemon.addon.items;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import com.akadaemon.addon.AkadaemonAddon;
+import com.akadaemon.addon.handler.ConfigHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.item.ElectricItem;
@@ -47,7 +48,7 @@ public class ItemSolarAmulet extends Item implements IBauble {
                     if (stack != null && stack.getItem() instanceof ItemWandCasting) {
                         ItemWandCasting wand = (ItemWandCasting) stack.getItem();
                         for (Aspect aspect : Aspect.getPrimalAspects()) {
-                            wand.addVis(stack, aspect, 5, true);
+                            wand.addVis(stack, aspect, ConfigHandler.solarVis, true);
                         }
                     }
                 }
@@ -69,7 +70,7 @@ public class ItemSolarAmulet extends Item implements IBauble {
 
     private void chargeIC2(ItemStack stack) {
         if (stack != null && stack.getItem() instanceof IElectricItem) {
-            ElectricItem.manager.charge(stack, 500, 4, false, false);
+            ElectricItem.manager.charge(stack, ConfigHandler.solarEu, 4, false, false);
         }
     }
 

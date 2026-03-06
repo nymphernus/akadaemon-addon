@@ -18,6 +18,7 @@ public class ExternalItems {
     public static ItemStack carbonPlate;
     public static ItemStack dustDiamond;
     public static ItemStack dustLapis;
+    public static ItemStack iridiumDrill;
 
     public static ItemStack qHelmet, qChest, qLegs, qBoots;
 
@@ -40,6 +41,7 @@ public class ExternalItems {
         carbonPlate = ic2.api.item.IC2Items.getItem("carbonPlate");
         dustDiamond = ic2.api.item.IC2Items.getItem("diamondDust");
         dustLapis = ic2.api.item.IC2Items.getItem("lapiDust");
+        iridiumDrill = getIc2Wildcard("iridiumDrill");
 
         qHelmet = ic2.api.item.IC2Items.getItem("quantumHelmet");
         qChest = ic2.api.item.IC2Items.getItem("quantumBodyarmor");

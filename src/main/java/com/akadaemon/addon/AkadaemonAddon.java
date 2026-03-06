@@ -1,10 +1,8 @@
 package com.akadaemon.addon;
 
 import com.akadaemon.addon.blocks.*;
-import com.akadaemon.addon.handler.BucketHandler;
-import com.akadaemon.addon.handler.ConfigHandler;
-import com.akadaemon.addon.handler.DurabilityEventHandler;
-import com.akadaemon.addon.handler.GuiHandler;
+import com.akadaemon.addon.fluids.FluidsSetting;
+import com.akadaemon.addon.handler.*;
 import com.akadaemon.addon.items.*;
 import com.akadaemon.addon.recipes.MainRecipes;
 import com.akadaemon.addon.recipes.ThaumcraftAspects;
@@ -16,6 +14,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -30,7 +29,6 @@ import net.minecraft.util.StatCollector;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 import org.apache.logging.log4j.LogManager;
@@ -45,13 +43,14 @@ public class AkadaemonAddon {
     public static final String NAME = "Akadaemon Addon";
     public static final String VERSION = "1.5";
     public static final Logger logger = LogManager.getLogger(NAME);
+    public static SimpleNetworkWrapper network;
 
-    public static Item compositeMod, expansionChip, worldRing, solarAmulet, minerBelt, goldenSchnitzel, bucketGlacialQuicksilver, bucketEtherealPhoton;
+    public static Item compositeMod, expansionChip, worldRing, solarAmulet, minerBelt, goldenSchnitzel, bucketGlacialQuicksilver, bucketEtherealPhoton, bucketActiveRedstone;
     public static Item cobaltDust, arditeDust, enderDust, iridiumComposite, wandRodIridium, wandCapManullyn, ingotMythril, ingotTitan, ingotAdamantit;
     public static Item mythrilQHelmet, mythrilQChest, mythrilQLegs, mythrilQBoots;
-    public static Block thaumTransformer, amberFiber, blockMythril, blockTitan, blockAdamantit, blockGlacialQuicksilver, blockEtherealPhoton;
-    public static Fluid fluidGlacialQuicksilver, fluidEtherealPhoton;
-    public static Fluid fluidIce, fluidSnow, fluidQuicksilver, fluidLapis, fluidGlowstone, fluidAmber;
+    public static Block thaumTransformer, amberFiber, blockMythril, blockTitan, blockAdamantit, blockGlacialQuicksilver, blockEtherealPhoton, blockActiveRedstone, titanDrill;
+    public static Fluid fluidGlacialQuicksilver, fluidEtherealPhoton, fluidActiveRedstone;
+    public static Fluid fluidIce, fluidSnow, fluidQuicksilver, fluidLapis, fluidGlowstone, fluidAmber, fluidRedstone;
 
 
     public static CreativeTabs tabAkadaemon = new CreativeTabs("akadaemon") {
@@ -66,7 +65,10 @@ public class AkadaemonAddon {
     public void preInit(FMLPreInitializationEvent event) {
         ConfigHandler.init(event);
 
-        initializeFluids();
+        network = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
+        network.registerMessage(PacketDrillUpdate.Handler.class, PacketDrillUpdate.class, 0, Side.SERVER);
+
+        FluidsSetting.init();
         initializeBlocks();
         initializeItems();
         registerObjects();
@@ -100,6 +102,7 @@ public class AkadaemonAddon {
 
         thaumTransformer = new BlockThaumTransformer();
         amberFiber = new BlockAmberFiber();
+        titanDrill = new BlockTitanDrill();
 
         blockGlacialQuicksilver = new BlockFluid(fluidGlacialQuicksilver, Material.water, 6, 20)
                 .setBlockName("glacial_quicksilver_block")
@@ -107,6 +110,9 @@ public class AkadaemonAddon {
         blockEtherealPhoton = new BlockFluid(fluidEtherealPhoton, Material.water, 6, 20)
                 .setBlockName("ethereal_photon_block")
                 .setBlockTextureName(MODID +":fluids/ethereal_photon_still");
+        blockActiveRedstone = new BlockFluid(fluidActiveRedstone, Material.water, 6, 20)
+                .setBlockName("active_fluid_redstone")
+                .setBlockTextureName(MODID +":fluids/active_fluid_redstone_still");
     }
 
     private void initializeItems() {
@@ -121,6 +127,7 @@ public class AkadaemonAddon {
         ingotAdamantit = new ItemBase(EnumChatFormatting.RED, EnumChatFormatting.BOLD).setUnlocalizedName("adamantit_ingot").setTextureName(MODID + ":adamantit_ingot").setCreativeTab(tabAkadaemon);
         bucketGlacialQuicksilver = new ItemBucketBase(blockGlacialQuicksilver, "bucket_glacial_quicksilver", EnumChatFormatting.AQUA);
         bucketEtherealPhoton = new ItemBucketBase(blockEtherealPhoton, "bucket_ethereal_photon", EnumChatFormatting.YELLOW);
+        bucketActiveRedstone = new ItemBucketBase(blockActiveRedstone, "bucket_active_redstone", EnumChatFormatting.RED);
 
         worldRing = new ItemWorldRing();
         solarAmulet = new ItemSolarAmulet();
@@ -136,38 +143,17 @@ public class AkadaemonAddon {
         mythrilQBoots = new ItemQuantumMythril(3).setUnlocalizedName("mythril_quantum_boots");
     }
 
-    private void initializeFluids() {
-        fluidGlacialQuicksilver = new Fluid("glacial_quicksilver").setLuminosity(0).setViscosity(1000).setDensity(1000);
-        fluidEtherealPhoton = new Fluid("ethereal_photon").setLuminosity(15).setViscosity(1000).setDensity(1000);
-
-        fluidIce = new Fluid("liquid_ice").setTemperature(200).setDensity(1000).setViscosity(2000);
-        fluidSnow = new Fluid("liquid_snow").setTemperature(150).setDensity(1000).setViscosity(1500);
-        fluidQuicksilver = new Fluid("liquid_quicksilver").setTemperature(500).setDensity(2000).setViscosity(3000);
-        fluidLapis = new Fluid("liquid_lapis").setTemperature(400).setDensity(1100).setViscosity(1000);
-        fluidGlowstone = new Fluid("liquid_glowstone").setTemperature(800).setDensity(2000).setViscosity(3000);
-        fluidAmber = new Fluid("liquid_amber").setTemperature(700).setDensity(3000).setViscosity(1000);
-
-        FluidRegistry.registerFluid(fluidGlacialQuicksilver);
-        FluidRegistry.registerFluid(fluidEtherealPhoton);
-
-        FluidRegistry.registerFluid(fluidIce);
-        FluidRegistry.registerFluid(fluidSnow);
-        FluidRegistry.registerFluid(fluidQuicksilver);
-        FluidRegistry.registerFluid(fluidLapis);
-        FluidRegistry.registerFluid(fluidGlowstone);
-        FluidRegistry.registerFluid(fluidAmber);
-
-    }
-
     private void registerObjects() {
         regBlock(blockMythril, "block_mythril", EnumChatFormatting.LIGHT_PURPLE, EnumChatFormatting.RESET);
         regBlock(blockTitan, "block_titan", EnumChatFormatting.GRAY, EnumChatFormatting.RESET);
         regBlock(blockAdamantit, "block_adamantit", EnumChatFormatting.RED, EnumChatFormatting.RESET);
         regBlock(thaumTransformer, "thaum_transformer", EnumChatFormatting.AQUA, EnumChatFormatting.RESET);
         regBlock(amberFiber, "amber_fiber", EnumChatFormatting.YELLOW, EnumChatFormatting.RESET);
+        regBlock(titanDrill, "titan_drill", EnumChatFormatting.DARK_GRAY, EnumChatFormatting.RESET);
 
         regBlock(blockGlacialQuicksilver, "glacial_quicksilver_block", EnumChatFormatting.AQUA, EnumChatFormatting.RESET);
         regBlock(blockEtherealPhoton, "ethereal_photon_block", EnumChatFormatting.YELLOW, EnumChatFormatting.RESET);
+        regBlock(blockActiveRedstone, "active_fluid_redstone", EnumChatFormatting.RED, EnumChatFormatting.RESET);
 
         reg(compositeMod, "composite_mod");
         reg(expansionChip, "expansion_chip");
@@ -186,9 +172,11 @@ public class AkadaemonAddon {
         reg(ingotAdamantit, "adamantit_ingot");
         reg(bucketGlacialQuicksilver, "bucket_glacial_quicksilver");
         reg(bucketEtherealPhoton, "bucket_ethereal_photon");
+        reg(bucketActiveRedstone, "bucket_active_redstone");
 
         GameRegistry.registerTileEntity(TileThaumTransformer.class, "TileThaumTransformer");
         GameRegistry.registerTileEntity(TileAmberFiber.class, "TileAmberFiber");
+        GameRegistry.registerTileEntity(TileEntityTitanDrill.class, "TileEntityDrill");
 
         OreDictionary.registerOre("dustCobalt", cobaltDust);
         OreDictionary.registerOre("dustArdite", arditeDust);
@@ -210,6 +198,11 @@ public class AkadaemonAddon {
         FluidContainerRegistry.registerFluidContainer(
                 new FluidStack(fluidEtherealPhoton, FluidContainerRegistry.BUCKET_VOLUME),
                 new ItemStack(bucketEtherealPhoton),
+                new ItemStack(net.minecraft.init.Items.bucket)
+        );
+        FluidContainerRegistry.registerFluidContainer(
+                new FluidStack(fluidActiveRedstone, FluidContainerRegistry.BUCKET_VOLUME),
+                new ItemStack(bucketActiveRedstone),
                 new ItemStack(net.minecraft.init.Items.bucket)
         );
     }
@@ -270,9 +263,11 @@ public class AkadaemonAddon {
             fluidQuicksilver.setIcons(event.map.registerIcon(MODID + ":fluids/liquid_quicksilver_still"), event.map.registerIcon(MODID + ":fluids/liquid_quicksilver_flow"));
             fluidAmber.setIcons(event.map.registerIcon(MODID + ":fluids/liquid_amber_still"), event.map.registerIcon(MODID + ":fluids/liquid_samber_flow"));
             fluidGlowstone.setIcons(event.map.registerIcon(MODID + ":fluids/liquid_glowstone_still"), event.map.registerIcon(MODID + ":fluids/liquid_glowstone_flow"));
+            fluidRedstone.setIcons(event.map.registerIcon(MODID + ":fluids/active_fluid_redstone_still"), event.map.registerIcon(MODID + ":fluids/active_fluid_redstone_flow"));
 
             fluidEtherealPhoton.setIcons(blockEtherealPhoton.getIcon(0, 0));
             fluidGlacialQuicksilver.setIcons(blockGlacialQuicksilver.getIcon(0, 0));
+            fluidActiveRedstone.setIcons(blockActiveRedstone.getIcon(0, 0));
         }
     }
 }

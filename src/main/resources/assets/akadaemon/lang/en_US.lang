@@ -26,8 +26,19 @@ item.adamantit_ingot.name=Adamantite Ingot
 tile.block_adamantit.name=Block of Adamantite
 tile.ethereal_photon_block.name=Ethereal Photon
 tile.glacial_quicksilver_block.name=Glacial Quicksilver
+tile.active_fluid_redstone.name=Liquid Active Redstone
 item.bucket_ethereal_photon.name=Ethereal Photon Bucket
 item.bucket_glacial_quicksilver.name=Glacial Quicksilver Bucket
+item.bucket_active_redstone.name=Liquid Active Redstone Bucket
+tile.titan_drill.name=Titan Drill
+
+# GUI
+gui.titan_drill.depth=Depth
+gui.titan_drill.silk=Silk Touch
+gui.titan_drill.power=Status
+gui.titan_drill.filter=Filter
+gui.titan_drill.on=On
+gui.titan_drill.off=Off
 
 # Fluids
 fluid.glacial_quicksilver=Glacial Quicksilver
@@ -38,6 +49,7 @@ fluid.liquid_quicksilver=Liquid Quicksilver
 fluid.liquid_lapis=Molten Lapis
 fluid.liquid_glowstone=Liquid Glowstone
 fluid.liquid_amber=Liquid Amber
+fluid.liquid_redstone=Liquid Redstone
 
 ic2.mythril_quantum_helmet=Mythril Quantum Helmet
 ic2.mythril_quantum_chest=Mythril Quantum Breastplate
@@ -131,8 +143,14 @@ tc.research_page.AKADAEMON_FINAL.3=§r§lEntry 396§r<BR><BR>§o"Urgent! The Myt
 tc.research_page.AKADAEMON_FINAL.4=§r§lEntry ...the final one§r<BR><BR>§o"...I can no longer feel my fingers. Only wings. Great wings woven from shadows and quantum noise. My loyal servants... they are now but black shadows, doomed to endlessly move the debris of my pride, trying to piece together a shattered world. I have become the guardian. I have become the jailer. If anyone reads this — know that Quantum Synthesis is possible, but it demands not just energy, but the very essence of being. I am Akadaemon, and this is my eternal imprisonment within the body of a beast."§r
 
 tc.research_name.AKADAEMON_FLUIDS=Alchemical States
-tc.research_text.AKADAEMON_FLUIDS=Freezing mercury and photon energy
+tc.research_text.AKADAEMON_FLUIDS=Manipulation of temperature and pressure
 tc.research_page.AKADAEMON_FLUIDS.1=Your research into thermodynamics and alchemy has led to a curious discovery: certain magical substances behave quite unusually under the extreme temperatures of a Smeltery. You have managed to stabilize mercury using ice and awaken amber's energy with light. Below are the precise formulas for these alloys.
 tc.research_page.AKADAEMON_FLUIDS.2=§n§lGlacial Quicksilver Formula:§r<BR><BR>- Molten Ice (500mb)<BR>- Molten Snow (125mb)<BR>- Liquid Quicksilver (250mb)<BR>- Molten Lapis (125mb)<BR><BR>Mix in a Smeltery until a homogeneous mass is obtained.
 tc.research_page.AKADAEMON_FLUIDS.3=§n§lEthereal Photon Formula:§r<BR><BR>- Liquid Glowstone (500mb)<BR>- Liquid Amber (500mb)<BR><BR>The result is unstable, but extremely energy-efficient.
+tc.research_page.AKADAEMON_FLUIDS.4=§n§lActive Redstone Composition:§r<BR><BR>- Liquid Redstone (750mb)<BR>- Liquid Amber (250mb)<BR><BR>The mixing process requires caution — an excess of amber may lead to premature crystallization.
+
+tc.research_name.TITAN_DRILL=Titanium Drill
+tc.research_text.TITAN_DRILL=Grinding metal against the face of reality
+tc.research_page.TITAN_DRILL.1=You've always felt that standard magical tools were too slow for large-scale excavations. By combining the durability of titanium with mechanical power, you have managed to create a device capable of gnawing into the very firmament of the earth. This drill requires a vast amount of energy, but the result is well worth it. You have found a way to empower it with Silk Touch functionality and depth adjustment, making it an indispensable assistant for any master explorer.
+
 

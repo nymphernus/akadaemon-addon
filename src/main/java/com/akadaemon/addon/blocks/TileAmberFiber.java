@@ -1,5 +1,6 @@
 package com.akadaemon.addon.blocks;
 
+import com.akadaemon.addon.handler.ConfigHandler;
 import net.minecraft.tileentity.TileEntity;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -32,7 +33,7 @@ public class TileAmberFiber extends TileEntity implements IAspectContainer {
     }
 
     private boolean transferEssentia(Aspect aspect) {
-        int radius = 10;
+        int radius = ConfigHandler.amberFiberRadius;
         for (Object obj : worldObj.loadedTileEntityList) {
             TileEntity tile = (TileEntity) obj;
 

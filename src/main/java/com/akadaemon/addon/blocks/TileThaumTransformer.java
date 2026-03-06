@@ -1,5 +1,6 @@
 package com.akadaemon.addon.blocks;
 
+import com.akadaemon.addon.handler.ConfigHandler;
 import ic2.api.energy.event.EnergyTileLoadEvent;
 import ic2.api.energy.event.EnergyTileUnloadEvent;
 import ic2.api.energy.tile.IEnergySink;
@@ -26,7 +27,6 @@ public class TileThaumTransformer extends TileEntity implements IEnergySink, IIn
     public void updateEntity() {
         if (worldObj.isRemote) return;
 
-        // Регистрация в сети IC2
         if (!isAddedToEnet) {
             MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(this));
             isAddedToEnet = true;
@@ -35,17 +35,14 @@ public class TileThaumTransformer extends TileEntity implements IEnergySink, IIn
         ItemStack stack = getStackInSlot(0);
         if (stack == null) return;
 
-        // --- ЗАРЯДКА ПАЛОЧЕК ОТ УЗЛОВ (Nodes) ---
         if (stack.getItem() instanceof ItemWandCasting) {
             if (worldObj.getTotalWorldTime() % 20 == 0) {
                 drainNodesToWand((ItemWandCasting) stack.getItem(), stack);
             }
         }
 
-        // --- ЗАРЯДКА ЭЛЕКТРОПРИБОРОВ ОТ УЗЛОВ (Conversion: 1 Vis -> 1000 EU) ---
         if (stack.getItem() instanceof IElectricItem) {
             IElectricItem item = (IElectricItem) stack.getItem();
-            // Если предмету нужна энергия
             if (ElectricItem.manager.getCharge(stack) < item.getMaxCharge(stack)) {
                 drainNodesToEU(stack);
             }
@@ -61,12 +58,9 @@ public class TileThaumTransformer extends TileEntity implements IEnergySink, IIn
                     if (te instanceof INode) {
                         INode node = (INode) te;
                         for (Aspect a : Aspect.getPrimalAspects()) {
-                            // Проверяем, есть ли аспект в узле
                             if (node.getAspects().getAmount(a) > 0) {
-                                // Уменьшаем количество аспекта в узле на 1
                                 node.getAspects().reduce(a, 1);
-                                // Заряжаем предмет на 1000 EU за 1 Vis
-                                ElectricItem.manager.charge(stack, 1000, 3, false, false);
+                                ElectricItem.manager.charge(stack, ConfigHandler.convertEuVis, 4, false, false);
                                 return;
                             }
                         }
@@ -86,7 +80,6 @@ public class TileThaumTransformer extends TileEntity implements IEnergySink, IIn
                         INode node = (INode) te;
                         for (Aspect a : Aspect.getPrimalAspects()) {
                             if (node.getAspects().getAmount(a) > 0 && wand.getVis(stack, a) < wand.getMaxVis(stack)) {
-                                // Забираем 1 ед. Вис
                                 node.getAspects().reduce(a, 1);
                                 wand.addVis(stack, a, 1, true);
                                 return;
@@ -98,18 +91,14 @@ public class TileThaumTransformer extends TileEntity implements IEnergySink, IIn
         }
     }
 
-    // --- ЛОГИКА ЭНЕРГИИ IC2 (БЕЗ ХРАНЕНИЯ) ---
-
     @Override
     public double getDemandedEnergy() {
         ItemStack stack = getStackInSlot(0);
-        // Если в слоте предмет IC2, просим максимум, который он может принять
         if (stack != null && stack.getItem() instanceof IElectricItem) {
-            return 2048; // Лимит за один пакет (EU/t)
+            return 2048;
         }
-        // Если в слоте палочка Таума, просим энергию для конвертации (1000 EU за 1 Vis)
         if (stack != null && stack.getItem() instanceof ItemWandCasting) {
-            return 1000;
+            return ConfigHandler.convertEuVis;
         }
         return 0;
     }
@@ -119,20 +108,18 @@ public class TileThaumTransformer extends TileEntity implements IEnergySink, IIn
         ItemStack stack = getStackInSlot(0);
         if (stack == null) return amount;
 
-        // 1. Прямая зарядка электро-предметов
         if (stack.getItem() instanceof IElectricItem) {
-            double left = ElectricItem.manager.charge(stack, amount, 3, false, false);
-            return amount - left; // Возвращаем остаток, если предмет полон
+            double left = ElectricItem.manager.charge(stack, amount, 4, false, false);
+            return amount - left;
         }
 
-        // 2. Конвертация EU в Vis для палочек
         if (stack.getItem() instanceof ItemWandCasting) {
             ItemWandCasting wand = (ItemWandCasting) stack.getItem();
-            if (amount >= 1000) {
+            if (amount >= ConfigHandler.convertEuVis) {
                 for (Aspect aspect : Aspect.getPrimalAspects()) {
                     if (wand.getVis(stack, aspect) < wand.getMaxVis(stack)) {
                         wand.addVis(stack, aspect, 1, true);
-                        return amount - 1000; // Потребляем 1000 EU за 1 Vis
+                        return amount - ConfigHandler.convertEuVis;
                     }
                 }
             }
@@ -140,7 +127,7 @@ public class TileThaumTransformer extends TileEntity implements IEnergySink, IIn
         return amount;
     }
 
-    @Override public int getSinkTier() { return 3; } // HV уровень
+    @Override public int getSinkTier() { return 3; }
     @Override public boolean acceptsEnergyFrom(TileEntity emitter, ForgeDirection direction) { return true; }
 
     @Override
@@ -151,8 +138,6 @@ public class TileThaumTransformer extends TileEntity implements IEnergySink, IIn
         }
         super.invalidate();
     }
-
-    // --- СТАНДАРТНЫЙ ИНВЕНТАРЬ ---
 
     @Override
     public void writeToNBT(NBTTagCompound nbt) {

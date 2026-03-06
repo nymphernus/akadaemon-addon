@@ -26,18 +26,32 @@ item.adamantit_ingot.name=Адамантитовый слиток
 tile.block_adamantit.name=Адамантитовый блок
 tile.ethereal_photon_block.name=Эфирный фотон
 tile.glacial_quicksilver_block.name=Ледяная ртуть
+tile.active_fluid_redstone.name=Жидкий активный редстоун
 item.bucket_ethereal_photon.name=Ведро с эфирным фотоном
 item.bucket_glacial_quicksilver.name=Ведро с ледяной ртутью
+item.bucket_active_redstone.name=Ведро с жидким активным редстоуном
+tile.titan_drill.name=Титановый Бур
+
+# GUI
+gui.titan_drill.depth=Глубина
+gui.titan_drill.silk=Шелковое касание
+gui.titan_drill.power=Статус работы
+gui.titan_drill.filter=Фильтр
+gui.titan_drill.on=Вкл.
+gui.titan_drill.off=Выкл.
 
 # Жидкость
 fluid.glacial_quicksilver=Ледяная ртуть
 fluid.ethereal_photon=Эфирный фотон
+fluid.active_redstone=Жидкий активный редстоун
 fluid.liquid_ice=Топленый лед
 fluid.liquid_snow=Топленый снег
 fluid.liquid_glowstone=Жидкий светокамень
 fluid.liquid_amber=Жидкий янтарь
 fluid.liquid_quicksilver=Жидкая ртуть
 fluid.liquid_lapis=Жидкий лазурит
+fluid.liquid_redstone=Жидкий редстоун
+
 
 ic2.mythril_quantum_helmet=Квант-мифриловый гермошлем
 ic2.mythril_quantum_chest=Квант-мифриловый панцирь
@@ -132,10 +146,15 @@ tc.research_page.AKADAEMON_FINAL.4=§r§lЗапись ...последняя§r<B
 
 
 tc.research_name.AKADAEMON_FLUIDS=Алхимия Состояний
-tc.research_text.AKADAEMON_FLUIDS=Замораживание ртути и фотонная энергия
+tc.research_text.AKADAEMON_FLUIDS=Манипуляция температурой и давлением
 tc.research_page.AKADAEMON_FLUIDS.1=Ваши изыскания в области термодинамики и алхимии привели к любопытному открытию: некоторые магические субстанции ведут себя крайне необычно при экстремальных температурах плавильни. Вам удалось стабилизировать ртуть с помощью льда и пробудить энергию янтаря светом. Ниже приведены точные формулы этих сплавов.
 tc.research_page.AKADAEMON_FLUIDS.2=§n§lСостав Ледяной Ртути:§r<BR><BR>- Топленый лед (500mb)<BR>- Топленый снег (125mb)<BR>- Жидкая ртуть (250mb)<BR>- Жидкий лазурит (125mb)<BR><BR>Смешивать в плавильне до получения однородной массы.
 tc.research_page.AKADAEMON_FLUIDS.3=§n§lСостав Эфирного Фотона:§r<BR><BR>- Жидкий светокамень (500mb)<BR>- Жидкий янтарь (500mb)<BR><BR>Результат нестабилен, но крайне энергоэффективен.
+tc.research_page.AKADAEMON_FLUIDS.4=§n§lСостав Жидкого Активного Редстоуна:§r<BR><BR>- Жидкий Редстоун (750mb)<BR>- Жидкий янтарь (250mb)<BR><BR>Смешивание требует осторожности - избыток янтаря может привести к преждевременной кристаллизации.
+
+tc.research_name.TITAN_DRILL=Титановый Бур
+tc.research_text.TITAN_DRILL=Скрежет металла по лику реальности
+tc.research_page.TITAN_DRILL.1=Вы всегда чувствовали, что обычные магические инструменты слишком медлительны для масштабных раскопок. Объединив прочность титана с механической мощью, вам удалось создать устройство, способное вгрызаться в саму твердь земли. Этот бур требует огромного количества энергии, но результат того стоит. Вы нашли способ наделить его функциями шелкового касания и регулировкой глубины, что делает его незаменимым помощником любого мастера-исследователя.
 
 
 

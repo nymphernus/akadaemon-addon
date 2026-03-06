@@ -46,25 +46,28 @@ public class BlockFluid extends BlockFluidClassic {
             Block target = world.getBlock(tx, ty, tz);
             int targetMeta = world.getBlockMetadata(tx, ty, tz);
 
-            if (isReactions(this, target)) {
-                if (targetMeta != 0) {
-                    world.setBlock(x, y, z, Blocks.glowstone);
-                    world.playSoundEffect(x + 0.5D, y + 0.5D, z + 0.5D, "random.fizz", 0.5F, 2.6F);
+            if (targetMeta != 0) {
+                Block result = null;
 
-                    // Обновляем всех соседей (6 сторон), чтобы жидкости начали течь в пустоту
-                    for (ForgeDirection d : ForgeDirection.VALID_DIRECTIONS) {
-                        world.notifyBlockOfNeighborChange(x + d.offsetX, y + d.offsetY, z + d.offsetZ, Blocks.glowstone);
-                    }
+                boolean hasPhoton = (this == AkadaemonAddon.blockEtherealPhoton || target == AkadaemonAddon.blockEtherealPhoton);
+                boolean hasRedstone = (this == AkadaemonAddon.blockActiveRedstone || target == AkadaemonAddon.blockActiveRedstone);
+                boolean hasQuicksilver = (this == AkadaemonAddon.blockGlacialQuicksilver || target == AkadaemonAddon.blockGlacialQuicksilver);
+
+                if (hasPhoton && hasRedstone) {
+                    result = Blocks.netherrack;
+                }
+                if (hasPhoton && hasQuicksilver) {
+                    result = Blocks.glowstone;
+                }
+                if (hasRedstone && hasQuicksilver) {
+                    result = Blocks.redstone_block;
+                }
+                if (result != null) {
+                    world.setBlock(x, y, z, result, 0, 3);
                     return;
                 }
             }
         }
-    }
-
-    private boolean isReactions(Block b1, Block b2) {
-        if (b1 == AkadaemonAddon.blockGlacialQuicksilver && b2 == AkadaemonAddon.blockEtherealPhoton) return true;
-        if (b1 == AkadaemonAddon.blockEtherealPhoton && b2 == AkadaemonAddon.blockGlacialQuicksilver) return true;
-        return false;
     }
 
     @Override

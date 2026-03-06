@@ -137,6 +137,11 @@ public class ThaumcraftIntegration {
                 new AspectList().add(Aspect.ENTROPY, 40).add(Aspect.EARTH, 40).add(Aspect.FIRE, 10),
                 "MEM", "ARA", "MEM", 'R', "blockAdamantit", 'M', "ingotMithril", 'E', Items.ender_pearl, 'A', ExternalItems.amber);
 
+        IArcaneRecipe recipeDrill = ThaumcraftApi.addArcaneCraftingRecipe("TITAN_DRILL", new ItemStack(titanDrill),
+                new AspectList().add(Aspect.EARTH, 30).add(Aspect.ENTROPY, 40).add(Aspect.ORDER, 10).add(Aspect.FIRE, 10),
+                "MAM", "TIT", "MTM",
+                'T', blockTitan, 'M', ingotMythril, 'I', ExternalItems.iridiumDrill, 'A', blockAdamantit);
+
         IArcaneRecipe recipeChip = ThaumcraftApi.addArcaneCraftingRecipe("TINKER_MODS", new ItemStack(expansionChip),
                 new AspectList().add(Aspect.ORDER, 30).add(Aspect.FIRE, 20),
                 "MAM",
@@ -231,15 +236,22 @@ public class ThaumcraftIntegration {
         new ResearchItem("KNOWLEDGE_CRAFT", CAT_ID,
                 new AspectList().add(Aspect.MIND, 10).add(Aspect.ORDER, 5), 3, 2, 1, ExternalItems.knowledgeFragment)
                 .setPages(new ResearchPage("tc.research_page.KNOWLEDGE_CRAFT.1"), new ResearchPage(recipeKnowledge)).setParentsHidden("TRINITY_ALLOYS").setSecondary().registerResearchItem();
-        new ResearchItem("THAUM_TRANSFORMER", CAT_ID,
-                new AspectList().add(Aspect.MECHANISM, 10).add(Aspect.ENERGY, 20).add(Aspect.EXCHANGE, 10), -3, 0, 3, new ItemStack(thaumTransformer))
-                .setPages(new ResearchPage("tc.research_page.THAUM_TRANSFORMER.1"), new ResearchPage(recipeTransformer)).setParentsHidden("TRINITY_ALLOYS").registerResearchItem();
+
         new ResearchItem("AMBER_FIBER", CAT_ID,
                 new AspectList().add(Aspect.VOID, 10).add(Aspect.ENERGY, 10).add(Aspect.MAGIC, 10), -3, 2, 3, new ItemStack(amberFiber))
-                .setPages(new ResearchPage("tc.research_page.AMBER_FIBER.1"), new ResearchPage(recipeFiber)).setParentsHidden("TRINITY_ALLOYS").registerResearchItem();
+                .setPages(new ResearchPage("tc.research_page.AMBER_FIBER.1"), new ResearchPage(recipeFiber)).setParentsHidden("KNOWLEDGE_CRAFT").registerResearchItem();
+
+        new ResearchItem("TITAN_DRILL", CAT_ID,
+                new AspectList().add(Aspect.MECHANISM, 15).add(Aspect.ENERGY, 20).add(Aspect.CRAFT, 20), -4, -2, 3, new ItemStack(titanDrill))
+                .setPages(new ResearchPage("tc.research_page.TITAN_DRILL.1"), new ResearchPage(recipeDrill)).setParentsHidden("AMBER_FIBER").registerResearchItem();
+
+        new ResearchItem("THAUM_TRANSFORMER", CAT_ID,
+                new AspectList().add(Aspect.MECHANISM, 20).add(Aspect.ENERGY, 25).add(Aspect.EXCHANGE, 20), -3, 0, 3, new ItemStack(thaumTransformer))
+                .setPages(new ResearchPage("tc.research_page.THAUM_TRANSFORMER.1"), new ResearchPage(recipeTransformer)).setParentsHidden("TITAN_DRILL").registerResearchItem();
+
         new ResearchItem("TINKER_MODS", CAT_ID,
-                new AspectList().add(Aspect.CRAFT, 10).add(Aspect.TOOL, 10).add(Aspect.MINE, 10), 4, 0, 1, new ItemStack(expansionChip))
-                .setPages(new ResearchPage("tc.research_page.TINKER_MODS.1"), new ResearchPage(recipeChip), new ResearchPage(recipeMod)).setParentsHidden("TRINITY_ALLOYS").setSecondary().registerResearchItem();
+                new AspectList().add(Aspect.CRAFT, 15).add(Aspect.TOOL, 15).add(Aspect.MINE, 20), 4, 0, 1, new ItemStack(expansionChip))
+                .setPages(new ResearchPage("tc.research_page.TINKER_MODS.1"), new ResearchPage(recipeChip), new ResearchPage(recipeMod)).setParentsHidden("AKADAEMON_WAND").setSecondary().registerResearchItem();
 
 
         new ResearchItem("AKADAEMON_LORE", CAT_ID,
