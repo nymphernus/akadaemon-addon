@@ -239,19 +239,19 @@ public class ThaumcraftIntegration {
 
         new ResearchItem("AMBER_FIBER", CAT_ID,
                 new AspectList().add(Aspect.VOID, 10).add(Aspect.ENERGY, 10).add(Aspect.MAGIC, 10), -3, 2, 3, new ItemStack(amberFiber))
-                .setPages(new ResearchPage("tc.research_page.AMBER_FIBER.1"), new ResearchPage(recipeFiber)).setParentsHidden("KNOWLEDGE_CRAFT").registerResearchItem();
+                .setPages(new ResearchPage("tc.research_page.AMBER_FIBER.1"), new ResearchPage(recipeFiber)).setParents("AKADAEMON_WAND").setConcealed().registerResearchItem();
 
         new ResearchItem("TITAN_DRILL", CAT_ID,
-                new AspectList().add(Aspect.MECHANISM, 15).add(Aspect.ENERGY, 20).add(Aspect.CRAFT, 20), -4, -2, 3, new ItemStack(titanDrill))
-                .setPages(new ResearchPage("tc.research_page.TITAN_DRILL.1"), new ResearchPage(recipeDrill)).setParentsHidden("AMBER_FIBER").registerResearchItem();
+                new AspectList().add(Aspect.MECHANISM, 15).add(Aspect.ENERGY, 20).add(Aspect.CRAFT, 20), -4, 0, 3, new ItemStack(titanDrill))
+                .setPages(new ResearchPage("tc.research_page.TITAN_DRILL.1"), new ResearchPage(recipeDrill)).setParents("AMBER_FIBER").setConcealed().registerResearchItem();
 
         new ResearchItem("THAUM_TRANSFORMER", CAT_ID,
-                new AspectList().add(Aspect.MECHANISM, 20).add(Aspect.ENERGY, 25).add(Aspect.EXCHANGE, 20), -3, 0, 3, new ItemStack(thaumTransformer))
-                .setPages(new ResearchPage("tc.research_page.THAUM_TRANSFORMER.1"), new ResearchPage(recipeTransformer)).setParentsHidden("TITAN_DRILL").registerResearchItem();
+                new AspectList().add(Aspect.MECHANISM, 20).add(Aspect.ENERGY, 25).add(Aspect.EXCHANGE, 20), -4, -2, 3, new ItemStack(thaumTransformer))
+                .setPages(new ResearchPage("tc.research_page.THAUM_TRANSFORMER.1"), new ResearchPage(recipeTransformer)).setParents("TITAN_DRILL").setConcealed().registerResearchItem();
 
         new ResearchItem("TINKER_MODS", CAT_ID,
                 new AspectList().add(Aspect.CRAFT, 15).add(Aspect.TOOL, 15).add(Aspect.MINE, 20), 4, 0, 1, new ItemStack(expansionChip))
-                .setPages(new ResearchPage("tc.research_page.TINKER_MODS.1"), new ResearchPage(recipeChip), new ResearchPage(recipeMod)).setParentsHidden("AKADAEMON_WAND").setSecondary().registerResearchItem();
+                .setPages(new ResearchPage("tc.research_page.TINKER_MODS.1"), new ResearchPage(recipeChip), new ResearchPage(recipeMod)).setParentsHidden("AKADAEMON_WAND").setConcealed().setSecondary().registerResearchItem();
 
 
         new ResearchItem("AKADAEMON_LORE", CAT_ID,
@@ -289,7 +289,8 @@ public class ThaumcraftIntegration {
                 .setPages(
                         new ResearchPage("tc.research_page.AKADAEMON_FLUIDS.1"),
                         new ResearchPage("tc.research_page.AKADAEMON_FLUIDS.2"),
-                        new ResearchPage("tc.research_page.AKADAEMON_FLUIDS.3"))
+                        new ResearchPage("tc.research_page.AKADAEMON_FLUIDS.3"),
+                        new ResearchPage("tc.research_page.AKADAEMON_FLUIDS.4"))
                 .registerResearchItem();
 
     }
