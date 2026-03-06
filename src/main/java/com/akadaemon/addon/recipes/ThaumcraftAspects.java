@@ -30,6 +30,7 @@ public class ThaumcraftAspects {
         reg(blockAdamantit, new AspectList().add(Aspect.METAL, 27).add(Aspect.MAGIC, 18));
         reg(amberFiber, new AspectList().add(Aspect.TRAP, 2).add(Aspect.CLOTH, 2).add(Aspect.CRYSTAL, 1));
         reg(thaumTransformer, new AspectList().add(Aspect.MECHANISM, 8).add(Aspect.ENERGY, 8).add(Aspect.EXCHANGE, 4));
+        reg(titanDrill, new AspectList().add(Aspect.MECHANISM, 12).add(Aspect.METAL, 10).add(Aspect.MINE, 15).add(Aspect.ENERGY, 6));
 
         reg(wandRodIridium, new AspectList().add(Aspect.METAL, 4).add(Aspect.ENERGY, 4).add(Aspect.TOOL, 2));
         reg(wandCapManullyn, new AspectList().add(Aspect.METAL, 2).add(Aspect.WEAPON, 2).add(Aspect.DARKNESS, 2));
@@ -40,6 +41,13 @@ public class ThaumcraftAspects {
         reg(minerBelt, new AspectList().add(Aspect.MINE, 4).add(Aspect.TOOL, 4).add(Aspect.CLOTH, 2));
 
         reg(goldenSchnitzel, new AspectList().add(Aspect.HUNGER, 4).add(Aspect.FLESH, 2).add(Aspect.GREED, 2).add(Aspect.HEAL, 1));
+
+        reg(bucketGlacialQuicksilver, new AspectList().add(Aspect.METAL, 4).add(Aspect.CRYSTAL, 8).add(Aspect.VOID, 2));
+        reg(bucketEtherealPhoton, new AspectList().add(Aspect.LIGHT, 10).add(Aspect.ENERGY, 8).add(Aspect.VOID, 2));
+        reg(bucketActiveRedstone, new AspectList().add(Aspect.ENERGY, 10).add(Aspect.MECHANISM, 4).add(Aspect.VOID, 2));
+        reg(blockGlacialQuicksilver, new AspectList().add(Aspect.METAL, 2).add(Aspect.CRYSTAL, 4).add(Aspect.ORDER, 2));
+        reg(blockEtherealPhoton, new AspectList().add(Aspect.LIGHT, 8).add(Aspect.ENERGY, 4).add(Aspect.AURA, 2));
+        reg(blockActiveRedstone, new AspectList().add(Aspect.ENERGY, 8).add(Aspect.MECHANISM, 4));
 
         regWildcard(mythrilQHelmet, new AspectList().add(Aspect.ARMOR, 4).add(Aspect.ENERGY, 6).add(Aspect.SENSES, 4));
         regWildcard(mythrilQChest, new AspectList().add(Aspect.ARMOR, 8).add(Aspect.ENERGY, 10).add(Aspect.FLIGHT, 4));
