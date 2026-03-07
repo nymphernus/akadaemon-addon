@@ -5,11 +5,11 @@
   "description": "TechnoMagic Addon",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "https://github.com/nymphernus",
+  "url": "https://github.com/nymphernus/akadaemon-addon",
   "updateUrl": "",
   "authorList": ["nymphernus"],
   "credits": "",
-  "logoFile": "Akadaemon.png",
+  "logoFile": "logo.png",
   "screenshots": [],
   "dependencies": ["TConstruct", "IC2", "Thaumcraft"]
 }
