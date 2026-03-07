@@ -36,15 +36,16 @@ public class TileAmberFiber extends TileEntity implements IAspectContainer {
         int radius = ConfigHandler.amberFiberRadius;
         for (Object obj : worldObj.loadedTileEntityList) {
             TileEntity tile = (TileEntity) obj;
+            if (tile.xCoord == xCoord && tile.zCoord == zCoord && tile.yCoord == yCoord) continue;
 
             double dist = tile.getDistanceFrom(xCoord, yCoord, zCoord);
             if (dist > radius * radius) continue;
 
-            if (tile == this || (tile.xCoord == xCoord && tile.zCoord == zCoord)) continue;
+            if (tile instanceof IAspectContainer) {
+                TileEntity aboveTarget = worldObj.getTileEntity(tile.xCoord, tile.yCoord + 1, tile.zCoord);
+                if (aboveTarget instanceof TileAmberFiber) continue;
 
-            if (tile instanceof IAspectContainer && !(tile instanceof TileAmberFiber)) {
                 IAspectContainer jar = (IAspectContainer) tile;
-
                 if (jar.doesContainerAccept(aspect)) {
                     int leftover = jar.addToContainer(aspect, 1);
                     if (leftover == 0) {

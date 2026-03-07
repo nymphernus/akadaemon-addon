@@ -118,6 +118,10 @@ public class ThaumcraftIntegration {
                 new ItemStack(ingotAdamantit), "ingotArdite",
                 new AspectList().add(Aspect.MAGIC, 16).add(Aspect.FIRE, 16));
 
+        ThaumcraftApi.getCraftingRecipes().add(recipeMythril);
+        ThaumcraftApi.getCraftingRecipes().add(recipeTitan);
+        ThaumcraftApi.getCraftingRecipes().add(recipeAdamantit);
+
         IArcaneRecipe recipeTransformer = ThaumcraftApi.addArcaneCraftingRecipe("THAUM_TRANSFORMER", new ItemStack(thaumTransformer),
                     new AspectList().add(Aspect.EARTH, 30).add(Aspect.AIR, 30).add(Aspect.ORDER, 20),
                     "SPS", "SMS", "TTT",
@@ -179,11 +183,14 @@ public class ThaumcraftIntegration {
                 new AspectList().add(Aspect.ORDER, 50).add(Aspect.EARTH, 50).add(Aspect.FIRE, 50),
                 "  I", " I ", "I  ", 'I', ExternalItems.iridiumOre);
 
-        InfusionRecipe recipeInfCap = new InfusionElectricRecipe("AKADAEMON_WAND_INFUSION", new ItemStack(wandCapMythril), 6,
+        if (wandCapMythril == null || wandCapManullyn == null || ingotMythril == null) {
+            System.out.println("CRITICAL ERROR: My items are NULL!");
+        }
+        InfusionRecipe recipeInfCap = new InfusionRecipe("AKADAEMON_WAND_INFUSION", new ItemStack(wandCapMythril), 6,
                 new AspectList().add(Aspect.ARMOR, 8).add(Aspect.MAGIC, 32).add(Aspect.METAL, 16).add(Aspect.CRYSTAL, 16), new ItemStack(wandCapManullyn),
                 new ItemStack[] {
                         new ItemStack(ingotMythril), new ItemStack(ingotMythril),
-                        ExternalItems.crystalBal,ExternalItems.crystalBal,
+                        ExternalItems.crystalBal, ExternalItems.crystalBal,
                         new ItemStack(ingotMythril)
                 });
         InfusionRecipe recipeInfRod = new InfusionElectricRecipe("AKADAEMON_WAND_INFUSION", new ItemStack(wandRodIridiumTitan), 6,
@@ -192,6 +199,9 @@ public class ThaumcraftIntegration {
                         new ItemStack(ingotTitan), ExternalItems.crystalBal, new ItemStack(ingotTitan), ExternalItems.crystalBal,
                         new ItemStack(ingotTitan), ExternalItems.crystalBal, new ItemStack(ingotTitan), ExternalItems.crystalBal
                 });
+
+        ThaumcraftApi.getCraftingRecipes().add(recipeInfCap);
+        ThaumcraftApi.getCraftingRecipes().add(recipeInfRod);
 
         IArcaneRecipe recipeWandMain = ThaumcraftApi.addArcaneCraftingRecipe("AKADAEMON_WAND_INFUSION",
                 createWand(WAND_ROD_IRIDIUM_TITAN, WAND_CAP_MYTHRIL),
@@ -217,6 +227,10 @@ public class ThaumcraftIntegration {
                         .add(Aspect.AIR, 50).add(Aspect.EARTH, 50).add(Aspect.WATER, 50),
                 "  C", " R ", "C  ", 'C', thaumiumCap, 'R', wandRodIridium);
 
+        ThaumcraftApi.getCraftingRecipes().add(recipeWandMain);
+        ThaumcraftApi.getCraftingRecipes().add(recipeWandMan);
+        ThaumcraftApi.getCraftingRecipes().add(recipeWandSilver);
+        ThaumcraftApi.getCraftingRecipes().add(recipeWandThaumium);
 
         new ResearchItem("TRINITY_ALLOYS", CAT_ID, new AspectList().add(Aspect.MAGIC, 10).add(Aspect.METAL, 10), 0, 0, 2, new ItemStack(ingotMythril))
                 .setPages(new ResearchPage("tc.research_page.TRINITY_ALLOYS.1"),
