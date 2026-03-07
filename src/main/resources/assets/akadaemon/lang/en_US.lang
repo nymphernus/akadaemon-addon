@@ -26,11 +26,15 @@ item.adamantit_ingot.name=Adamantite Ingot
 tile.block_adamantit.name=Block of Adamantite
 tile.ethereal_photon_block.name=Ethereal Photon
 tile.glacial_quicksilver_block.name=Glacial Quicksilver
-tile.active_fluid_redstone.name=Liquid Active Redstone
+tile.ruby_flux.name=Ruby Flux
 item.bucket_ethereal_photon.name=Ethereal Photon Bucket
 item.bucket_glacial_quicksilver.name=Glacial Quicksilver Bucket
-item.bucket_active_redstone.name=Liquid Active Redstone Bucket
+item.bucket_ruby_flux.name=Ruby Flux Bucket
 tile.titan_drill.name=Titan Drill
+item.wand_cap_mythril.name=Mythril-Charged Cap
+item.wand_rod_iridium_titan.name=Titanium-Bound Iridium Rod
+item.Wand.mythril.cap=Mythril-Stabilized
+item.Wand.iridium_titan.rod=Quantum
 
 # GUI
 gui.titan_drill.depth=Depth
@@ -50,6 +54,7 @@ fluid.liquid_lapis=Molten Lapis
 fluid.liquid_glowstone=Liquid Glowstone
 fluid.liquid_amber=Liquid Amber
 fluid.liquid_redstone=Liquid Redstone
+fluid.ruby_flux=Ruby Flux
 
 ic2.mythril_quantum_helmet=Mythril Quantum Helmet
 ic2.mythril_quantum_chest=Mythril Quantum Breastplate
@@ -89,6 +94,10 @@ tc.research_category.AKADAEMON=Akadaemonica
 tc.research_name.AKADAEMON_WAND=Manullyn-Iridium Wand
 tc.research_text.AKADAEMON_WAND=Technomancy in your hands
 tc.research_page.AKADAEMON_WAND.1=Iridium and Manullyn — two metals from different worlds. By combining them through magic, you have created the ultimate tool.
+
+tc.research_name.AKADAEMON_WAND_INFUSION=Quantum-Mithril Singularity
+tc.research_text.AKADAEMON_WAND_INFUSION=The ultimate conductor of magical energy
+tc.research_page.AKADAEMON_WAND_INFUSION.1=You have reached the peak of technomancy: the fusion of quantum systems and mithril. <BR> Mythril infusion allows the caps to filter Vis without loss, while titanium reinforcement turns the iridium rod into a superconductor. <BR> Integrating a Lapotron Crystal completes the cycle, transforming the tool into a powerful quantum storage unit. It is the triumph of mind over matter.
 
 tc.research_name.KNOWLEDGE_CRAFT=Synthesis of Knowledge
 tc.research_text.KNOWLEDGE_CRAFT=Crafting fragments of lore

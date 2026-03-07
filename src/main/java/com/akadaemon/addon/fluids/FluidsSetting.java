@@ -9,7 +9,7 @@ public class FluidsSetting {
     public static void init() {
         fluidGlacialQuicksilver = new Fluid("glacial_quicksilver").setLuminosity(0).setViscosity(1000).setDensity(1000);
         fluidEtherealPhoton = new Fluid("ethereal_photon").setLuminosity(15).setViscosity(1000).setDensity(1000);
-        fluidActiveRedstone = new Fluid("active_redstone").setLuminosity(5).setViscosity(1000).setDensity(1000);
+        fluidRubyFlux = new Fluid("ruby_flux").setLuminosity(5).setViscosity(1000).setDensity(1000);
         fluidIce = new Fluid("liquid_ice").setTemperature(200).setDensity(1000).setViscosity(2000);
         fluidSnow = new Fluid("liquid_snow").setTemperature(150).setDensity(1000).setViscosity(1500);
         fluidQuicksilver = new Fluid("liquid_quicksilver").setTemperature(500).setDensity(2000).setViscosity(3000);
@@ -20,7 +20,7 @@ public class FluidsSetting {
 
         FluidRegistry.registerFluid(fluidGlacialQuicksilver);
         FluidRegistry.registerFluid(fluidEtherealPhoton);
-        FluidRegistry.registerFluid(fluidActiveRedstone);
+        FluidRegistry.registerFluid(fluidRubyFlux);
         FluidRegistry.registerFluid(fluidIce);
         FluidRegistry.registerFluid(fluidSnow);
         FluidRegistry.registerFluid(fluidQuicksilver);

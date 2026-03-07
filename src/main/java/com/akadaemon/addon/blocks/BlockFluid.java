@@ -50,7 +50,7 @@ public class BlockFluid extends BlockFluidClassic {
                 Block result = null;
 
                 boolean hasPhoton = (this == AkadaemonAddon.blockEtherealPhoton || target == AkadaemonAddon.blockEtherealPhoton);
-                boolean hasRedstone = (this == AkadaemonAddon.blockActiveRedstone || target == AkadaemonAddon.blockActiveRedstone);
+                boolean hasRedstone = (this == AkadaemonAddon.blockRubyFlux || target == AkadaemonAddon.blockRubyFlux);
                 boolean hasQuicksilver = (this == AkadaemonAddon.blockGlacialQuicksilver || target == AkadaemonAddon.blockGlacialQuicksilver);
 
                 if (hasPhoton && hasRedstone) {

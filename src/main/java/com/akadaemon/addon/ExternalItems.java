@@ -9,20 +9,14 @@ import net.minecraftforge.oredict.OreDictionary;
 public class ExternalItems {
     public static ItemStack emptyBucket;
     public static ItemStack ingotManullyn, ingotCobalt, ingotArdite;
-    public static ItemStack iridiumOre;
-    public static ItemStack energyCrystal;
-    public static ItemStack solarPanel;
-    public static ItemStack mfe;
-    public static ItemStack jetpack;
-    public static ItemStack advCircuit;
-    public static ItemStack carbonPlate;
-    public static ItemStack dustDiamond;
-    public static ItemStack dustLapis;
-    public static ItemStack iridiumDrill;
+
+    public static ItemStack iridiumDrill, lapotronCrystal, energyCrystal, jetpack;
+
+    public static ItemStack solarPanel, mfe, advCircuit, carbonPlate, iridiumOre, dustLapis, dustDiamond;
 
     public static ItemStack qHelmet, qChest, qLegs, qBoots;
 
-    public static ItemStack knowledgeFragment, amber, blockTube, blockAmber, thaumIngot, quicksilver;
+    public static ItemStack knowledgeFragment, amber, blockTube, blockAmber, thaumIngot, quicksilver, crystalBal;
 
     public static void init() {
         emptyBucket = new ItemStack(Items.bucket);
@@ -36,6 +30,7 @@ public class ExternalItems {
         solarPanel = ic2.api.item.IC2Items.getItem("solarPanel");
         mfe = ic2.api.item.IC2Items.getItem("mfeUnit");
         energyCrystal = getIc2Wildcard("energyCrystal");
+        lapotronCrystal = getIc2Wildcard("lapotronCrystal");
         jetpack = getIc2Wildcard("electricJetpack");
         advCircuit = ic2.api.item.IC2Items.getItem("advancedCircuit");
         carbonPlate = ic2.api.item.IC2Items.getItem("carbonPlate");
@@ -49,10 +44,12 @@ public class ExternalItems {
         qBoots = ic2.api.item.IC2Items.getItem("quantumBoots");
 
         Item resourceItem = (Item) Item.itemRegistry.getObject("Thaumcraft:ItemResource");
+        Item shardItem = (Item) Item.itemRegistry.getObject("Thaumcraft:ItemShard");
         knowledgeFragment = new ItemStack(resourceItem, 1, 9);
         amber = new ItemStack(resourceItem, 1, 6);
         quicksilver = new ItemStack(resourceItem, 1, 3);
         thaumIngot = new ItemStack(resourceItem, 1, 2);
+        crystalBal = new ItemStack(shardItem, 1, 6);
 
         blockTube = createStackFromName("Thaumcraft:blockTube", 0);
         blockAmber = createStackFromName("Thaumcraft:blockCosmeticOpaque", 0);

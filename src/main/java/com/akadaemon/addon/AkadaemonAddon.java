@@ -41,15 +41,15 @@ import java.util.List;
 public class AkadaemonAddon {
     public static final String MODID = "akadaemon";
     public static final String NAME = "Akadaemon Addon";
-    public static final String VERSION = "1.5.2";
+    public static final String VERSION = "1.6.1";
     public static final Logger logger = LogManager.getLogger(NAME);
     public static SimpleNetworkWrapper network;
 
-    public static Item compositeMod, expansionChip, worldRing, solarAmulet, minerBelt, goldenSchnitzel, bucketGlacialQuicksilver, bucketEtherealPhoton, bucketActiveRedstone;
-    public static Item cobaltDust, arditeDust, enderDust, iridiumComposite, wandRodIridium, wandCapManullyn, ingotMythril, ingotTitan, ingotAdamantit;
+    public static Item compositeMod, expansionChip, worldRing, solarAmulet, minerBelt, goldenSchnitzel, bucketGlacialQuicksilver, bucketEtherealPhoton, bucketRubyFlux;
+    public static Item cobaltDust, arditeDust, enderDust, iridiumComposite, wandRodIridium, wandCapManullyn, ingotMythril, ingotTitan, ingotAdamantit, wandRodIridiumTitan, wandCapMythril;
     public static Item mythrilQHelmet, mythrilQChest, mythrilQLegs, mythrilQBoots;
-    public static Block thaumTransformer, amberFiber, blockMythril, blockTitan, blockAdamantit, blockGlacialQuicksilver, blockEtherealPhoton, blockActiveRedstone, titanDrill;
-    public static Fluid fluidGlacialQuicksilver, fluidEtherealPhoton, fluidActiveRedstone;
+    public static Block thaumTransformer, amberFiber, blockMythril, blockTitan, blockAdamantit, blockGlacialQuicksilver, blockEtherealPhoton, blockRubyFlux, titanDrill;
+    public static Fluid fluidGlacialQuicksilver, fluidEtherealPhoton, fluidRubyFlux;
     public static Fluid fluidIce, fluidSnow, fluidQuicksilver, fluidLapis, fluidGlowstone, fluidAmber, fluidRedstone;
 
 
@@ -110,9 +110,9 @@ public class AkadaemonAddon {
         blockEtherealPhoton = new BlockFluid(fluidEtherealPhoton, Material.water, 6, 20)
                 .setBlockName("ethereal_photon_block")
                 .setBlockTextureName(MODID +":fluids/ethereal_photon_still");
-        blockActiveRedstone = new BlockFluid(fluidActiveRedstone, Material.water, 6, 20)
-                .setBlockName("active_fluid_redstone")
-                .setBlockTextureName(MODID +":fluids/active_fluid_redstone_still");
+        blockRubyFlux = new BlockFluid(fluidRubyFlux, Material.water, 6, 20)
+                .setBlockName("ruby_flux")
+                .setBlockTextureName(MODID +":fluids/ruby_flux_still");
     }
 
     private void initializeItems() {
@@ -127,7 +127,10 @@ public class AkadaemonAddon {
         ingotAdamantit = new ItemBase(EnumChatFormatting.RED, EnumChatFormatting.BOLD).setUnlocalizedName("adamantit_ingot").setTextureName(MODID + ":adamantit_ingot").setCreativeTab(tabAkadaemon);
         bucketGlacialQuicksilver = new ItemBucketBase(blockGlacialQuicksilver, "bucket_glacial_quicksilver", EnumChatFormatting.AQUA);
         bucketEtherealPhoton = new ItemBucketBase(blockEtherealPhoton, "bucket_ethereal_photon", EnumChatFormatting.YELLOW);
-        bucketActiveRedstone = new ItemBucketBase(blockActiveRedstone, "bucket_active_redstone", EnumChatFormatting.RED);
+        bucketRubyFlux = new ItemBucketBase(blockRubyFlux, "bucket_ruby_flux", EnumChatFormatting.RED);
+        wandRodIridiumTitan = new ItemBase(EnumChatFormatting.GRAY, EnumChatFormatting.BOLD).setUnlocalizedName("wand_rod_iridium_titan").setTextureName(MODID + ":wand_rod_iridium_titan").setCreativeTab(tabAkadaemon);
+        wandCapMythril = new ItemBase(EnumChatFormatting.LIGHT_PURPLE, EnumChatFormatting.BOLD).setUnlocalizedName("wand_cap_mythril").setTextureName(MODID + ":wand_cap_mythril").setCreativeTab(tabAkadaemon);
+
 
         worldRing = new ItemWorldRing();
         solarAmulet = new ItemSolarAmulet();
@@ -153,7 +156,7 @@ public class AkadaemonAddon {
 
         regBlock(blockGlacialQuicksilver, "glacial_quicksilver_block", EnumChatFormatting.AQUA, EnumChatFormatting.RESET);
         regBlock(blockEtherealPhoton, "ethereal_photon_block", EnumChatFormatting.YELLOW, EnumChatFormatting.RESET);
-        regBlock(blockActiveRedstone, "active_fluid_redstone", EnumChatFormatting.RED, EnumChatFormatting.RESET);
+        regBlock(blockRubyFlux, "ruby_flux", EnumChatFormatting.RED, EnumChatFormatting.RESET);
 
         reg(compositeMod, "composite_mod");
         reg(expansionChip, "expansion_chip");
@@ -172,7 +175,9 @@ public class AkadaemonAddon {
         reg(ingotAdamantit, "adamantit_ingot");
         reg(bucketGlacialQuicksilver, "bucket_glacial_quicksilver");
         reg(bucketEtherealPhoton, "bucket_ethereal_photon");
-        reg(bucketActiveRedstone, "bucket_active_redstone");
+        reg(bucketRubyFlux, "bucket_ruby_flux");
+        reg(wandRodIridiumTitan, "wand_rod_iridium_titan");
+        reg(wandCapMythril, "wand_cap_mythril");
 
         GameRegistry.registerTileEntity(TileThaumTransformer.class, "TileThaumTransformer");
         GameRegistry.registerTileEntity(TileAmberFiber.class, "TileAmberFiber");
@@ -201,8 +206,8 @@ public class AkadaemonAddon {
                 new ItemStack(net.minecraft.init.Items.bucket)
         );
         FluidContainerRegistry.registerFluidContainer(
-                new FluidStack(fluidActiveRedstone, FluidContainerRegistry.BUCKET_VOLUME),
-                new ItemStack(bucketActiveRedstone),
+                new FluidStack(fluidRubyFlux, FluidContainerRegistry.BUCKET_VOLUME),
+                new ItemStack(bucketRubyFlux),
                 new ItemStack(net.minecraft.init.Items.bucket)
         );
     }
@@ -263,11 +268,11 @@ public class AkadaemonAddon {
             fluidQuicksilver.setIcons(event.map.registerIcon(MODID + ":fluids/liquid_quicksilver_still"), event.map.registerIcon(MODID + ":fluids/liquid_quicksilver_flow"));
             fluidAmber.setIcons(event.map.registerIcon(MODID + ":fluids/liquid_amber_still"), event.map.registerIcon(MODID + ":fluids/liquid_samber_flow"));
             fluidGlowstone.setIcons(event.map.registerIcon(MODID + ":fluids/liquid_glowstone_still"), event.map.registerIcon(MODID + ":fluids/liquid_glowstone_flow"));
-            fluidRedstone.setIcons(event.map.registerIcon(MODID + ":fluids/active_fluid_redstone_still"), event.map.registerIcon(MODID + ":fluids/active_fluid_redstone_flow"));
+            fluidRedstone.setIcons(event.map.registerIcon(MODID + ":fluids/ruby_flux_still"), event.map.registerIcon(MODID + ":fluids/ruby_flux_flow"));
 
             fluidEtherealPhoton.setIcons(blockEtherealPhoton.getIcon(0, 0));
             fluidGlacialQuicksilver.setIcons(blockGlacialQuicksilver.getIcon(0, 0));
-            fluidActiveRedstone.setIcons(blockActiveRedstone.getIcon(0, 0));
+            fluidRubyFlux.setIcons(blockRubyFlux.getIcon(0, 0));
         }
     }
 }

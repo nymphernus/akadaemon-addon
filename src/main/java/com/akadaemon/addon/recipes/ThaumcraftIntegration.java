@@ -32,14 +32,22 @@ public class ThaumcraftIntegration {
 
     public static WandRod WAND_ROD_IRIDIUM;
     public static WandCap WAND_CAP_MANULLYN;
+    public static WandRod WAND_ROD_IRIDIUM_TITAN;
+    public static WandCap WAND_CAP_MYTHRIL;
     public static final String CAT_ID = "AKADAEMON";
 
     public static void init() {
-        WAND_ROD_IRIDIUM = new WandRod("iridium", 400, new ItemStack(wandRodIridium), 20);
+        WAND_ROD_IRIDIUM = new WandRod("iridium", 250, new ItemStack(wandRodIridium), 10);
         WAND_ROD_IRIDIUM.setTexture(new ResourceLocation(AkadaemonAddon.MODID, "textures/models/wand_rod_iridium_model.png"));
 
-        WAND_CAP_MANULLYN = new WandCap("manullyn", 0.8F, new ItemStack(wandCapManullyn), 10);
+        WAND_CAP_MANULLYN = new WandCap("manullyn", 0.88F, new ItemStack(wandCapManullyn), 10);
         WAND_CAP_MANULLYN.setTexture(new ResourceLocation(AkadaemonAddon.MODID, "textures/models/wand_cap_manullyn_model.png"));
+
+        WAND_ROD_IRIDIUM_TITAN = new WandRod("iridium_titan", 500, new ItemStack(wandRodIridiumTitan), 20);
+        WAND_ROD_IRIDIUM_TITAN.setTexture(new ResourceLocation(AkadaemonAddon.MODID, "textures/models/wand_rod_iridium_titan_model.png"));
+
+        WAND_CAP_MYTHRIL = new WandCap("mythril", 0.8F, new ItemStack(wandCapMythril), 20);
+        WAND_CAP_MYTHRIL.setTexture(new ResourceLocation(AkadaemonAddon.MODID, "textures/models/wand_cap_mythril_model.png"));
 
         ResearchCategories.registerCategory(CAT_ID,
                 new ResourceLocation(AkadaemonAddon.MODID, "textures/gui/logo.png"),
@@ -65,34 +73,34 @@ public class ThaumcraftIntegration {
                 new AspectList().add(Aspect.ARMOR, 64).add(Aspect.ENERGY, 64).add(Aspect.SENSES, 32).add(Aspect.MIND, 32),
                 ExternalItems.qHelmet,
                 new ItemStack[] {
-                        new ItemStack(ConfigItems.itemGoggles), ExternalItems.energyCrystal,
+                        new ItemStack(ConfigItems.itemGoggles), ExternalItems.lapotronCrystal,
                         new ItemStack(blockMythril), new ItemStack(iridiumComposite),
                         new ItemStack(iridiumComposite), new ItemStack(blockMythril),
-                        ExternalItems.energyCrystal
+                        ExternalItems.lapotronCrystal
                 });
         InfusionRecipe recipeQChest = new InfusionElectricRecipe("TECH_QUANTUM", new ItemStack(mythrilQChest), 8,
                 new AspectList().add(Aspect.ARMOR, 128).add(Aspect.ENERGY, 128).add(Aspect.FLIGHT, 64).add(Aspect.METAL, 64), ExternalItems.qChest,
                 new ItemStack[] {
                         ExternalItems.jetpack, new ItemStack(blockMythril), new ItemStack(blockMythril),
-                        ExternalItems.energyCrystal,
+                        ExternalItems.lapotronCrystal,
                         new ItemStack(iridiumComposite), new ItemStack(iridiumComposite),
-                        ExternalItems.energyCrystal,
+                        ExternalItems.lapotronCrystal,
                         new ItemStack(blockMythril), new ItemStack(blockMythril)
                 });
         InfusionRecipe recipeQLegs = new InfusionElectricRecipe("TECH_QUANTUM", new ItemStack(mythrilQLegs), 6,
                 new AspectList().add(Aspect.ARMOR, 64).add(Aspect.ENERGY, 64).add(Aspect.TRAVEL, 64).add(Aspect.ELDRITCH, 32), ExternalItems.qLegs,
                 new ItemStack[] {
                         new ItemStack(blockMythril), new ItemStack(Items.ender_eye),
-                        ExternalItems.energyCrystal, new ItemStack(iridiumComposite),
+                        ExternalItems.lapotronCrystal, new ItemStack(iridiumComposite),
                         new ItemStack(blockMythril), new ItemStack(iridiumComposite),
-                        ExternalItems.energyCrystal, new ItemStack(Items.ender_eye)
+                        ExternalItems.lapotronCrystal, new ItemStack(Items.ender_eye)
                 });
         InfusionRecipe recipeQBoots = new InfusionElectricRecipe("TECH_QUANTUM", new ItemStack(mythrilQBoots), 6,
                 new AspectList().add(Aspect.ARMOR, 48).add(Aspect.ENERGY, 64).add(Aspect.TRAVEL, 32).add(Aspect.AIR, 32), ExternalItems.qBoots,
                 new ItemStack[] {
                         new ItemStack(iridiumComposite), new ItemStack(blockMythril),
-                        ExternalItems.energyCrystal, new ItemStack(iridiumComposite),
-                        ExternalItems.energyCrystal, new ItemStack(blockMythril)
+                        ExternalItems.lapotronCrystal, new ItemStack(iridiumComposite),
+                        ExternalItems.lapotronCrystal, new ItemStack(blockMythril)
                 });
 
         ThaumcraftApi.getCraftingRecipes().add(recipeQHelmet);
@@ -161,32 +169,54 @@ public class ThaumcraftIntegration {
                 'T', "blockTitan",
                 'A', "blockAdamantit");
 
+
                 // Палочка
         IArcaneRecipe recipeCap = ThaumcraftApi.addArcaneCraftingRecipe("AKADAEMON_WAND", new ItemStack(wandCapManullyn),
                 new AspectList().add(Aspect.FIRE, 20).add(Aspect.ENTROPY, 20),
-                "MWM", "M M", 'M', "ingotManyullyn", 'W', "ingotMithril");
+                "MMM", "M M", 'M', "ingotManyullyn");
 
         IArcaneRecipe recipeRod = ThaumcraftApi.addArcaneCraftingRecipe("AKADAEMON_WAND", new ItemStack(wandRodIridium),
                 new AspectList().add(Aspect.ORDER, 50).add(Aspect.EARTH, 50).add(Aspect.FIRE, 50),
-                "  I", " T ", "I  ", 'I', ExternalItems.iridiumOre, 'T', "ingotTitan");
+                "  I", " I ", "I  ", 'I', ExternalItems.iridiumOre);
 
-        IArcaneRecipe recipeWandMain = ThaumcraftApi.addArcaneCraftingRecipe("AKADAEMON_WAND",
-                createWand(WAND_ROD_IRIDIUM, WAND_CAP_MANULLYN),
+        InfusionRecipe recipeInfCap = new InfusionElectricRecipe("AKADAEMON_WAND_INFUSION", new ItemStack(wandCapMythril), 6,
+                new AspectList().add(Aspect.ARMOR, 8).add(Aspect.MAGIC, 32).add(Aspect.METAL, 16).add(Aspect.CRYSTAL, 16), new ItemStack(wandCapManullyn),
+                new ItemStack[] {
+                        new ItemStack(ingotMythril), new ItemStack(ingotMythril),
+                        ExternalItems.crystalBal,ExternalItems.crystalBal,
+                        new ItemStack(ingotMythril)
+                });
+        InfusionRecipe recipeInfRod = new InfusionElectricRecipe("AKADAEMON_WAND_INFUSION", new ItemStack(wandRodIridiumTitan), 6,
+                new AspectList().add(Aspect.TOOL, 32).add(Aspect.MAGIC, 64).add(Aspect.METAL, 32), new ItemStack(wandRodIridium),
+                new ItemStack[] {
+                        new ItemStack(ingotTitan), ExternalItems.crystalBal, new ItemStack(ingotTitan), ExternalItems.crystalBal,
+                        new ItemStack(ingotTitan), ExternalItems.crystalBal, new ItemStack(ingotTitan), ExternalItems.crystalBal
+                });
+
+        IArcaneRecipe recipeWandMain = ThaumcraftApi.addArcaneCraftingRecipe("AKADAEMON_WAND_INFUSION",
+                createWand(WAND_ROD_IRIDIUM_TITAN, WAND_CAP_MYTHRIL),
                 new AspectList().add(Aspect.ORDER, 100).add(Aspect.ENTROPY, 100).add(Aspect.FIRE, 100)
                         .add(Aspect.AIR, 100).add(Aspect.EARTH, 100).add(Aspect.WATER, 100),
-                " EC", "MRE", "CM ", 'C', wandCapManullyn, 'R', wandRodIridium, 'E', ExternalItems.energyCrystal, 'M', "ingotMithril");
+                " EC", "MRE", "CM ", 'C', wandCapMythril, 'R', wandRodIridiumTitan, 'E', ExternalItems.lapotronCrystal, 'M', "ingotMithril");
+
+        IArcaneRecipe recipeWandMan = ThaumcraftApi.addArcaneCraftingRecipe("AKADAEMON_WAND",
+                createWand(WAND_ROD_IRIDIUM, WAND_CAP_MANULLYN),
+                new AspectList().add(Aspect.ORDER, 65).add(Aspect.ENTROPY, 65).add(Aspect.FIRE, 65)
+                        .add(Aspect.AIR, 65).add(Aspect.EARTH, 65).add(Aspect.WATER, 65),
+                "  C", " R ", "C  ", 'C', wandCapManullyn, 'R', wandRodIridium);
 
         IArcaneRecipe recipeWandSilver = ThaumcraftApi.addArcaneCraftingRecipe("AKADAEMON_WAND_SILVER",
                 createWand((WandRod)WandRod.rods.get("silverwood"), WAND_CAP_MANULLYN),
-                new AspectList().add(Aspect.ORDER, 30).add(Aspect.ENTROPY, 60).add(Aspect.FIRE, 60)
-                        .add(Aspect.AIR, 30).add(Aspect.EARTH, 60).add(Aspect.WATER, 30),
+                new AspectList().add(Aspect.ORDER, 45).add(Aspect.ENTROPY, 45).add(Aspect.FIRE, 45)
+                        .add(Aspect.AIR, 45).add(Aspect.EARTH, 45).add(Aspect.WATER, 45),
                 "  C", " R ", "C  ", 'C', wandCapManullyn, 'R', silverRod);
 
         IArcaneRecipe recipeWandThaumium = ThaumcraftApi.addArcaneCraftingRecipe("AKADAEMON_WAND_THAUMIUM",
                 createWand(WAND_ROD_IRIDIUM, (WandCap)WandCap.caps.get("thaumium")),
-                new AspectList().add(Aspect.ORDER, 70).add(Aspect.ENTROPY, 100).add(Aspect.FIRE, 100)
-                        .add(Aspect.AIR, 70).add(Aspect.EARTH, 100).add(Aspect.WATER, 70),
+                new AspectList().add(Aspect.ORDER, 50).add(Aspect.ENTROPY, 50).add(Aspect.FIRE, 50)
+                        .add(Aspect.AIR, 50).add(Aspect.EARTH, 50).add(Aspect.WATER, 50),
                 "  C", " R ", "C  ", 'C', thaumiumCap, 'R', wandRodIridium);
+
 
         new ResearchItem("TRINITY_ALLOYS", CAT_ID, new AspectList().add(Aspect.MAGIC, 10).add(Aspect.METAL, 10), 0, 0, 2, new ItemStack(ingotMythril))
                 .setPages(new ResearchPage("tc.research_page.TRINITY_ALLOYS.1"),
@@ -198,15 +228,24 @@ public class ThaumcraftIntegration {
                 .registerResearchItem();
 
         new ResearchItem("AKADAEMON_WAND", CAT_ID,
-                new AspectList().add(Aspect.METAL, 10).add(Aspect.ENERGY, 10).add(Aspect.MECHANISM, 10), 0, 2, 3, new ItemStack(wandRodIridium))
+                new AspectList().add(Aspect.METAL, 10).add(Aspect.ENERGY, 10).add(Aspect.MECHANISM, 10), 0, 2, 3, createWand(WAND_ROD_IRIDIUM, WAND_CAP_MANULLYN))
                 .setPages(new ResearchPage("tc.research_page.AKADAEMON_WAND.1"),
                         new ResearchPage(recipeCap),
                         new ResearchPage(recipeRod),
                         new ResearchPage(recipeWandSilver),
                         new ResearchPage(recipeWandThaumium),
+                        new ResearchPage(recipeWandMan))
+                .setParents("TRINITY_ALLOYS").setParentsHidden("ROD_silverwood").setRound().setConcealed().registerResearchItem();
+
+        new ResearchItem("AKADAEMON_WAND_INFUSION", CAT_ID,
+                new AspectList().add(Aspect.MIND, 10).add(Aspect.ENERGY, 15).add(Aspect.VOID, 15).add(Aspect.MAGIC, 30), 0, 4, 3, createWand(WAND_ROD_IRIDIUM_TITAN, WAND_CAP_MYTHRIL))
+                .setPages(new ResearchPage("tc.research_page.AKADAEMON_WAND_INFUSION.1"),
+                        new ResearchPage((InfusionRecipe)recipeInfCap),
+                        new ResearchPage((InfusionRecipe)recipeInfRod),
                         new ResearchPage(recipeWandMain))
-                .setParents("TRINITY_ALLOYS").setRound().setConcealed().registerResearchItem();
-        new ResearchItem("TECH_QUANTUM", CAT_ID, new AspectList().add(Aspect.MAGIC, 30).add(Aspect.ARMOR, 30).add(Aspect.TRAVEL, 30).add(Aspect.FLIGHT, 30), 0, 4, 4, new ItemStack(mythrilQChest))
+                .setParents("AKADAEMON_WAND").setParentsHidden("INFUSION").setRound().setConcealed().registerResearchItem();
+
+        new ResearchItem("TECH_QUANTUM", CAT_ID, new AspectList().add(Aspect.MAGIC, 30).add(Aspect.ARMOR, 30).add(Aspect.TRAVEL, 30).add(Aspect.FLIGHT, 30), -2, 6, 4, new ItemStack(mythrilQChest))
                 .setPages(
                         new ResearchPage("tc.research_page.TECH_QUANTUM.1"),
                         new ResearchPage((InfusionRecipe)recipeQHelmet),
@@ -214,7 +253,8 @@ public class ThaumcraftIntegration {
                         new ResearchPage((InfusionRecipe)recipeQLegs),
                         new ResearchPage((InfusionRecipe)recipeQBoots)
                 )
-                .setParents("AKADAEMON_WAND")
+                .setParents("AKADAEMON_WAND_INFUSION")
+                .setParentsHidden("ARMORFORTRESS")
                 .setConcealed()
                 .setSpecial()
                 .setRound()

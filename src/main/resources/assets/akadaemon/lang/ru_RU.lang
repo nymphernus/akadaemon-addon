@@ -26,11 +26,15 @@ item.adamantit_ingot.name=Адамантитовый слиток
 tile.block_adamantit.name=Адамантитовый блок
 tile.ethereal_photon_block.name=Эфирный фотон
 tile.glacial_quicksilver_block.name=Ледяная ртуть
-tile.active_fluid_redstone.name=Жидкий активный редстоун
+tile.ruby_flux.name=Рубиновый поток
 item.bucket_ethereal_photon.name=Ведро с эфирным фотоном
 item.bucket_glacial_quicksilver.name=Ведро с ледяной ртутью
-item.bucket_active_redstone.name=Ведро с жидким активным редстоуном
+item.bucket_ruby_flux.name=Ведро с рубиновым потоком
 tile.titan_drill.name=Титановый Бур
+item.wand_cap_mythril.name=Заряженный мифрилом наконечник
+item.wand_rod_iridium_titan.name=Скрепленный титаном иридиевый стержень
+item.Wand.mythril.cap=Стабилизированный Мифрилом
+item.Wand.iridium_titan.rod=Квантовый
 
 # GUI
 gui.titan_drill.depth=Глубина
@@ -43,7 +47,7 @@ gui.titan_drill.off=Выкл.
 # Жидкость
 fluid.glacial_quicksilver=Ледяная ртуть
 fluid.ethereal_photon=Эфирный фотон
-fluid.active_redstone=Жидкий активный редстоун
+fluid.ruby_flux=Рубиновый поток
 fluid.liquid_ice=Топленый лед
 fluid.liquid_snow=Топленый снег
 fluid.liquid_glowstone=Жидкий светокамень
@@ -92,6 +96,9 @@ tc.research_name.AKADAEMON_WAND=Мануллин-Иридиевый жезл
 tc.research_text.AKADAEMON_WAND=Техномагия в ваших руках
 tc.research_page.AKADAEMON_WAND.1=Иридий и мануллин — два металла из разных миров. Объединив их с помощью магии, вы создали совершенный инструмент.
 
+tc.research_name.AKADAEMON_WAND_INFUSION=Сингулярность Квант-Мифрила
+tc.research_text.AKADAEMON_WAND_INFUSION=Абсолютный проводник магической энергии
+tc.research_page.AKADAEMON_WAND_INFUSION.1=Вы достигли пика техномагии: слияния квантовых систем и мифрила. <BR> Инфузия мифрилом позволяет наконечникам фильтровать Вис без потерь, а титановое армирование превращает иридиевый стержень в сверхпроводник. <BR> Использование Лапотронового кристалла при сборке завершает цикл, превращая инструмент в мощный квантовый накопитель. Это триумф разума над материей.
 tc.research_name.KNOWLEDGE_CRAFT=Синтез знаний
 tc.research_text.KNOWLEDGE_CRAFT=Создание фрагментов знаний
 tc.research_page.KNOWLEDGE_CRAFT.1=Теперь вы можете воссоздавать утерянные знания, используя золото и пыль Края.

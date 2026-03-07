@@ -42,7 +42,7 @@ public class TinkersRecipes {
         );
 
         Smeltery.addAlloyMixing(
-                new FluidStack(AkadaemonAddon.fluidActiveRedstone, 1000),
+                new FluidStack(AkadaemonAddon.fluidRubyFlux, 1000),
                 new FluidStack(AkadaemonAddon.fluidRedstone, 750),
                 new FluidStack(AkadaemonAddon.fluidAmber, 250)
         );
@@ -64,8 +64,8 @@ public class TinkersRecipes {
         );
 
         TConstructRegistry.getTableCasting().addCastingRecipe(
-                new ItemStack(AkadaemonAddon.bucketActiveRedstone),
-                new FluidStack(AkadaemonAddon.fluidActiveRedstone, 1000),
+                new ItemStack(AkadaemonAddon.bucketRubyFlux),
+                new FluidStack(AkadaemonAddon.fluidRubyFlux, 1000),
                 ExternalItems.emptyBucket,
                 true,
                 20

@@ -34,6 +34,8 @@ public class ThaumcraftAspects {
 
         reg(wandRodIridium, new AspectList().add(Aspect.METAL, 4).add(Aspect.ENERGY, 4).add(Aspect.TOOL, 2));
         reg(wandCapManullyn, new AspectList().add(Aspect.METAL, 2).add(Aspect.WEAPON, 2).add(Aspect.DARKNESS, 2));
+        reg(wandRodIridiumTitan, new AspectList().add(Aspect.METAL, 6).add(Aspect.ENERGY, 4).add(Aspect.TOOL, 3));
+        reg(wandCapMythril, new AspectList().add(Aspect.METAL, 3).add(Aspect.WEAPON, 2).add(Aspect.LIGHT, 3));
 
         reg(expansionChip, new AspectList().add(Aspect.MIND, 4).add(Aspect.MECHANISM, 2));
         reg(worldRing, new AspectList().add(Aspect.ELDRITCH, 4).add(Aspect.TRAVEL, 4).add(Aspect.MAGIC, 2));
@@ -44,10 +46,10 @@ public class ThaumcraftAspects {
 
         reg(bucketGlacialQuicksilver, new AspectList().add(Aspect.METAL, 4).add(Aspect.CRYSTAL, 8).add(Aspect.VOID, 2));
         reg(bucketEtherealPhoton, new AspectList().add(Aspect.LIGHT, 10).add(Aspect.ENERGY, 8).add(Aspect.VOID, 2));
-        reg(bucketActiveRedstone, new AspectList().add(Aspect.ENERGY, 10).add(Aspect.MECHANISM, 4).add(Aspect.VOID, 2));
+        reg(bucketRubyFlux, new AspectList().add(Aspect.ENERGY, 10).add(Aspect.MECHANISM, 4).add(Aspect.VOID, 2));
         reg(blockGlacialQuicksilver, new AspectList().add(Aspect.METAL, 2).add(Aspect.CRYSTAL, 4).add(Aspect.ORDER, 2));
         reg(blockEtherealPhoton, new AspectList().add(Aspect.LIGHT, 8).add(Aspect.ENERGY, 4).add(Aspect.AURA, 2));
-        reg(blockActiveRedstone, new AspectList().add(Aspect.ENERGY, 8).add(Aspect.MECHANISM, 4));
+        reg(blockRubyFlux, new AspectList().add(Aspect.ENERGY, 8).add(Aspect.MECHANISM, 4));
 
         regWildcard(mythrilQHelmet, new AspectList().add(Aspect.ARMOR, 4).add(Aspect.ENERGY, 6).add(Aspect.SENSES, 4));
         regWildcard(mythrilQChest, new AspectList().add(Aspect.ARMOR, 8).add(Aspect.ENERGY, 10).add(Aspect.FLIGHT, 4));
