@@ -1,0 +1,22 @@
+{
+  "mob.draugr.say": {
+    "category": "hostile",
+    "sounds": [
+      "mob/draugr/say1",
+      "mob/draugr/say2"
+    ]
+  },
+  "mob.draugr.hurt": {
+    "category": "hostile",
+    "sounds": [
+      "mob/draugr/hurt1",
+	"mob/draugr/hurt2"
+    ]
+  },
+  "mob.draugr.death": {
+    "category": "hostile",
+    "sounds": [
+      "mob/draugr/death"
+    ]
+  }
+}

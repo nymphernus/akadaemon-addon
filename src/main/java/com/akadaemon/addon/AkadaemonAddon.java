@@ -9,10 +9,10 @@ import com.akadaemon.addon.recipes.ThaumcraftAspects;
 import com.akadaemon.addon.recipes.ThaumcraftIntegration;
 import com.akadaemon.addon.recipes.TinkersRecipes;
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -26,7 +26,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
-import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -52,6 +51,12 @@ public class AkadaemonAddon {
     public static Fluid fluidGlacialQuicksilver, fluidEtherealPhoton, fluidRubyFlux;
     public static Fluid fluidIce, fluidSnow, fluidQuicksilver, fluidLapis, fluidGlowstone, fluidAmber, fluidRedstone;
 
+    @SidedProxy(
+            clientSide = "com.akadaemon.addon.handler.ClientProxy",
+            serverSide = "com.akadaemon.addon.handler.CommonProxy"
+    )
+    public static CommonProxy proxy;
+
 
     public static CreativeTabs tabAkadaemon = new CreativeTabs("akadaemon") {
         @Override
@@ -74,6 +79,10 @@ public class AkadaemonAddon {
         registerObjects();
 
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+
+        proxy.registerEntities();
+        proxy.registerTileEntities();
+
         Log(event);
     }
 
@@ -179,10 +188,6 @@ public class AkadaemonAddon {
         reg(wandRodIridiumTitan, "wand_rod_iridium_titan");
         reg(wandCapMythril, "wand_cap_mythril");
 
-        GameRegistry.registerTileEntity(TileThaumTransformer.class, "TileThaumTransformer");
-        GameRegistry.registerTileEntity(TileAmberFiber.class, "TileAmberFiber");
-        GameRegistry.registerTileEntity(TileEntityTitanDrill.class, "TileEntityDrill");
-
         OreDictionary.registerOre("dustCobalt", cobaltDust);
         OreDictionary.registerOre("dustArdite", arditeDust);
         OreDictionary.registerOre("dustEnder", enderDust);
@@ -237,6 +242,8 @@ public class AkadaemonAddon {
 
         net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(new BucketHandler());
         net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(new DurabilityEventHandler());
+
+        proxy.registerRenderers();
     }
 
     @Mod.EventHandler
@@ -248,31 +255,11 @@ public class AkadaemonAddon {
         ThaumcraftAspects.register();
         TinkersRecipes.init();
         if (ConfigHandler.enableOreDump) { OreDump.init(); }
-        net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void Log(FMLPreInitializationEvent event) {
         String side = event.getSide().isClient() ? "CLIENT" : "SERVER";
         logger.info(MODID + " Version: " + VERSION + " | " + side);
         logger.info("Status : Successfully Initialized");
-    }
-
-    @SubscribeEvent
-    @SideOnly(Side.CLIENT)
-    public void onTextureStitch(TextureStitchEvent.Pre event) {
-        if (event.map.getTextureType() == 0) {
-
-            fluidIce.setIcons(event.map.registerIcon(MODID + ":fluids/liquid_ice_still"), event.map.registerIcon(MODID + ":fluids/liquid_ice_flow"));
-            fluidSnow.setIcons(event.map.registerIcon(MODID + ":fluids/liquid_snow_still"), event.map.registerIcon(MODID + ":fluids/liquid_snow_flow"));
-            fluidLapis.setIcons(event.map.registerIcon(MODID + ":fluids/liquid_lapis_still"), event.map.registerIcon(MODID + ":fluids/liquid_lapis_flow"));
-            fluidQuicksilver.setIcons(event.map.registerIcon(MODID + ":fluids/liquid_quicksilver_still"), event.map.registerIcon(MODID + ":fluids/liquid_quicksilver_flow"));
-            fluidAmber.setIcons(event.map.registerIcon(MODID + ":fluids/liquid_amber_still"), event.map.registerIcon(MODID + ":fluids/liquid_samber_flow"));
-            fluidGlowstone.setIcons(event.map.registerIcon(MODID + ":fluids/liquid_glowstone_still"), event.map.registerIcon(MODID + ":fluids/liquid_glowstone_flow"));
-            fluidRedstone.setIcons(event.map.registerIcon(MODID + ":fluids/ruby_flux_still"), event.map.registerIcon(MODID + ":fluids/ruby_flux_flow"));
-
-            fluidEtherealPhoton.setIcons(blockEtherealPhoton.getIcon(0, 0));
-            fluidGlacialQuicksilver.setIcons(blockGlacialQuicksilver.getIcon(0, 0));
-            fluidRubyFlux.setIcons(blockRubyFlux.getIcon(0, 0));
-        }
     }
 }

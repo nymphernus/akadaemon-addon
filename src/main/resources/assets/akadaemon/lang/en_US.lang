@@ -56,6 +56,9 @@ fluid.liquid_amber=Liquid Amber
 fluid.liquid_redstone=Liquid Redstone
 fluid.ruby_flux=Ruby Flux
 
+#Entity
+entity.Draugr.name=Draugr
+
 ic2.mythril_quantum_helmet=Mythril Quantum Helmet
 ic2.mythril_quantum_chest=Mythril Quantum Breastplate
 ic2.mythril_quantum_legs=Mythril Quantum Leggings

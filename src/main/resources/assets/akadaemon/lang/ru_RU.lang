@@ -56,6 +56,9 @@ fluid.liquid_quicksilver=Жидкая ртуть
 fluid.liquid_lapis=Жидкий лазурит
 fluid.liquid_redstone=Жидкий редстоун
 
+#Сущности
+entity.Draugr.name=Драугр
+
 
 ic2.mythril_quantum_helmet=Квант-мифриловый гермошлем
 ic2.mythril_quantum_chest=Квант-мифриловый панцирь

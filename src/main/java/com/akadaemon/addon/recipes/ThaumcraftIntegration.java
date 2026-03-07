@@ -180,9 +180,6 @@ public class ThaumcraftIntegration {
                 new AspectList().add(Aspect.ORDER, 50).add(Aspect.EARTH, 50).add(Aspect.FIRE, 50),
                 "  I", " I ", "I  ", 'I', ExternalItems.iridiumOre);
 
-        if (wandCapMythril == null || wandCapManullyn == null || ingotMythril == null) {
-            System.out.println("CRITICAL ERROR: My items are NULL!");
-        }
         InfusionRecipe recipeInfCap = new InfusionRecipe("AKADAEMON_WAND_INFUSION", new ItemStack(wandCapMythril), 6,
                 new AspectList().add(Aspect.ARMOR, 8).add(Aspect.MAGIC, 32).add(Aspect.METAL, 16).add(Aspect.CRYSTAL, 16), new ItemStack(wandCapManullyn),
                 new ItemStack[] {
