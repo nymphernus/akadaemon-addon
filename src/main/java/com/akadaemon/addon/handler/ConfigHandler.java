@@ -55,7 +55,7 @@ public class ConfigHandler {
 
         String genCat = "Generation_Settings";
         towerGeneration = config.getInt("towerGeneration", genCat,
-                450, 100, 5000, "Draugr Tower spawn chance");
+                450, 100, 5000, "Draugr Tower spawn rarity. Higher value = lower spawn rate. [1 per X chunks]");
 
         if (config.hasChanged()) {
             config.save();
