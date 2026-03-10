@@ -4,6 +4,7 @@ import com.akadaemon.addon.AkadaemonAddon;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -19,6 +20,7 @@ import thaumcraft.common.config.ConfigItems;
 public class EntityDraugr extends EntityZombie implements IRangedAttackMob {
     private EntityAIArrowAttack aiArrowAttack = new EntityAIArrowAttack(this, 1.0D, 20, 60, 15.0F);
     private EntityAIAttackOnCollide aiAttackOnCollide = new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.2D, false);
+    private boolean firstUpdate = true;
 
     public EntityDraugr(World world) {
         super(world);
@@ -34,7 +36,7 @@ public class EntityDraugr extends EntityZombie implements IRangedAttackMob {
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(40.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(50.0D);
 
         if (world != null && !world.isRemote) {
             this.setCombatTask();
@@ -46,7 +48,7 @@ public class EntityDraugr extends EntityZombie implements IRangedAttackMob {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(40.0D);
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.20D);
-        this.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
+        this.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.attackDamage).setBaseValue(5.0D);
     }
 
     public void setCombatTask() {
@@ -142,6 +144,48 @@ public class EntityDraugr extends EntityZombie implements IRangedAttackMob {
         if (this.isBurning() && this.worldObj.isDaytime()) {
             this.extinguish();
         }
+    }
+
+    @Override
+    public IEntityLivingData onSpawnWithEgg(IEntityLivingData data) {
+        data = super.onSpawnWithEgg(data);
+        this.addRandomArmor();
+        this.setCombatTask();
+        return data;
+    }
+
+    @Override
+    public void onUpdate() {
+        super.onUpdate();
+        if (!this.worldObj.isRemote && this.firstUpdate) {
+            this.firstUpdate = false;
+            if (this.getHeldItem() == null) {
+                this.onSpawnWithEgg(null);
+                this.setCombatTask();
+            }
+        }
+    }
+
+    @Override
+    public boolean getCanSpawnHere() {
+        boolean hasSpace = worldObj.checkNoEntityCollision(boundingBox) &&
+                worldObj.getCollidingBoundingBoxes(this, boundingBox).isEmpty() &&
+                !worldObj.isAnyLiquid(boundingBox);
+
+        if (!hasSpace) return false;
+
+        if (this.isValidLightLevel()) {
+            return true;
+        }
+
+        int ix = (int)posX;
+        int iz = (int)posZ;
+        int eerieBiomeId = 194;
+
+        if (worldObj.getBiomeGenForCoords(ix, iz).biomeID == eerieBiomeId) {
+            return true;
+        }
+        return false;
     }
 
     @Override

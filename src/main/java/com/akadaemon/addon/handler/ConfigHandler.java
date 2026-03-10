@@ -16,6 +16,7 @@ public class ConfigHandler {
     public static int solarEu;
     public static int solarVis;
     public static int drillTick;
+    public static int towerGeneration;
 
     public static void init(FMLPreInitializationEvent event) {
         net.minecraftforge.common.config.Configuration config = new net.minecraftforge.common.config.Configuration(event.getSuggestedConfigurationFile());
@@ -51,6 +52,10 @@ public class ConfigHandler {
                 5, 1, 50, "The amount of Vis charged by the solar amulet");
         drillTick = config.getInt("drillTick", balCat,
                 40, 10, 500, "Drill update speed in ticks");
+
+        String genCat = "Generation_Settings";
+        towerGeneration = config.getInt("towerGeneration", genCat,
+                450, 100, 5000, "Draugr Tower spawn chance");
 
         if (config.hasChanged()) {
             config.save();

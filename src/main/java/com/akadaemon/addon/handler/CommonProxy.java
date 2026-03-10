@@ -9,17 +9,32 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.BiomeDictionary;
 
 public class CommonProxy {
     public void registerEntities() {
         int entityID = EntityRegistry.findGlobalUniqueEntityId();
         EntityRegistry.registerGlobalEntityID(EntityDraugr.class, "Draugr", entityID, 0x4682B4, 0x00FFFF);
         EntityRegistry.registerModEntity(EntityDraugr.class, "Draugr", entityID, AkadaemonAddon.instance, 64, 3, true);
+
         for (BiomeGenBase biome : BiomeGenBase.getBiomeGenArray()) {
             if (biome != null) {
-                EntityRegistry.addSpawn(EntityDraugr.class, 25, 1, 2, EnumCreatureType.monster, biome);
+                if (!isForbiddenBiome(biome)) {
+                    EntityRegistry.addSpawn(EntityDraugr.class, 25, 1, 2, EnumCreatureType.monster, biome);
+                }
             }
         }
+    }
+
+    private boolean isForbiddenBiome(BiomeGenBase biome) {
+        if (biome.biomeID == 8 || biome.biomeID == 24) {
+            return true;
+        }
+        if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.NETHER) ||
+                BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.END)) {
+            return true;
+        }
+        return false;
     }
 
     public void registerTileEntities() {

@@ -8,6 +8,7 @@ import com.akadaemon.addon.recipes.MainRecipes;
 import com.akadaemon.addon.recipes.ThaumcraftAspects;
 import com.akadaemon.addon.recipes.ThaumcraftIntegration;
 import com.akadaemon.addon.recipes.TinkersRecipes;
+import com.akadaemon.addon.world.WorldGenerator;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -254,6 +255,8 @@ public class AkadaemonAddon {
         MainRecipes.init();
         ThaumcraftAspects.register();
         TinkersRecipes.init();
+        WorldGenerator.initLoot();
+        GameRegistry.registerWorldGenerator(new WorldGenerator(), 10);
         if (ConfigHandler.enableOreDump) { OreDump.init(); }
     }
 
