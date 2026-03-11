@@ -40,8 +40,10 @@ item.focus_sunstrike.name=Wand Focus: Solar Flare
 item.fried_eggs.name=Fried eggs
 item.flour.name=Flour
 item.barley.name=Barley
+item.barley_seeds.name=Barley seeds
 item.barley_flour.name=Barley flour
 item.barley_bread.name=Barley bread
+tile.barley_crop.name=Barley Crop
 
 # GUI
 gui.titan_drill.depth=Depth

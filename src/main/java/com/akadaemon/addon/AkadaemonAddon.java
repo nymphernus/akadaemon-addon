@@ -29,6 +29,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -43,18 +44,18 @@ import java.util.List;
 public class AkadaemonAddon {
     public static final String MODID = "akadaemon";
     public static final String NAME = "Akadaemon Addon";
-    public static final String VERSION = "1.6.1";
+    public static final String VERSION = "1.7";
     public static final Logger logger = LogManager.getLogger(NAME);
     public static SimpleNetworkWrapper network;
 
     public static Item compositeMod, expansionChip, worldRing, solarAmulet, minerBelt, goldenSchnitzel, bucketGlacialQuicksilver, bucketEtherealPhoton, bucketRubyFlux;
     public static Item cobaltDust, arditeDust, enderDust, iridiumComposite, wandRodIridium, wandCapManullyn, ingotMythril, ingotTitan, ingotAdamantit, wandRodIridiumTitan, wandCapMythril;
     public static Item mythrilQHelmet, mythrilQChest, mythrilQLegs, mythrilQBoots;
-    public static Block thaumTransformer, amberFiber, blockMythril, blockTitan, blockAdamantit, blockGlacialQuicksilver, blockEtherealPhoton, blockRubyFlux, titanDrill;
+    public static Block thaumTransformer, amberFiber, blockMythril, blockTitan, blockAdamantit, blockGlacialQuicksilver, blockEtherealPhoton, blockRubyFlux, titanDrill, barleyCrop;
     public static Fluid fluidGlacialQuicksilver, fluidEtherealPhoton, fluidRubyFlux;
     public static Fluid fluidIce, fluidSnow, fluidQuicksilver, fluidLapis, fluidGlowstone, fluidAmber, fluidRedstone;
     public static Item focusTeleport, focusSunstrike;
-    public static Item friedEggs, wheatFlour, barleyFlour, barleyBread, barley;
+    public static Item friedEggs, wheatFlour, barleyFlour, barleyBread, barley, barleySeeds;
 
     @SidedProxy(
             clientSide = "com.akadaemon.addon.handler.ClientProxy",
@@ -82,6 +83,8 @@ public class AkadaemonAddon {
         initializeBlocks();
         initializeItems();
         registerObjects();
+
+        MinecraftForge.addGrassSeed(new ItemStack(barleySeeds), 20);
 
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 
@@ -117,6 +120,7 @@ public class AkadaemonAddon {
         thaumTransformer = new BlockThaumTransformer();
         amberFiber = new BlockAmberFiber();
         titanDrill = new BlockTitanDrill();
+        barleyCrop = new BlockBarley();
 
         blockGlacialQuicksilver = new BlockFluid(fluidGlacialQuicksilver, Material.water, 6, 20)
                 .setBlockName("glacial_quicksilver_block")
@@ -163,6 +167,7 @@ public class AkadaemonAddon {
         cobaltDust = new ItemDust("cobalt_dust");
         arditeDust = new ItemDust("ardite_dust");
         enderDust = new ItemDust("ender_dust");
+        barleySeeds = new ItemBarleySeeds(barleyCrop);
 
         mythrilQHelmet = new ItemQuantumMythril(0).setUnlocalizedName("mythril_quantum_helmet");
         mythrilQChest = new ItemQuantumMythril(1).setUnlocalizedName("mythril_quantum_chest");
@@ -177,6 +182,7 @@ public class AkadaemonAddon {
         regBlock(thaumTransformer, "thaum_transformer", EnumChatFormatting.AQUA, EnumChatFormatting.RESET);
         regBlock(amberFiber, "amber_fiber", EnumChatFormatting.YELLOW, EnumChatFormatting.RESET);
         regBlock(titanDrill, "titan_drill", EnumChatFormatting.DARK_GRAY, EnumChatFormatting.RESET);
+        regBlock(barleyCrop, "barley_crop",  EnumChatFormatting.WHITE, EnumChatFormatting.RESET);
 
         regBlock(blockGlacialQuicksilver, "glacial_quicksilver_block", EnumChatFormatting.AQUA, EnumChatFormatting.RESET);
         regBlock(blockEtherealPhoton, "ethereal_photon_block", EnumChatFormatting.YELLOW, EnumChatFormatting.RESET);
@@ -209,6 +215,7 @@ public class AkadaemonAddon {
         reg(barley, "barley");
         reg(barleyFlour, "barley_flour");
         reg(barleyBread, "barley_bread");
+        reg(barleySeeds, "barley_seeds");
 
         OreDictionary.registerOre("barley", barley);
         OreDictionary.registerOre("dustCobalt", cobaltDust);
