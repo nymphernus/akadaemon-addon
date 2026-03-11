@@ -37,6 +37,7 @@ public class EntityDraugr extends EntityZombie implements IRangedAttackMob {
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(50.0D);
+        this.setHealth(50.0F);
 
         if (world != null && !world.isRemote) {
             this.setCombatTask();
@@ -141,6 +142,13 @@ public class EntityDraugr extends EntityZombie implements IRangedAttackMob {
             this.entityAge += 2;
         }
         super.onLivingUpdate();
+        if (!this.worldObj.isRemote && this.isEntityAlive()) {
+            if (this.ticksExisted % 80 == 0) {
+                if (this.getHealth() < this.getMaxHealth()) {
+                    this.heal(1.0F);
+                }
+            }
+        }
         if (this.isBurning() && this.worldObj.isDaytime()) {
             this.extinguish();
         }
@@ -150,6 +158,7 @@ public class EntityDraugr extends EntityZombie implements IRangedAttackMob {
     public IEntityLivingData onSpawnWithEgg(IEntityLivingData data) {
         data = super.onSpawnWithEgg(data);
         this.addRandomArmor();
+        this.setHealth(this.getMaxHealth());
         this.setCombatTask();
         return data;
     }

@@ -218,6 +218,8 @@ public class AkadaemonAddon {
         reg(barleySeeds, "barley_seeds");
 
         OreDictionary.registerOre("barley", barley);
+        OreDictionary.registerOre("dustBarley", barleyFlour);
+        OreDictionary.registerOre("dustWheat", wheatFlour);
         OreDictionary.registerOre("dustCobalt", cobaltDust);
         OreDictionary.registerOre("dustArdite", arditeDust);
         OreDictionary.registerOre("dustEnder", enderDust);

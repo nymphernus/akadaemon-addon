@@ -70,15 +70,19 @@ public class MainRecipes {
         addOreDictSmelting(arditeDust, "ingotArdite", 0.5F);
         addOreDictSmelting(cobaltDust, "ingotCobalt", 0.5F);
 
+        if (!OreDictionary.getOres("dustWheat").isEmpty()) {
+            ItemStack result = OreDictionary.getOres("dustWheat").get(0).copy();
+            result.stackSize = 10;
+            ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Blocks.hay_block)), null, result);
+        }
 
-        ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Blocks.hay_block)), null, new ItemStack(wheatFlour, 10));
-
+        for (ItemStack flour : OreDictionary.getOres("dustWheat")) {
+            GameRegistry.addSmelting(flour.getItem(), new ItemStack(Items.bread), 0.35F);
+        }
         ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(barley)), null, new ItemStack(barleyFlour, 1));
-        GameRegistry.addSmelting(wheatFlour, new ItemStack(Items.bread), 0.35F);
         GameRegistry.addSmelting(barleyFlour, new ItemStack(barleyBread), 0.35F);
-        GameRegistry.addRecipe(new net.minecraftforge.oredict.ShapedOreRecipe(new ItemStack(barleyBread),
-                "BBB",
-                'B', "barley"
+        GameRegistry.addRecipe(new net.minecraftforge.oredict.ShapelessOreRecipe(new ItemStack(barleyBread),
+                "barley", "barley", "barley"
         ));
 
 
