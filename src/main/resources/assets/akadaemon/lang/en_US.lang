@@ -35,6 +35,13 @@ item.wand_cap_mythril.name=Mythril-Charged Cap
 item.wand_rod_iridium_titan.name=Titanium-Bound Iridium Rod
 item.Wand.mythril.cap=Mythril-Stabilized
 item.Wand.iridium_titan.rod=Quantum
+item.focus_teleport.name=Wand Focus: Shadow Step
+item.focus_sunstrike.name=Wand Focus: Solar Flare
+item.fried_eggs.name=Fried eggs
+item.flour.name=Flour
+item.barley.name=Barley
+item.barley_flour.name=Barley flour
+item.barley_bread.name=Barley bread
 
 # GUI
 gui.titan_drill.depth=Depth
@@ -159,10 +166,20 @@ tc.research_text.AKADAEMON_FLUIDS=Manipulation of temperature and pressure
 tc.research_page.AKADAEMON_FLUIDS.1=Your research into thermodynamics and alchemy has led to a curious discovery: certain magical substances behave quite unusually under the extreme temperatures of a Smeltery. You have managed to stabilize mercury using ice and awaken amber's energy with light. Below are the precise formulas for these alloys.
 tc.research_page.AKADAEMON_FLUIDS.2=§n§lGlacial Quicksilver Formula:§r<BR><BR>- Molten Ice (500mb)<BR>- Molten Snow (125mb)<BR>- Liquid Quicksilver (250mb)<BR>- Molten Lapis (125mb)<BR><BR>Mix in a Smeltery until a homogeneous mass is obtained.
 tc.research_page.AKADAEMON_FLUIDS.3=§n§lEthereal Photon Formula:§r<BR><BR>- Liquid Glowstone (500mb)<BR>- Liquid Amber (500mb)<BR><BR>The result is unstable, but extremely energy-efficient.
-tc.research_page.AKADAEMON_FLUIDS.4=§n§lActive Redstone Composition:§r<BR><BR>- Liquid Redstone (750mb)<BR>- Liquid Amber (250mb)<BR><BR>The mixing process requires caution — an excess of amber may lead to premature crystallization.
+tc.research_page.AKADAEMON_FLUIDS.4=§n§lRuby Flux Formula:§r<BR><BR>- Liquid Redstone (750mb)<BR>- Liquid Amber (250mb)<BR><BR>The mixing process requires caution — an excess of amber may lead to premature crystallization.
 
 tc.research_name.TITAN_DRILL=Titanium Drill
 tc.research_text.TITAN_DRILL=Grinding metal against the face of reality
 tc.research_page.TITAN_DRILL.1=You've always felt that standard magical tools were too slow for large-scale excavations. By combining the durability of titanium with mechanical power, you have managed to create a device capable of gnawing into the very firmament of the earth. This drill requires a vast amount of energy, but the result is well worth it. You have found a way to empower it with Silk Touch functionality and depth adjustment, making it an indispensable assistant for any master explorer.
+
+tc.research_name.FOCUS_TELEPORT=Shadow Stepping
+tc.research_text.FOCUS_TELEPORT=The art of being in two places at once
+tc.research_page.FOCUS_TELEPORT.1=By studying the nature of the End and its inhabitants, you have realized that space is merely a thin fabric that can be pierced. This wand focus allows you to instantaneously shift your body to the point you are looking at.
+
+tc.research_name.FOCUS_SUNSTRIKE=Solar Flare
+tc.research_text.FOCUS_SUNSTRIKE=The wrath of the celestial body
+tc.research_page.FOCUS_SUNSTRIKE.1=By combining pure fire energy with the structure of crystals, you have crafted a tool capable of summoning a concentrated pillar of solar flame directly from the heavens. This beam knows no mercy: it incinerates everything in a wide radius, passing through any obstacle. A perfect solution for those who prefer to smite their enemies from a safe distance.
+
+
 
 

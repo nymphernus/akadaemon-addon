@@ -1,6 +1,7 @@
 package com.akadaemon.addon;
 
 import com.akadaemon.addon.blocks.*;
+import com.akadaemon.addon.entity.EntityFocusPearl;
 import com.akadaemon.addon.fluids.FluidsSetting;
 import com.akadaemon.addon.handler.*;
 import com.akadaemon.addon.items.*;
@@ -16,6 +17,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -51,6 +53,8 @@ public class AkadaemonAddon {
     public static Block thaumTransformer, amberFiber, blockMythril, blockTitan, blockAdamantit, blockGlacialQuicksilver, blockEtherealPhoton, blockRubyFlux, titanDrill;
     public static Fluid fluidGlacialQuicksilver, fluidEtherealPhoton, fluidRubyFlux;
     public static Fluid fluidIce, fluidSnow, fluidQuicksilver, fluidLapis, fluidGlowstone, fluidAmber, fluidRedstone;
+    public static Item focusTeleport, focusSunstrike;
+    public static Item friedEggs, wheatFlour, barleyFlour, barleyBread, barley;
 
     @SidedProxy(
             clientSide = "com.akadaemon.addon.handler.ClientProxy",
@@ -141,6 +145,16 @@ public class AkadaemonAddon {
         wandRodIridiumTitan = new ItemBase(EnumChatFormatting.GRAY, EnumChatFormatting.BOLD).setUnlocalizedName("wand_rod_iridium_titan").setTextureName(MODID + ":wand_rod_iridium_titan").setCreativeTab(tabAkadaemon);
         wandCapMythril = new ItemBase(EnumChatFormatting.LIGHT_PURPLE, EnumChatFormatting.BOLD).setUnlocalizedName("wand_cap_mythril").setTextureName(MODID + ":wand_cap_mythril").setCreativeTab(tabAkadaemon);
 
+        friedEggs = new ItemFoodBase(4, 0.6F, false, EnumChatFormatting.YELLOW, EnumChatFormatting.RESET).setUnlocalizedName("fried_eggs").setTextureName(MODID + ":fried_eggs");
+
+        wheatFlour = new ItemBase(EnumChatFormatting.GRAY, EnumChatFormatting.RESET).setUnlocalizedName("flour").setTextureName(MODID + ":flour").setCreativeTab(tabAkadaemon);
+        barleyFlour = new ItemBase(EnumChatFormatting.GRAY, EnumChatFormatting.RESET).setUnlocalizedName("barley_flour").setTextureName(MODID + ":barley_flour").setCreativeTab(tabAkadaemon);
+        barley = new ItemBase(EnumChatFormatting.WHITE, EnumChatFormatting.RESET).setUnlocalizedName("barley").setTextureName(MODID + ":barley").setCreativeTab(tabAkadaemon);
+        barleyBread = new ItemFoodBase(6, 0.7F, false, EnumChatFormatting.YELLOW, EnumChatFormatting.RESET).setUnlocalizedName("barley_bread").setTextureName(MODID + ":barley_bread");
+
+
+        focusTeleport = new ItemFocusTeleport();
+        focusSunstrike = new ItemFocusSunstrike();
 
         worldRing = new ItemWorldRing();
         solarAmulet = new ItemSolarAmulet();
@@ -188,7 +202,15 @@ public class AkadaemonAddon {
         reg(bucketRubyFlux, "bucket_ruby_flux");
         reg(wandRodIridiumTitan, "wand_rod_iridium_titan");
         reg(wandCapMythril, "wand_cap_mythril");
+        reg(focusTeleport, "focus_teleport");
+        reg(focusSunstrike, "focus_sunstrike");
+        reg(friedEggs, "fried_eggs");
+        reg(wheatFlour, "wheat_flour");
+        reg(barley, "barley");
+        reg(barleyFlour, "barley_flour");
+        reg(barleyBread, "barley_bread");
 
+        OreDictionary.registerOre("barley", barley);
         OreDictionary.registerOre("dustCobalt", cobaltDust);
         OreDictionary.registerOre("dustArdite", arditeDust);
         OreDictionary.registerOre("dustEnder", enderDust);
@@ -243,6 +265,11 @@ public class AkadaemonAddon {
 
         net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(new BucketHandler());
         net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(new DurabilityEventHandler());
+
+
+        int entityId = EntityRegistry.findGlobalUniqueEntityId();
+        EntityRegistry.registerGlobalEntityID(EntityFocusPearl.class, "FocusPearl", entityId);
+        EntityRegistry.registerModEntity(EntityFocusPearl.class, "FocusPearl", entityId, this, 64, 10, true);
 
         proxy.registerRenderers();
     }

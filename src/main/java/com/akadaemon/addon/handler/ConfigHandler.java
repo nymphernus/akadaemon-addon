@@ -18,6 +18,9 @@ public class ConfigHandler {
     public static int drillTick;
     public static int towerGeneration;
 
+    public static double teleportSpeed, sunstrikeDistance;
+    public static float teleportGravity, sunstrikeDamage;
+
     public static void init(FMLPreInitializationEvent event) {
         net.minecraftforge.common.config.Configuration config = new net.minecraftforge.common.config.Configuration(event.getSuggestedConfigurationFile());
         config.load();
@@ -56,6 +59,20 @@ public class ConfigHandler {
         String genCat = "Generation_Settings";
         towerGeneration = config.getInt("towerGeneration", genCat,
                 450, 100, 5000, "Draugr Tower spawn rarity. Higher value = lower spawn rate. [1 per X chunks]");
+
+        String focusCat = "Focus_Settings";
+        int speedInt = config.getInt("teleportSpeed", focusCat,
+                250, 10, 1000, "Speed of the teleport pearl (Value / 100). Default 250 (2.5)");
+        teleportSpeed = speedInt / 100.0D;
+        int gravityInt = config.getInt("teleportGravity", focusCat,
+                2, 0, 100, "Gravity of the teleport pearl (Value / 100). Default 2 (0.02). 0 = no gravity.");
+        teleportGravity = gravityInt / 100.0F;
+        int dmgInt = config.getInt("sunstrikeDamage", focusCat,
+                10, 1, 50, "Damage dealt by Sunstrike");
+        sunstrikeDamage = (float) dmgInt;
+        int distInt = config.getInt("sunstrikeDistance", focusCat,
+                32, 8, 256, "Max range of Sunstrike focus");
+        sunstrikeDistance = (double) distInt;
 
         if (config.hasChanged()) {
             config.save();

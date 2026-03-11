@@ -170,6 +170,15 @@ public class ThaumcraftIntegration {
                 'T', "blockTitan",
                 'A', "blockAdamantit");
 
+        IArcaneRecipe recipeFocusTeleport = ThaumcraftApi.addArcaneCraftingRecipe("FOCUS_TELEPORT", new ItemStack(focusTeleport),
+                new AspectList().add(Aspect.AIR, 20).add(Aspect.ORDER, 20),
+                "EME", "TFT", "EME",
+                'E', Items.ender_pearl, 'F', ConfigItems.itemFocusPortableHole, 'T', ingotTitan, 'M', "ingotMithril");
+
+        IArcaneRecipe recipeFocusSunstrike = ThaumcraftApi.addArcaneCraftingRecipe("FOCUS_SUNSTRIKE", new ItemStack(focusSunstrike),
+                new AspectList().add(Aspect.FIRE, 50).add(Aspect.ORDER, 30),
+                "AGA", "GIG", "AGA",
+                'I', ConfigItems.itemFocusFire, 'G', ingotAdamantit, 'A', ExternalItems.amber);
 
                 // Палочка
         IArcaneRecipe recipeCap = ThaumcraftApi.addArcaneCraftingRecipe("AKADAEMON_WAND", new ItemStack(wandCapManullyn),
@@ -295,6 +304,23 @@ public class ThaumcraftIntegration {
         new ResearchItem("TINKER_MODS", CAT_ID,
                 new AspectList().add(Aspect.CRAFT, 15).add(Aspect.TOOL, 15).add(Aspect.MINE, 20), 4, 0, 1, new ItemStack(expansionChip))
                 .setPages(new ResearchPage("tc.research_page.TINKER_MODS.1"), new ResearchPage(recipeChip), new ResearchPage(recipeMod)).setParentsHidden("AKADAEMON_WAND").setConcealed().setSecondary().registerResearchItem();
+
+        new ResearchItem("FOCUS_TELEPORT", CAT_ID, new AspectList().add(Aspect.TRAVEL, 20).add(Aspect.AIR, 10), 1, 6, 2, new ItemStack(focusTeleport))
+                .setPages(new ResearchPage("tc.research_page.FOCUS_TELEPORT.1"), new ResearchPage(recipeFocusTeleport))
+                .setParents("AKADAEMON_WAND_INFUSION").setConcealed().setRound().registerResearchItem();
+
+        new ResearchItem("FOCUS_SUNSTRIKE", CAT_ID, new AspectList().add(Aspect.FIRE, 10).add(Aspect.ORDER, 15), 2, 4, 2, new ItemStack(focusSunstrike))
+                .setPages(new ResearchPage("tc.research_page.FOCUS_SUNSTRIKE.1"), new ResearchPage(recipeFocusSunstrike))
+                .setParents("AKADAEMON_WAND_INFUSION").setConcealed().setRound().registerResearchItem();
+
+
+
+
+
+
+
+
+
 
 
         new ResearchItem("AKADAEMON_LORE", CAT_ID,

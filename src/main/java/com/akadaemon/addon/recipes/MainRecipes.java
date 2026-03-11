@@ -63,12 +63,26 @@ public class MainRecipes {
                 'S', "ingotSilver"
         ));
 
+        GameRegistry.addSmelting(Items.egg, new ItemStack(friedEggs), 0.35F);
+
         GameRegistry.addRecipe(new ShapelessOreRecipe(ExternalItems.ingotManullyn, "ingotArdite", "ingotCobalt"));
 
         addOreDictSmelting(arditeDust, "ingotArdite", 0.5F);
         addOreDictSmelting(cobaltDust, "ingotCobalt", 0.5F);
 
-        // Ардитовая и кобальтовая пыль, эндер жемчуг, композит, кожа
+
+        ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Blocks.hay_block)), null, new ItemStack(wheatFlour, 10));
+
+        ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(barley)), null, new ItemStack(barleyFlour, 1));
+        GameRegistry.addSmelting(wheatFlour, new ItemStack(Items.bread), 0.35F);
+        GameRegistry.addSmelting(barleyFlour, new ItemStack(barleyBread), 0.35F);
+        GameRegistry.addRecipe(new net.minecraftforge.oredict.ShapedOreRecipe(new ItemStack(barleyBread),
+                "BBB",
+                'B', "barley"
+        ));
+
+
+
         ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(TinkerWorld.oreSlag, 1, 2)), null, new ItemStack(arditeDust, 2));
         ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(TinkerWorld.oreSlag, 1, 1)), null, new ItemStack(cobaltDust, 2));
 
