@@ -72,7 +72,7 @@ public class MainRecipes {
 
         if (!OreDictionary.getOres("dustWheat").isEmpty()) {
             ItemStack result = OreDictionary.getOres("dustWheat").get(0).copy();
-            result.stackSize = 10;
+            result.stackSize = 9;
             ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Blocks.hay_block)), null, result);
         }
 

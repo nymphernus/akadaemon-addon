@@ -55,6 +55,16 @@ public class ThaumcraftAspects {
         regWildcard(mythrilQChest, new AspectList().add(Aspect.ARMOR, 8).add(Aspect.ENERGY, 10).add(Aspect.FLIGHT, 4));
         regWildcard(mythrilQLegs, new AspectList().add(Aspect.ARMOR, 6).add(Aspect.ENERGY, 8).add(Aspect.TRAVEL, 4));
         regWildcard(mythrilQBoots, new AspectList().add(Aspect.ARMOR, 4).add(Aspect.ENERGY, 6).add(Aspect.TRAVEL, 4));
+
+        reg(barley, new AspectList().add(Aspect.HUNGER, 2).add(Aspect.CROP, 2));
+        reg(barleyBread, new AspectList().add(Aspect.HUNGER, 3).add(Aspect.CROP, 2));
+        reg(barleyFlour, new AspectList().add(Aspect.HUNGER, 1).add(Aspect.CROP, 1).add(Aspect.ENTROPY, 1));
+        reg(wheatFlour, new AspectList().add(Aspect.HUNGER, 1).add(Aspect.CROP, 1).add(Aspect.ENTROPY, 1));
+        reg(friedEggs, new AspectList().add(Aspect.HUNGER, 2).add(Aspect.FLESH, 2));
+        reg(barleySeeds, new AspectList().add(Aspect.PLANT, 1).add(Aspect.EXCHANGE, 1));
+
+        reg(focusTeleport, new AspectList().add(Aspect.TRAVEL, 8).add(Aspect.ELDRITCH, 4).add(Aspect.MAGIC, 4));
+        reg(focusSunstrike, new AspectList().add(Aspect.LIGHT, 8).add(Aspect.FIRE, 4).add(Aspect.WEAPON, 4));
     }
 
     private static void reg(Object item, AspectList aspects) {
