@@ -217,7 +217,8 @@ public class AkadaemonAddon {
         reg(barleyBread, "barley_bread");
         reg(barleySeeds, "barley_seeds");
 
-        OreDictionary.registerOre("barley", barley);
+        OreDictionary.registerOre("cropBarley", barley);
+        OreDictionary.registerOre("seedBarley", barleySeeds);
         OreDictionary.registerOre("dustBarley", barleyFlour);
         OreDictionary.registerOre("dustWheat", wheatFlour);
         OreDictionary.registerOre("dustCobalt", cobaltDust);

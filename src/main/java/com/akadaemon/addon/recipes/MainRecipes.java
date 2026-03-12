@@ -79,10 +79,10 @@ public class MainRecipes {
         for (ItemStack flour : OreDictionary.getOres("dustWheat")) {
             GameRegistry.addSmelting(flour.getItem(), new ItemStack(Items.bread), 0.35F);
         }
-        ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(barley)), null, new ItemStack(barleyFlour, 1));
+        ic2.api.recipe.Recipes.macerator.addRecipe(new ic2.api.recipe.RecipeInputOreDict("cropBarley", 1), null, new ItemStack(barleyFlour, 1));
         GameRegistry.addSmelting(barleyFlour, new ItemStack(barleyBread), 0.35F);
         GameRegistry.addRecipe(new net.minecraftforge.oredict.ShapelessOreRecipe(new ItemStack(barleyBread),
-                "barley", "barley", "barley"
+                "cropBarley", "cropBarley", "cropBarley"
         ));
 
 
