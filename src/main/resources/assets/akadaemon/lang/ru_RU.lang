@@ -44,6 +44,7 @@ item.barley_seeds.name=Семена ячменя
 item.barley_flour.name=Ячменная мука
 item.barley_bread.name=Ячменный хлеб
 tile.barley_crop.name=Урожай ячменя
+item.ore_exchanger.name=Рудный трансмутатор
 
 # GUI
 gui.titan_drill.depth=Глубина

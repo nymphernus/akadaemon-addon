@@ -9,7 +9,7 @@ public class ConfigHandler {
     public static String[] mythrilBlockNames;
     public static String[] adamantitNames;
 
-    public static boolean enableOreDump;
+    public static boolean enableOreDump, ingotTransfer;
 
     public static int amberFiberRadius;
     public static int convertEuVis;
@@ -55,6 +55,8 @@ public class ConfigHandler {
                 5, 1, 50, "The amount of Vis charged by the solar amulet");
         drillTick = config.getInt("drillTick", balCat,
                 40, 10, 500, "Drill update speed in ticks");
+        ingotTransfer = config.getBoolean("ingotTransfer", balCat, true,
+                "If true, ores can be changed through a catalyst.");
 
         String genCat = "Generation_Settings";
         towerGeneration = config.getInt("towerGeneration", genCat,

@@ -44,6 +44,7 @@ item.barley_seeds.name=Barley seeds
 item.barley_flour.name=Barley flour
 item.barley_bread.name=Barley bread
 tile.barley_crop.name=Barley Crop
+item.ore_exchanger.name=Ore exchanger
 
 # GUI
 gui.titan_drill.depth=Depth

@@ -104,6 +104,15 @@ public class TileThaumTransformer extends TileEntity implements IEnergySink, IIn
     }
 
     @Override
+    public void onChunkUnload() {
+        if (isAddedToEnet) {
+            MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent(this));
+            isAddedToEnet = false;
+        }
+        super.onChunkUnload();
+    }
+
+    @Override
     public double injectEnergy(ForgeDirection directionFrom, double amount, double voltage) {
         ItemStack stack = getStackInSlot(0);
         if (stack == null) return amount;

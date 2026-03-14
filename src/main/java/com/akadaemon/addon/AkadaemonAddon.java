@@ -5,10 +5,7 @@ import com.akadaemon.addon.entity.EntityFocusPearl;
 import com.akadaemon.addon.fluids.FluidsSetting;
 import com.akadaemon.addon.handler.*;
 import com.akadaemon.addon.items.*;
-import com.akadaemon.addon.recipes.MainRecipes;
-import com.akadaemon.addon.recipes.ThaumcraftAspects;
-import com.akadaemon.addon.recipes.ThaumcraftIntegration;
-import com.akadaemon.addon.recipes.TinkersRecipes;
+import com.akadaemon.addon.recipes.*;
 import com.akadaemon.addon.world.WorldGenerator;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -56,6 +53,7 @@ public class AkadaemonAddon {
     public static Fluid fluidIce, fluidSnow, fluidQuicksilver, fluidLapis, fluidGlowstone, fluidAmber, fluidRedstone;
     public static Item focusTeleport, focusSunstrike;
     public static Item friedEggs, wheatFlour, barleyFlour, barleyBread, barley, barleySeeds;
+    public  static Item oreExchanger;
 
     @SidedProxy(
             clientSide = "com.akadaemon.addon.handler.ClientProxy",
@@ -140,9 +138,9 @@ public class AkadaemonAddon {
         iridiumComposite = new ItemBase(EnumChatFormatting.LIGHT_PURPLE, EnumChatFormatting.RESET).setUnlocalizedName("iridium_composite").setTextureName(MODID + ":iridium_composite").setCreativeTab(tabAkadaemon);
         wandRodIridium = new ItemBase(EnumChatFormatting.WHITE, EnumChatFormatting.BOLD).setUnlocalizedName("wand_rod_iridium").setTextureName(MODID + ":wand_rod_iridium").setCreativeTab(tabAkadaemon);
         wandCapManullyn = new ItemBase(EnumChatFormatting.DARK_PURPLE, EnumChatFormatting.BOLD).setUnlocalizedName("wand_cap_manullyn").setTextureName(MODID + ":wand_cap_manullyn").setCreativeTab(tabAkadaemon);
-        ingotMythril = new ItemBase(EnumChatFormatting.LIGHT_PURPLE, EnumChatFormatting.BOLD).setUnlocalizedName("mythril_ingot").setTextureName(MODID + ":mythril_ingot").setCreativeTab(tabAkadaemon);
-        ingotTitan = new ItemBase(EnumChatFormatting.GRAY, EnumChatFormatting.BOLD).setUnlocalizedName("titan_ingot").setTextureName(MODID + ":titan_ingot").setCreativeTab(tabAkadaemon);
-        ingotAdamantit = new ItemBase(EnumChatFormatting.RED, EnumChatFormatting.BOLD).setUnlocalizedName("adamantit_ingot").setTextureName(MODID + ":adamantit_ingot").setCreativeTab(tabAkadaemon);
+        ingotMythril = new ItemBase(EnumChatFormatting.LIGHT_PURPLE, EnumChatFormatting.RESET).setUnlocalizedName("mythril_ingot").setTextureName(MODID + ":mythril_ingot").setCreativeTab(tabAkadaemon);
+        ingotTitan = new ItemBase(EnumChatFormatting.GRAY, EnumChatFormatting.RESET).setUnlocalizedName("titan_ingot").setTextureName(MODID + ":titan_ingot").setCreativeTab(tabAkadaemon);
+        ingotAdamantit = new ItemBase(EnumChatFormatting.RED, EnumChatFormatting.RESET).setUnlocalizedName("adamantit_ingot").setTextureName(MODID + ":adamantit_ingot").setCreativeTab(tabAkadaemon);
         bucketGlacialQuicksilver = new ItemBucketBase(blockGlacialQuicksilver, "bucket_glacial_quicksilver", EnumChatFormatting.AQUA);
         bucketEtherealPhoton = new ItemBucketBase(blockEtherealPhoton, "bucket_ethereal_photon", EnumChatFormatting.YELLOW);
         bucketRubyFlux = new ItemBucketBase(blockRubyFlux, "bucket_ruby_flux", EnumChatFormatting.RED);
@@ -156,6 +154,7 @@ public class AkadaemonAddon {
         barley = new ItemBase(EnumChatFormatting.WHITE, EnumChatFormatting.RESET).setUnlocalizedName("barley").setTextureName(MODID + ":barley").setCreativeTab(tabAkadaemon);
         barleyBread = new ItemFoodBase(6, 0.7F, false, EnumChatFormatting.YELLOW, EnumChatFormatting.RESET).setUnlocalizedName("barley_bread").setTextureName(MODID + ":barley_bread");
 
+        oreExchanger = new ItemBase(EnumChatFormatting.DARK_BLUE, EnumChatFormatting.RESET).setUnlocalizedName("ore_exchanger").setTextureName(MODID + ":ore_exchanger").setCreativeTab(tabAkadaemon);
 
         focusTeleport = new ItemFocusTeleport();
         focusSunstrike = new ItemFocusSunstrike();
@@ -216,6 +215,8 @@ public class AkadaemonAddon {
         reg(barleyFlour, "barley_flour");
         reg(barleyBread, "barley_bread");
         reg(barleySeeds, "barley_seeds");
+
+        reg(oreExchanger, "ore_exchanger");
 
         OreDictionary.registerOre("cropBarley", barley);
         OreDictionary.registerOre("seedBarley", barleySeeds);
@@ -292,6 +293,7 @@ public class AkadaemonAddon {
         MainRecipes.init();
         ThaumcraftAspects.register();
         TinkersRecipes.init();
+        OreCompatibility.init();
         WorldGenerator.initLoot();
         GameRegistry.registerWorldGenerator(new WorldGenerator(), 10);
         if (ConfigHandler.enableOreDump) { OreDump.init(); }
