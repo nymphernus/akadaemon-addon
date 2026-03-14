@@ -17,11 +17,10 @@ import static com.akadaemon.addon.AkadaemonAddon.oreExchanger;
 
 public class OreCompatibility {
     public static void init() {
-        ItemStack mainAmber = new ItemStack(ExternalItems.amber.getItem());
         List<ItemStack> allAmbers = OreDictionary.getOres("gemAmber");
         for (ItemStack amber : allAmbers) {
-            if (!OreDictionary.itemMatches(mainAmber, amber, false)) {
-                GameRegistry.addShapelessRecipe(mainAmber, amber);
+            if (!OreDictionary.itemMatches(ExternalItems.amber, amber, false)) {
+                GameRegistry.addShapelessRecipe(ExternalItems.amber, amber);
             }
         }
 
