@@ -13,10 +13,11 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+import thaumcraft.api.IRunicArmor;
 
 import java.util.List;
 
-public class ItemWorldRing extends Item implements IBauble {
+public class ItemWorldRing extends Item implements IBauble, IRunicArmor {
 
     public static ItemWorldRing instance;
 
@@ -32,6 +33,9 @@ public class ItemWorldRing extends Item implements IBauble {
     public String getItemStackDisplayName(ItemStack stack) {
         return EnumChatFormatting.BLUE + super.getItemStackDisplayName(stack);
     }
+
+    @Override
+    public int getRunicCharge(ItemStack stack) { return 4; }
 
     @Override
     public BaubleType getBaubleType(ItemStack itemstack) {

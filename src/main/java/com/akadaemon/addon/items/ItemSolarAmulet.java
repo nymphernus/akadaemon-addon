@@ -14,12 +14,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+import thaumcraft.api.IRunicArmor;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.items.wands.ItemWandCasting;
 
 import java.util.List;
 
-public class ItemSolarAmulet extends Item implements IBauble {
+public class ItemSolarAmulet extends Item implements IBauble, IRunicArmor {
     public ItemSolarAmulet() {
         this.setMaxStackSize(1);
         this.setUnlocalizedName("solar_amulet");
@@ -73,6 +74,9 @@ public class ItemSolarAmulet extends Item implements IBauble {
             ElectricItem.manager.charge(stack, ConfigHandler.solarEu, 4, false, false);
         }
     }
+
+    @Override
+    public int getRunicCharge(ItemStack stack) { return 4; }
 
     @Override
     @SideOnly(Side.CLIENT)

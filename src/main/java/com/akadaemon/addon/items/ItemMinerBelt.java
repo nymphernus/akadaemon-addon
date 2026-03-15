@@ -17,9 +17,11 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import thaumcraft.api.IRunicArmor;
+
 import java.util.List;
 
-public class ItemMinerBelt extends Item implements IBauble {
+public class ItemMinerBelt extends Item implements IBauble, IRunicArmor {
     public ItemMinerBelt() {
         this.setMaxStackSize(1);
         this.setUnlocalizedName("miner_belt");
@@ -40,6 +42,9 @@ public class ItemMinerBelt extends Item implements IBauble {
         }
         return stack;
     }
+
+    @Override
+    public int getRunicCharge(ItemStack stack) { return 4;}
 
     @Override
     public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
