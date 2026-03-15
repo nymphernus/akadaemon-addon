@@ -65,6 +65,8 @@ public class ThaumcraftAspects {
 
         reg(focusTeleport, new AspectList().add(Aspect.TRAVEL, 8).add(Aspect.ELDRITCH, 4).add(Aspect.MAGIC, 4));
         reg(focusSunstrike, new AspectList().add(Aspect.LIGHT, 8).add(Aspect.FIRE, 4).add(Aspect.WEAPON, 4));
+
+        ThaumcraftApi.registerEntityTag("Draugr", new AspectList().add(Aspect.UNDEAD, 10).add(Aspect.EARTH, 5).add(Aspect.WEAPON, 8).add(Aspect.SOUL, 5).add(Aspect.ELDRITCH, 4));
     }
 
     private static void reg(Object item, AspectList aspects) {
