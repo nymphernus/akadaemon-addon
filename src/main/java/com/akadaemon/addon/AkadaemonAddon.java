@@ -220,8 +220,12 @@ public class AkadaemonAddon {
 
         OreDictionary.registerOre("cropBarley", barley);
         OreDictionary.registerOre("seedBarley", barleySeeds);
+        OreDictionary.registerOre("listAllseed", barleySeeds);
         OreDictionary.registerOre("dustBarley", barleyFlour);
         OreDictionary.registerOre("dustWheat", wheatFlour);
+        OreDictionary.registerOre("foodFlour", wheatFlour);
+        OreDictionary.registerOre("foodFlour", barleyFlour);
+        OreDictionary.registerOre("foodBread", barleyBread);
         OreDictionary.registerOre("dustCobalt", cobaltDust);
         OreDictionary.registerOre("dustArdite", arditeDust);
         OreDictionary.registerOre("dustEnder", enderDust);

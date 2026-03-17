@@ -39,7 +39,6 @@ public class ConfigHandler {
         adamantitNames = config.getStringList("adamantitIngot", oreCat,
                 new String[]{"ingotAdamantit", "ingotAdamantium"},
                 "OreDictionary name list for Adamantite");
-
         mythrilBlockNames = config.getStringList("mythrilBlock", oreCat,
                 new String[]{"blockMythril", "blockMithril"},
                 "OreDictionary name list for Mythril Block");
