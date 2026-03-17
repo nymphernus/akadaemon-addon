@@ -65,6 +65,15 @@ public class AkadaemonAddon {
     public static CreativeTabs tabAkadaemon = new CreativeTabs("akadaemon") {
         @Override
         public Item getTabIconItem() { return worldRing; }
+
+        @Override
+        @SideOnly(Side.CLIENT)
+        public void displayAllReleventItems(List list) {
+            super.displayAllReleventItems(list);
+
+            list.add(ThaumcraftIntegration.createWand(ThaumcraftIntegration.WAND_ROD_IRIDIUM, ThaumcraftIntegration.WAND_CAP_MANULLYN));
+            list.add(ThaumcraftIntegration.createWand(ThaumcraftIntegration.WAND_ROD_IRIDIUM_TITAN, ThaumcraftIntegration.WAND_CAP_MYTHRIL));
+        }
     };
 
     @Mod.Instance(MODID)

@@ -364,7 +364,7 @@ public class ThaumcraftIntegration {
 
     }
 
-    private static ItemStack createWand(WandRod rod, WandCap cap) {
+    public static ItemStack createWand(WandRod rod, WandCap cap) {
         ItemStack wand = new ItemStack(ConfigItems.itemWandCasting);
         ((ItemWandCasting) wand.getItem()).setRod(wand, rod);
         ((ItemWandCasting) wand.getItem()).setCap(wand, cap);
