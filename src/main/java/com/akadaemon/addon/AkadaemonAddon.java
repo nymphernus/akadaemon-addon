@@ -26,6 +26,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+import net.minecraftforge.common.ForgeChunkManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
@@ -54,6 +55,7 @@ public class AkadaemonAddon {
     public static Item focusTeleport, focusSunstrike;
     public static Item friedEggs, wheatFlour, barleyFlour, barleyBread, barley, barleySeeds;
     public  static Item oreExchanger;
+    public static Block chunkLoader;
 
     @SidedProxy(
             clientSide = "com.akadaemon.addon.handler.ClientProxy",
@@ -82,6 +84,7 @@ public class AkadaemonAddon {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         ConfigHandler.init(event);
+        ForgeChunkManager.setForcedChunkLoadingCallback(instance, new ChunkLoaderHandler());
 
         network = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
         network.registerMessage(PacketDrillUpdate.Handler.class, PacketDrillUpdate.class, 0, Side.SERVER);
@@ -128,6 +131,7 @@ public class AkadaemonAddon {
         amberFiber = new BlockAmberFiber();
         titanDrill = new BlockTitanDrill();
         barleyCrop = new BlockBarley();
+        chunkLoader = new BlockChunkLoader();
 
         blockGlacialQuicksilver = new BlockFluid(fluidGlacialQuicksilver, Material.water, 6, 20)
                 .setBlockName("glacial_quicksilver_block")
@@ -191,6 +195,8 @@ public class AkadaemonAddon {
         regBlock(amberFiber, "amber_fiber", EnumChatFormatting.YELLOW, EnumChatFormatting.RESET);
         regBlock(titanDrill, "titan_drill", EnumChatFormatting.DARK_GRAY, EnumChatFormatting.RESET);
         regBlock(barleyCrop, "barley_crop",  EnumChatFormatting.WHITE, EnumChatFormatting.RESET);
+        regBlock(chunkLoader, "chunk_loader",  EnumChatFormatting.YELLOW, EnumChatFormatting.RESET);
+        GameRegistry.registerTileEntity(TileEntityChunkLoader.class, "TEChunkLoader");
 
         regBlock(blockGlacialQuicksilver, "glacial_quicksilver_block", EnumChatFormatting.AQUA, EnumChatFormatting.RESET);
         regBlock(blockEtherealPhoton, "ethereal_photon_block", EnumChatFormatting.YELLOW, EnumChatFormatting.RESET);

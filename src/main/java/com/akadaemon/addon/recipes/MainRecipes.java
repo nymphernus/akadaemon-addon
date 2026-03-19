@@ -39,6 +39,16 @@ public class MainRecipes {
                 "MMM",
                 'M', "ingotMithril"));
 
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(chunkLoader),
+                "IDI",
+                "GEG",
+                "IGI",
+                'I', "ingotIron",
+                'G', "ingotGold",
+                'D', "gemDiamond",
+                'E', Items.ender_pearl
+                ));
+
         // Блок Титана
         GameRegistry.addRecipe(new ItemStack(blockTitan),
                 "TTT",
