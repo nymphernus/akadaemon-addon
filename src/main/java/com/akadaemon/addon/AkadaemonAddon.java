@@ -1,7 +1,6 @@
 package com.akadaemon.addon;
 
 import com.akadaemon.addon.blocks.*;
-import com.akadaemon.addon.entity.EntityFocusPearl;
 import com.akadaemon.addon.fluids.FluidsSetting;
 import com.akadaemon.addon.handler.*;
 import com.akadaemon.addon.items.*;
@@ -14,7 +13,6 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -196,7 +194,6 @@ public class AkadaemonAddon {
         regBlock(titanDrill, "titan_drill", EnumChatFormatting.DARK_GRAY, EnumChatFormatting.RESET);
         regBlock(barleyCrop, "barley_crop",  EnumChatFormatting.WHITE, EnumChatFormatting.RESET);
         regBlock(chunkLoader, "chunk_loader",  EnumChatFormatting.YELLOW, EnumChatFormatting.RESET);
-        GameRegistry.registerTileEntity(TileEntityChunkLoader.class, "TEChunkLoader");
 
         regBlock(blockGlacialQuicksilver, "glacial_quicksilver_block", EnumChatFormatting.AQUA, EnumChatFormatting.RESET);
         regBlock(blockEtherealPhoton, "ethereal_photon_block", EnumChatFormatting.YELLOW, EnumChatFormatting.RESET);
@@ -296,11 +293,6 @@ public class AkadaemonAddon {
         net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(new BucketHandler());
         net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(new DurabilityEventHandler());
 
-
-        int entityId = EntityRegistry.findGlobalUniqueEntityId();
-        EntityRegistry.registerGlobalEntityID(EntityFocusPearl.class, "FocusPearl", entityId);
-        EntityRegistry.registerModEntity(EntityFocusPearl.class, "FocusPearl", entityId, this, 64, 10, true);
-
         proxy.registerRenderers();
     }
 
@@ -316,6 +308,7 @@ public class AkadaemonAddon {
         WorldGenerator.initLoot();
         GameRegistry.registerWorldGenerator(new WorldGenerator(), 10);
         if (ConfigHandler.enableOreDump) { OreDump.init(); }
+        CommonProxy.setupSpawning();
     }
 
     private void Log(FMLPreInitializationEvent event) {
