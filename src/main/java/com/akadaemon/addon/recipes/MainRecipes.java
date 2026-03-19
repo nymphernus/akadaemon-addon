@@ -93,6 +93,8 @@ public class MainRecipes {
         ic2.api.recipe.Recipes.compressor.addRecipe(new RecipeInputItemStack(new ItemStack(enderDust, 3)), null, new ItemStack(Items.ender_pearl));
         ic2.api.recipe.Recipes.compressor.addRecipe(new RecipeInputItemStack(new ItemStack(iridiumComposite)), null, ExternalItems.iridiumOre.copy());
         ic2.api.recipe.Recipes.compressor.addRecipe(new RecipeInputItemStack(new ItemStack(Items.rotten_flesh)), null, new ItemStack(Items.leather));
+
+        ic2.api.recipe.Recipes.macerator.addRecipe(new ic2.api.recipe.RecipeInputOreDict("itemSkull", 1), null, new ItemStack(Items.bone, 3));
     }
 
     public static void addOreDictSmelting(Item inputDust, String oreDictName, float xp) {
