@@ -63,6 +63,15 @@ public class MainRecipes {
                 "AAA",
                 'A', ingotAdamantit);
 
+        GameRegistry.addRecipe(new ItemStack(Items.skull, 1, 1),
+                " B ",
+                "CSC",
+                " C ",
+                'B', ExternalItems.netherBone,
+                'C', Items.coal,
+                'S', new ItemStack(Items.skull, 1, 0)
+        );
+
         // Иридиевый композит
         GameRegistry.addRecipe(new net.minecraftforge.oredict.ShapedOreRecipe(new ItemStack(iridiumComposite),
                 "MMM",
