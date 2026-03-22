@@ -1,12 +1,15 @@
 package com.akadaemon.addon.recipes;
 
 import com.akadaemon.addon.ExternalItems;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import ic2.api.recipe.RecipeInputItemStack;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
@@ -14,6 +17,8 @@ import tconstruct.tools.TinkerTools;
 import tconstruct.world.TinkerWorld;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import static com.akadaemon.addon.AkadaemonAddon.*;
 
@@ -114,6 +119,10 @@ public class MainRecipes {
         ic2.api.recipe.Recipes.compressor.addRecipe(new RecipeInputItemStack(new ItemStack(Items.rotten_flesh)), null, new ItemStack(Items.leather));
 
         ic2.api.recipe.Recipes.macerator.addRecipe(new ic2.api.recipe.RecipeInputOreDict("itemSkull", 1), null, new ItemStack(Items.bone, 3));
+
+        if (Loader.isModLoaded("AdvancedSolarPanel")) {
+            fixMTCore();
+        }
     }
 
     public static void addOreDictSmelting(Item inputDust, String oreDictName, float xp) {
@@ -123,5 +132,31 @@ public class MainRecipes {
             output.stackSize = 1;
             GameRegistry.addSmelting(inputDust, output, xp);
         }
+    }
+
+    public static void fixMTCore() {
+        Item thickReflector = GameRegistry.findItem("IC2", "reactorReflectorThick");
+        Item aspCrafting = GameRegistry.findItem("AdvancedSolarPanel", "asp_crafting_items");
+
+        List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
+        Iterator<IRecipe> iterator = recipes.iterator();
+        while (iterator.hasNext()) {
+            ItemStack output = iterator.next().getRecipeOutput();
+            if (output != null && output.getItem() == aspCrafting && output.getItemDamage() == 12) {
+                iterator.remove();
+            }
+        }
+
+        ItemStack glassPane = new ItemStack(aspCrafting, 1, 5);
+        ItemStack coreOutput = new ItemStack(aspCrafting, 1, 12);
+        ItemStack safeReflector = new ItemStack(thickReflector, 1, 32767);
+
+        GameRegistry.addRecipe(coreOutput,
+                "GRG",
+                "G G",
+                "GRG",
+                'G', glassPane,
+                'R', safeReflector
+        );
     }
 }

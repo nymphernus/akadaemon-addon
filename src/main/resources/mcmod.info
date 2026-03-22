@@ -6,7 +6,7 @@
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "https://github.com/nymphernus/akadaemon-addon",
-  "updateUrl": "",
+  "updateUrl": "https://github.com/nymphernus/akadaemon-addon/releases",
   "authorList": ["nymphernus"],
   "credits": "",
   "logoFile": "logo.png",
