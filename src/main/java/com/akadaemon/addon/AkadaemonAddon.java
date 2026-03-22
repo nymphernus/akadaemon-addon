@@ -301,6 +301,7 @@ public class AkadaemonAddon {
         ExternalItems.init();
         ThaumcraftIntegration.init();
         net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(new ThaumcraftIntegration());
+        if (event.getSide().isClient()) {MinecraftForge.EVENT_BUS.register(new TabHandler());}
         MainRecipes.init();
         ThaumcraftAspects.register();
         TinkersRecipes.init();
