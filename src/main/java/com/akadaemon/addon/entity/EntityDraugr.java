@@ -1,6 +1,7 @@
 package com.akadaemon.addon.entity;
 
 import com.akadaemon.addon.AkadaemonAddon;
+import com.akadaemon.addon.ExternalItems;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
@@ -131,6 +132,9 @@ public class EntityDraugr extends EntityZombie implements IRangedAttackMob {
             }
             if (this.rand.nextInt(100) < (10 + lootingLevel * 2)) {
                 this.entityDropItem(new ItemStack(ConfigItems.itemResource, 1, 2), 0.0F);
+            }
+            if (this.rand.nextInt(100) < (5 + lootingLevel)) {
+                this.entityDropItem(ExternalItems.greenHeart, 0.0F);
             }
         }
 

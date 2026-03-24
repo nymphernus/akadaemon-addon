@@ -87,6 +87,13 @@ public class MainRecipes {
                 'S', "ingotSilver"
         ));
 
+        GameRegistry.addRecipe(new ShapelessOreRecipe(ExternalItems.greenHeartCan,
+                ExternalItems.yellowHeartCan,
+                ExternalItems.greenHeart,
+                Items.emerald,
+                ExternalItems.zombieBrain
+        ));
+
         GameRegistry.addSmelting(Items.egg, new ItemStack(friedEggs), 0.35F);
 
         GameRegistry.addRecipe(new ShapelessOreRecipe(ExternalItems.ingotManullyn, "ingotArdite", "ingotCobalt"));
