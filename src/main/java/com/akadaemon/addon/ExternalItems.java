@@ -8,7 +8,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class ExternalItems {
     public static ItemStack emptyBucket;
-    public static ItemStack ingotManullyn, ingotCobalt, ingotArdite, netherBone, greenHeart, greenHeartCan, yellowHeartCan;
+    public static ItemStack ingotManullyn, ingotCobalt, ingotArdite, netherBone, greenHeart, greenHeartCan, yellowHeartCan, yellowHeart;
 
     public static ItemStack iridiumDrill, lapotronCrystal, energyCrystal, jetpack;
 
@@ -16,7 +16,7 @@ public class ExternalItems {
 
     public static ItemStack qHelmet, qChest, qLegs, qBoots;
 
-    public static ItemStack knowledgeFragment, amber, blockTube, blockAmber, thaumIngot, quicksilver, crystalBal, zombieBrain;
+    public static ItemStack knowledgeFragment, amber, blockTube, blockAmber, thaumIngot, quicksilver, crystalBal, zombieBrain, gogglesRevealing;
 
     public static void init() {
         emptyBucket = new ItemStack(Items.bucket);
@@ -30,6 +30,7 @@ public class ExternalItems {
         greenHeart = new ItemStack(heartItem, 1, 5);
         greenHeartCan = new ItemStack(heartItem, 1, 6);
         yellowHeartCan = new ItemStack(heartItem, 1, 4);
+        yellowHeart = new ItemStack(heartItem, 1, 3);
 
         iridiumOre = ic2.api.item.IC2Items.getItem("iridiumOre");
         solarPanel = ic2.api.item.IC2Items.getItem("solarPanel");
@@ -51,12 +52,14 @@ public class ExternalItems {
         Item resourceItem = (Item) Item.itemRegistry.getObject("Thaumcraft:ItemResource");
         Item shardItem = (Item) Item.itemRegistry.getObject("Thaumcraft:ItemShard");
         Item zombieBrainItem = (Item) Item.itemRegistry.getObject("Thaumcraft:ItemZombieBrain");
+        Item gogglesItem = (Item) Item.itemRegistry.getObject("Thaumcraft:ItemGoggles");
         knowledgeFragment = new ItemStack(resourceItem, 1, 9);
         amber = new ItemStack(resourceItem, 1, 6);
         quicksilver = new ItemStack(resourceItem, 1, 3);
         thaumIngot = new ItemStack(resourceItem, 1, 2);
         crystalBal = new ItemStack(shardItem, 1, 6);
         zombieBrain = new ItemStack(zombieBrainItem, 1, 0);
+        gogglesRevealing = new ItemStack(gogglesItem, 1, 0);
 
         blockTube = createStackFromName("Thaumcraft:blockTube", 0);
         blockAmber = createStackFromName("Thaumcraft:blockCosmeticOpaque", 0);

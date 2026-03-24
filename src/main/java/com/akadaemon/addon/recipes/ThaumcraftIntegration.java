@@ -206,6 +206,21 @@ public class ThaumcraftIntegration {
         ThaumcraftApi.getCraftingRecipes().add(recipeInfCap);
         ThaumcraftApi.getCraftingRecipes().add(recipeInfRod);
 
+        InfusionRecipe recipeInfNeural = new InfusionElectricRecipe("NEURAL_INTERFACE", new ItemStack(neuralInterface), 4,
+                new AspectList()
+                        .add(Aspect.SENSES, 16)
+                        .add(Aspect.MIND, 24)
+                        .add(Aspect.TOOL, 8)
+                        .add(Aspect.ENERGY, 8),
+                ExternalItems.gogglesRevealing,
+                new ItemStack[] {
+                        ExternalItems.zombieBrain, new ItemStack(ingotMythril),new ItemStack(ingotMythril),
+                        ExternalItems.advCircuit, ExternalItems.zombieBrain, ExternalItems.advCircuit,
+                        new ItemStack(ingotMythril),new ItemStack(ingotMythril)
+                });
+
+        ThaumcraftApi.getCraftingRecipes().add(recipeInfNeural);
+
         IArcaneRecipe recipeWandMain = ThaumcraftApi.addArcaneCraftingRecipe("AKADAEMON_WAND_INFUSION",
                 createWand(WAND_ROD_IRIDIUM_TITAN, WAND_CAP_MYTHRIL),
                 new AspectList().add(Aspect.ORDER, 100).add(Aspect.ENTROPY, 100).add(Aspect.FIRE, 100)
@@ -312,6 +327,10 @@ public class ThaumcraftIntegration {
         new ResearchItem("FOCUS_SUNSTRIKE", CAT_ID, new AspectList().add(Aspect.FIRE, 10).add(Aspect.ORDER, 15), 2, 4, 2, new ItemStack(focusSunstrike))
                 .setPages(new ResearchPage("tc.research_page.FOCUS_SUNSTRIKE.1"), new ResearchPage(recipeFocusSunstrike))
                 .setParents("AKADAEMON_WAND_INFUSION").setConcealed().setRound().registerResearchItem();
+
+        new ResearchItem("NEURAL_INTERFACE", CAT_ID, new AspectList().add(Aspect.MIND, 10).add(Aspect.SENSES, 10).add(Aspect.ENERGY, 5).add(Aspect.TOOL, 5), -3, 4, 2, new ItemStack(neuralInterface))
+                .setPages(new ResearchPage("tc.research_page.NEURAL_INTERFACE.1"), new ResearchPage(recipeInfNeural))
+                .setParents("AKADAEMON_WAND").setConcealed().setRound().registerResearchItem();
 
 
 

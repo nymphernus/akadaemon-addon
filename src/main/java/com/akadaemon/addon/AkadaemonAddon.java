@@ -52,8 +52,9 @@ public class AkadaemonAddon {
     public static Fluid fluidIce, fluidSnow, fluidQuicksilver, fluidLapis, fluidGlowstone, fluidAmber, fluidRedstone;
     public static Item focusTeleport, focusSunstrike;
     public static Item friedEggs, wheatFlour, barleyFlour, barleyBread, barley, barleySeeds;
-    public  static Item oreExchanger;
+    public static Item oreExchanger;
     public static Block chunkLoader;
+    public static Item neuralInterface;
 
     @SidedProxy(
             clientSide = "com.akadaemon.addon.handler.ClientProxy",
@@ -178,6 +179,7 @@ public class AkadaemonAddon {
         arditeDust = new ItemDust("ardite_dust");
         enderDust = new ItemDust("ender_dust");
         barleySeeds = new ItemBarleySeeds(barleyCrop);
+        neuralInterface = new ItemNeuralInterface();
 
         mythrilQHelmet = new ItemQuantumMythril(0).setUnlocalizedName("mythril_quantum_helmet");
         mythrilQChest = new ItemQuantumMythril(1).setUnlocalizedName("mythril_quantum_chest");
@@ -227,6 +229,7 @@ public class AkadaemonAddon {
         reg(barleyFlour, "barley_flour");
         reg(barleyBread, "barley_bread");
         reg(barleySeeds, "barley_seeds");
+        reg(neuralInterface, "neural_interface");
 
         reg(oreExchanger, "ore_exchanger");
 
@@ -290,8 +293,9 @@ public class AkadaemonAddon {
         tconstruct.library.crafting.ModifyBuilder.registerModifier(new ModInfiniteDurability(new ItemStack[] { new ItemStack(compositeMod) }));
         tconstruct.library.crafting.ModifyBuilder.registerModifier(new ModExtraSlot(new ItemStack[] { new ItemStack(expansionChip) }));
 
-        net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(new BucketHandler());
-        net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(new DurabilityEventHandler());
+        MinecraftForge.EVENT_BUS.register(new BucketHandler());
+        MinecraftForge.EVENT_BUS.register(new DurabilityEventHandler());
+        MinecraftForge.EVENT_BUS.register(new RenderHandler());
 
         proxy.registerRenderers();
     }
@@ -300,7 +304,7 @@ public class AkadaemonAddon {
     public void postInit(FMLPostInitializationEvent event) {
         ExternalItems.init();
         ThaumcraftIntegration.init();
-        net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(new ThaumcraftIntegration());
+        MinecraftForge.EVENT_BUS.register(new ThaumcraftIntegration());
         if (event.getSide().isClient()) {MinecraftForge.EVENT_BUS.register(new TabHandler());}
         MainRecipes.init();
         ThaumcraftAspects.register();

@@ -46,6 +46,7 @@ item.barley_bread.name=Barley bread
 tile.barley_crop.name=Barley Crop
 item.ore_exchanger.name=Ore exchanger
 tile.chunk_loader.name=Chunk loader
+item.neural_interface.name=Neural Interface
 
 # GUI
 gui.titan_drill.depth=Depth
@@ -183,6 +184,10 @@ tc.research_page.FOCUS_TELEPORT.1=By studying the nature of the End and its inha
 tc.research_name.FOCUS_SUNSTRIKE=Solar Flare
 tc.research_text.FOCUS_SUNSTRIKE=The wrath of the celestial body
 tc.research_page.FOCUS_SUNSTRIKE.1=By combining pure fire energy with the structure of crystals, you have crafted a tool capable of summoning a concentrated pillar of solar flame directly from the heavens. This beam knows no mercy: it incinerates everything in a wide radius, passing through any obstacle. A perfect solution for those who prefer to smite their enemies from a safe distance.
+
+tc.research_name.NEURAL_INTERFACE=Neural Interface
+tc.research_text.NEURAL_INTERFACE=Neural dynamics decoding
+tc.research_page.NEURAL_INTERFACE.1=By combining thaumaturgical principles with digital signal processing, you have developed a method for direct neural dynamics decoding. <BR> This interface analyzes the biological activity of nearby entities, projecting their location as energy cores directly onto the retina. <BR> Integrated with Goggles of Revealing, the device can perceive aura nodes, but the complexity of these calculations requires a constant supply of EU energy to maintain sensor operation.
 
 
 

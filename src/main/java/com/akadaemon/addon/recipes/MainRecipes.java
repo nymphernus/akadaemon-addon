@@ -94,6 +94,8 @@ public class MainRecipes {
                 ExternalItems.zombieBrain
         ));
 
+        GameRegistry.addShapelessRecipe(ExternalItems.yellowHeart, ExternalItems.greenHeart);
+
         GameRegistry.addSmelting(Items.egg, new ItemStack(friedEggs), 0.35F);
 
         GameRegistry.addRecipe(new ShapelessOreRecipe(ExternalItems.ingotManullyn, "ingotArdite", "ingotCobalt"));
