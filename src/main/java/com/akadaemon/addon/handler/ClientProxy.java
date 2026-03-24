@@ -14,6 +14,7 @@ public class ClientProxy extends CommonProxy {
     public void registerRenderers() {
         RenderingRegistry.registerEntityRenderingHandler(EntityDraugr.class, new RenderDraugr());
 
+        MinecraftForge.EVENT_BUS.register(new RenderHandler());
         MinecraftForge.EVENT_BUS.register(this);
     }
 

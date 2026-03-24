@@ -295,7 +295,6 @@ public class AkadaemonAddon {
 
         MinecraftForge.EVENT_BUS.register(new BucketHandler());
         MinecraftForge.EVENT_BUS.register(new DurabilityEventHandler());
-        MinecraftForge.EVENT_BUS.register(new RenderHandler());
 
         proxy.registerRenderers();
     }
