@@ -179,8 +179,8 @@ public class AkadaemonAddon {
         arditeDust = new ItemDust("ardite_dust");
         enderDust = new ItemDust("ender_dust");
         barleySeeds = new ItemBarleySeeds(barleyCrop);
-        neuralInterface = new ItemNeuralInterface();
 
+        neuralInterface = new ItemNeuralInterface();
         mythrilQHelmet = new ItemQuantumMythril(0).setUnlocalizedName("mythril_quantum_helmet");
         mythrilQChest = new ItemQuantumMythril(1).setUnlocalizedName("mythril_quantum_chest");
         mythrilQLegs = new ItemQuantumMythril(2).setUnlocalizedName("mythril_quantum_legs");
@@ -229,7 +229,6 @@ public class AkadaemonAddon {
         reg(barleyFlour, "barley_flour");
         reg(barleyBread, "barley_bread");
         reg(barleySeeds, "barley_seeds");
-        reg(neuralInterface, "neural_interface");
 
         reg(oreExchanger, "ore_exchanger");
 

@@ -46,7 +46,6 @@ item.barley_bread.name=Barley bread
 tile.barley_crop.name=Barley Crop
 item.ore_exchanger.name=Ore exchanger
 tile.chunk_loader.name=Chunk loader
-item.neural_interface.name=Neural Interface
 
 # GUI
 gui.titan_drill.depth=Depth
@@ -75,6 +74,7 @@ ic2.mythril_quantum_helmet=Mythril Quantum Helmet
 ic2.mythril_quantum_chest=Mythril Quantum Breastplate
 ic2.mythril_quantum_legs=Mythril Quantum Leggings
 ic2.mythril_quantum_boots=Mythril Quantum Boots
+ic2.neural_interface=Neural Interface
 
 # Tooltips
 tooltip.akadaemon.armor.0=§6Stabilizes the mind and reveals secrets

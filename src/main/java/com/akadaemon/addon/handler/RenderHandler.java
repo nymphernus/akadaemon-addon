@@ -18,12 +18,14 @@ public class RenderHandler {
 
     @SubscribeEvent
     public void onRenderWorldLast(RenderWorldLastEvent event) {
-        EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+        Minecraft mc = Minecraft.getMinecraft();
+        EntityPlayer player = mc.thePlayer;
+        if (player == null) return;
         ItemStack helmet = player.getCurrentArmor(3);
-        if (player != null && player.getCurrentArmor(3) != null &&
-                player.getCurrentArmor(3).getItem() == AkadaemonAddon.neuralInterface) {
-            double radius = 36.0D;
-            if (ic2.api.item.ElectricItem.manager.canUse(helmet, 1)) {
+
+        if (helmet != null && helmet.getItem() == AkadaemonAddon.neuralInterface) {
+            if (helmet.getItemDamage() < helmet.getMaxDamage()) {
+                double radius = 36.0D;
                 List entities = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
                         player.boundingBox.copy().expand(radius, radius, radius));
 

@@ -46,7 +46,6 @@ item.barley_bread.name=Ячменный хлеб
 tile.barley_crop.name=Урожай ячменя
 item.ore_exchanger.name=Рудный трансмутатор
 tile.chunk_loader.name=Загрузчик чанков
-item.neural_interface.name=Нейронный интерфейс
 
 # GUI
 gui.titan_drill.depth=Глубина
@@ -76,6 +75,7 @@ ic2.mythril_quantum_helmet=Квант-мифриловый гермошлем
 ic2.mythril_quantum_chest=Квант-мифриловый панцирь
 ic2.mythril_quantum_legs=Квант-мифриловые кнемиды
 ic2.mythril_quantum_boots=Квант-мифриловые берцы
+ic2.neural_interface=Нейронный интерфейс
 
 # Tooltips
 tooltip.akadaemon.armor.0=§6Стабилизирует разум и открывает тайны
