@@ -42,6 +42,10 @@ public class ItemNeuralInterface extends ItemArmorElectric implements IGoggles, 
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
         super.onArmorTick(world, player, itemStack);
+        if (!world.isRemote) {
+            double energyUsage = (double)1.0F;
+            ic2.api.item.ElectricItem.manager.discharge(itemStack, energyUsage, Integer.MAX_VALUE, true, false, false);
+        }
     }
 
     @Override
