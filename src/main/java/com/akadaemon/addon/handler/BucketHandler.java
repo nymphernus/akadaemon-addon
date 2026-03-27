@@ -1,6 +1,7 @@
 package com.akadaemon.addon.handler;
 
-import com.akadaemon.addon.AkadaemonAddon;
+import com.akadaemon.addon.blocks.ModBlocks;
+import com.akadaemon.addon.items.ModItems;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.Block;
@@ -23,13 +24,13 @@ public class BucketHandler {
         int x = pos.blockX, y = pos.blockY, z = pos.blockZ;
         Block block = event.world.getBlock(x, y, z);
 
-        if (block == AkadaemonAddon.blockGlacialQuicksilver) {
+        if (block == ModBlocks.blockGlacialQuicksilver) {
             event.world.setBlockToAir(x, y, z);
-            return new ItemStack(AkadaemonAddon.bucketGlacialQuicksilver);
+            return new ItemStack(ModItems.bucketGlacialQuicksilver);
         }
-        if (block == AkadaemonAddon.blockEtherealPhoton) {
+        if (block == ModBlocks.blockEtherealPhoton) {
             event.world.setBlockToAir(x, y, z);
-            return new ItemStack(AkadaemonAddon.bucketEtherealPhoton);
+            return new ItemStack(ModItems.bucketEtherealPhoton);
         }
         return null;
     }

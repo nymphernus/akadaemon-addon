@@ -1,9 +1,10 @@
 package com.akadaemon.addon;
 
+import com.akadaemon.addon.items.ModItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import tconstruct.library.modifier.ItemModifier;
 import net.minecraft.util.EnumChatFormatting;
+import tconstruct.library.modifier.ItemModifier;
 
 public class ModExtraSlot extends ItemModifier {
 
@@ -15,7 +16,7 @@ public class ModExtraSlot extends ItemModifier {
     public boolean matches(ItemStack[] recipe, ItemStack tool) {
         boolean hasItem = false;
         for (ItemStack stack : recipe) {
-            if (stack != null && stack.getItem() == AkadaemonAddon.expansionChip) {
+            if (stack != null && stack.getItem() == ModItems.expansionChip) {
                 hasItem = true;
                 break;
             }

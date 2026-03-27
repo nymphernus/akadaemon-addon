@@ -46,6 +46,8 @@ item.barley_bread.name=Barley bread
 tile.barley_crop.name=Barley Crop
 item.ore_exchanger.name=Ore exchanger
 tile.chunk_loader.name=Chunk loader
+tile.compressed_panel.name=Compressed Adamantite Solar Panel
+tile.compressed_super_panel.name=Super-compressed Mythril Solar Panel
 
 # GUI
 gui.titan_drill.depth=Depth
@@ -99,6 +101,8 @@ tooltip.miner_belt.extra=Grants: Haste II and a toggleable Magnet (Shift+RMB).
 
 tooltip.golden_schnitzel.desc=A royal delicacy.
 tooltip.golden_schnitzel.extra=Removes negative effects, restores health, and grants immense strength.
+
+tooltip.solar_output.gen=Energy generation
 
 # Technical
 akadaemon.modifier.unbreakable=Unbreakable
@@ -188,6 +192,14 @@ tc.research_page.FOCUS_SUNSTRIKE.1=By combining pure fire energy with the struct
 tc.research_name.NEURAL_INTERFACE=Neural Interface
 tc.research_text.NEURAL_INTERFACE=Neural dynamics decoding
 tc.research_page.NEURAL_INTERFACE.1=By combining thaumaturgical principles with digital signal processing, you have developed a method for direct neural dynamics decoding. <BR> This interface analyzes the biological activity of nearby entities, projecting their location as energy cores directly onto the retina. <BR> Integrated with Goggles of Revealing, the device can perceive aura nodes, but the complexity of these calculations requires a constant supply of EU energy to maintain sensor operation.
+
+tc.research_name.COMPRESSED_PANEL=Compressed Solar Technology
+tc.research_text.COMPRESSED_PANEL=Packing Light into Matter
+tc.research_page.COMPRESSED_PANEL.1=By applying your knowledge of Adamantite and basic solar principles, you've discovered a way to significantly increase the density of solar cells. By compressing the internal structures, the panel becomes capable of generating much more energy without increasing its size. Its efficiency remains constant regardless of the time of day or weather conditions.
+
+tc.research_name.COMPRESSED_SUPER_PANEL=Super-Compressed Mythril Array
+tc.research_text.COMPRESSED_SUPER_PANEL=Breaking the Solar Limits
+tc.research_page.COMPRESSED_SUPER_PANEL.1=Is it possible to pack even more power into a single block? Using Mythril as a stabilizer and a complex infusion process, you have created a Super-Compressed array. The density of energy within this block is so high that it borders on a spatial anomaly, allowing it to output immense amounts of EU per tick. This is the pinnacle of your solar research.
 
 
 

@@ -1,6 +1,7 @@
 package com.akadaemon.addon.blocks;
 
 import com.akadaemon.addon.AkadaemonAddon;
+import com.akadaemon.addon.items.ModItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockCrops;
@@ -22,12 +23,12 @@ public class BlockBarley extends BlockCrops {
 
     @Override
     protected Item func_149866_i() {
-        return AkadaemonAddon.barley;
+        return ModItems.barley;
     }
 
     @Override
     protected Item func_149865_P() {
-        return AkadaemonAddon.barleySeeds;
+        return ModItems.barleySeeds;
     }
 
     @Override
@@ -35,10 +36,10 @@ public class BlockBarley extends BlockCrops {
         java.util.ArrayList<ItemStack> ret = new java.util.ArrayList<ItemStack>();
 
         if (metadata >= 5) {
-            ret.add(new ItemStack(AkadaemonAddon.barley, 1 + world.rand.nextInt(2)));
-            ret.add(new ItemStack(AkadaemonAddon.barleySeeds, 1 + world.rand.nextInt(3)));
+            ret.add(new ItemStack(ModItems.barley, 1 + world.rand.nextInt(2)));
+            ret.add(new ItemStack(ModItems.barleySeeds, 1 + world.rand.nextInt(3)));
         } else {
-            ret.add(new ItemStack(AkadaemonAddon.barleySeeds, 1));
+            ret.add(new ItemStack(ModItems.barleySeeds, 1));
         }
         return ret;
     }
@@ -55,7 +56,7 @@ public class BlockBarley extends BlockCrops {
                 for (ItemStack stack : items) {
                     if (stack == null || stack.stackSize <= 0) continue;
 
-                    if (!seedUsed && stack.getItem() == AkadaemonAddon.barleySeeds) {
+                    if (!seedUsed && stack.getItem() == ModItems.barleySeeds) {
                         stack.stackSize--;
                         seedUsed = true;
                     }

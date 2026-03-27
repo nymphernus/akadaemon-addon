@@ -49,9 +49,9 @@ public class BlockFluid extends BlockFluidClassic {
             if (targetMeta != 0) {
                 Block result = null;
 
-                boolean hasPhoton = (this == AkadaemonAddon.blockEtherealPhoton || target == AkadaemonAddon.blockEtherealPhoton);
-                boolean hasRedstone = (this == AkadaemonAddon.blockRubyFlux || target == AkadaemonAddon.blockRubyFlux);
-                boolean hasQuicksilver = (this == AkadaemonAddon.blockGlacialQuicksilver || target == AkadaemonAddon.blockGlacialQuicksilver);
+                boolean hasPhoton = (this == ModBlocks.blockEtherealPhoton || target == ModBlocks.blockEtherealPhoton);
+                boolean hasRedstone = (this == ModBlocks.blockRubyFlux || target == ModBlocks.blockRubyFlux);
+                boolean hasQuicksilver = (this == ModBlocks.blockGlacialQuicksilver || target == ModBlocks.blockGlacialQuicksilver);
 
                 if (hasPhoton && hasRedstone) {
                     result = Blocks.netherrack;

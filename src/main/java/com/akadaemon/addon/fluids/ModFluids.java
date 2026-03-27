@@ -3,10 +3,24 @@ package com.akadaemon.addon.fluids;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 
-import static com.akadaemon.addon.AkadaemonAddon.*;
+public class ModFluids {
+    public static Fluid fluidGlacialQuicksilver;
+    public static Fluid fluidEtherealPhoton;
+    public static Fluid fluidRubyFlux;
+    public static Fluid fluidIce;
+    public static Fluid fluidSnow;
+    public static Fluid fluidQuicksilver;
+    public static Fluid fluidLapis;
+    public static Fluid fluidGlowstone;
+    public static Fluid fluidAmber;
+    public static Fluid fluidRedstone;
 
-public class FluidsSetting {
     public static void init() {
+        initializeFluids();
+        registerFluids();
+    }
+
+    private static void initializeFluids() {
         fluidGlacialQuicksilver = new Fluid("glacial_quicksilver").setLuminosity(0).setViscosity(1000).setDensity(1000);
         fluidEtherealPhoton = new Fluid("ethereal_photon").setLuminosity(15).setViscosity(1000).setDensity(1000);
         fluidRubyFlux = new Fluid("ruby_flux").setLuminosity(5).setViscosity(1000).setDensity(1000);
@@ -18,6 +32,9 @@ public class FluidsSetting {
         fluidAmber = new Fluid("liquid_amber").setTemperature(700).setDensity(3000).setViscosity(1000);
         fluidRedstone = new Fluid("liquid_redstone").setTemperature(400).setDensity(1100).setViscosity(1000);
 
+    }
+
+    private static void registerFluids() {
         FluidRegistry.registerFluid(fluidGlacialQuicksilver);
         FluidRegistry.registerFluid(fluidEtherealPhoton);
         FluidRegistry.registerFluid(fluidRubyFlux);
@@ -28,5 +45,7 @@ public class FluidsSetting {
         FluidRegistry.registerFluid(fluidGlowstone);
         FluidRegistry.registerFluid(fluidAmber);
         FluidRegistry.registerFluid(fluidRedstone);
+
+
     }
 }

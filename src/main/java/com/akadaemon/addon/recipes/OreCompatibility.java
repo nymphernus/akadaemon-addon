@@ -1,6 +1,5 @@
 package com.akadaemon.addon.recipes;
 
-import com.akadaemon.addon.AkadaemonAddon;
 import com.akadaemon.addon.ExternalItems;
 import com.akadaemon.addon.handler.ConfigHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -13,7 +12,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.List;
 
-import static com.akadaemon.addon.AkadaemonAddon.oreExchanger;
+import static com.akadaemon.addon.items.ModItems.oreExchanger;
 
 public class OreCompatibility {
     public static void init() {
@@ -32,7 +31,7 @@ public class OreCompatibility {
         }
 
         if (ConfigHandler.ingotTransfer) {
-            AkadaemonAddon.oreExchanger.setContainerItem(AkadaemonAddon.oreExchanger);
+            oreExchanger.setContainerItem(oreExchanger);
             GameRegistry.addRecipe(new ItemStack(oreExchanger),
                     "III", "IGI", " I ",
                     'I', Items.iron_ingot,
@@ -55,7 +54,7 @@ public class OreCompatibility {
                 ItemStack stack = inv.getStackInSlot(i);
                 if (stack == null) continue;
 
-                if (stack.getItem() == AkadaemonAddon.oreExchanger) {
+                if (stack.getItem() == oreExchanger) {
                     if (exchanger != null) return false;
                     exchanger = stack;
                 } else if (isAnyIngot(stack)) {
@@ -81,7 +80,7 @@ public class OreCompatibility {
             int metalSlot = -1;
             for (int i = 0; i < inv.getSizeInventory(); i++) {
                 ItemStack is = inv.getStackInSlot(i);
-                if (is != null && is.getItem() != AkadaemonAddon.oreExchanger) {
+                if (is != null && is.getItem() != oreExchanger) {
                     metalSlot = i;
                     break;
                 }

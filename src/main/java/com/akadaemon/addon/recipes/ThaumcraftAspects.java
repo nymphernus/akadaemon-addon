@@ -7,7 +7,8 @@ import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 
-import static com.akadaemon.addon.AkadaemonAddon.*;
+import static com.akadaemon.addon.blocks.ModBlocks.*;
+import static com.akadaemon.addon.items.ModItems.*;
 
 public class ThaumcraftAspects {
 
@@ -55,6 +56,7 @@ public class ThaumcraftAspects {
         regWildcard(mythrilQChest, new AspectList().add(Aspect.ARMOR, 8).add(Aspect.ENERGY, 10).add(Aspect.FLIGHT, 4));
         regWildcard(mythrilQLegs, new AspectList().add(Aspect.ARMOR, 6).add(Aspect.ENERGY, 8).add(Aspect.TRAVEL, 4));
         regWildcard(mythrilQBoots, new AspectList().add(Aspect.ARMOR, 4).add(Aspect.ENERGY, 6).add(Aspect.TRAVEL, 4));
+        regWildcard(neuralInterface, new AspectList().add(Aspect.ARMOR, 4).add(Aspect.ENERGY, 6).add(Aspect.SENSES, 4).add(Aspect.MIND, 4));
 
         reg(barley, new AspectList().add(Aspect.HUNGER, 2).add(Aspect.CROP, 2));
         reg(barleyBread, new AspectList().add(Aspect.HUNGER, 3).add(Aspect.CROP, 2));

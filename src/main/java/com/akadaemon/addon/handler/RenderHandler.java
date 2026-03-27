@@ -1,6 +1,6 @@
 package com.akadaemon.addon.handler;
 
-import com.akadaemon.addon.AkadaemonAddon;
+import com.akadaemon.addon.items.ModItems;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
@@ -23,7 +23,7 @@ public class RenderHandler {
         if (player == null) return;
         ItemStack helmet = player.getCurrentArmor(3);
 
-        if (helmet != null && helmet.getItem() == AkadaemonAddon.neuralInterface) {
+        if (helmet != null && helmet.getItem() == ModItems.neuralInterface) {
             if (helmet.getItemDamage() < helmet.getMaxDamage()) {
                 double radius = 36.0D;
                 List entities = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class,

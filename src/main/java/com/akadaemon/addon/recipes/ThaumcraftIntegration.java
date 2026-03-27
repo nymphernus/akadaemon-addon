@@ -2,7 +2,10 @@ package com.akadaemon.addon.recipes;
 
 import com.akadaemon.addon.AkadaemonAddon;
 import com.akadaemon.addon.ExternalItems;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -26,7 +29,9 @@ import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
 
-import static com.akadaemon.addon.AkadaemonAddon.*;
+import static com.akadaemon.addon.blocks.ModBlocks.*;
+import static com.akadaemon.addon.items.ModItems.*;
+import static thaumcraft.api.ThaumcraftApi.getCraftingRecipes;
 
 public class ThaumcraftIntegration {
 
@@ -103,10 +108,10 @@ public class ThaumcraftIntegration {
                         ExternalItems.lapotronCrystal, new ItemStack(blockMythril)
                 });
 
-        ThaumcraftApi.getCraftingRecipes().add(recipeQHelmet);
-        ThaumcraftApi.getCraftingRecipes().add(recipeQChest);
-        ThaumcraftApi.getCraftingRecipes().add(recipeQLegs);
-        ThaumcraftApi.getCraftingRecipes().add(recipeQBoots);
+        getCraftingRecipes().add(recipeQHelmet);
+        getCraftingRecipes().add(recipeQChest);
+        getCraftingRecipes().add(recipeQLegs);
+        getCraftingRecipes().add(recipeQBoots);
 
         // Общее
         CrucibleRecipe recipeMythril = ThaumcraftApi.addCrucibleRecipe("TRY_MYTHRIL",
@@ -132,6 +137,27 @@ public class ThaumcraftIntegration {
         IArcaneRecipe recipeKnowledge = ThaumcraftApi.addArcaneCraftingRecipe("KNOWLEDGE_CRAFT", ExternalItems.knowledgeFragment,
                 new AspectList().add(Aspect.ORDER, 5),
                 "GPG", "PBP", "GPG", 'G', Items.gold_nugget, 'P', enderDust, 'B', Items.paper);
+
+
+        Object basePanel = ExternalItems.solarPanel;
+        if (Loader.isModLoaded("AdvancedSolarPanel")) {
+            Block aspBlock = GameRegistry.findBlock("AdvancedSolarPanel", "BlockAdvSolarPanel");
+            if (aspBlock != null) {
+                basePanel = new ItemStack(aspBlock, 1, 2);
+            }
+        }
+        IArcaneRecipe recipePanel = ThaumcraftApi.addArcaneCraftingRecipe("COMPRESSED_PANEL", new ItemStack(compressedPanel),
+                new AspectList().add(Aspect.FIRE, 20).add(Aspect.ORDER, 20),
+                "AAA", "PAP", "AAA",
+                'A', blockAdamantit, 'P', basePanel);
+        InfusionRecipe recipeSuperPanel = new InfusionElectricRecipe("COMPRESSED_SUPER_PANEL", new ItemStack(compressedSuperPanel), 3,
+                new AspectList().add(Aspect.ENERGY, 64).add(Aspect.CRYSTAL, 32).add(Aspect.METAL, 48).add(Aspect.VOID, 16), new ItemStack(compressedPanel),
+                new ItemStack[] {
+                        new ItemStack(compressedPanel),new ItemStack(blockMythril),new ItemStack(compressedPanel),
+                        new ItemStack(blockMythril), new ItemStack(compressedPanel),new ItemStack(blockMythril),
+                        new ItemStack(compressedPanel), new ItemStack(blockMythril)
+                });
+        getCraftingRecipes().add(recipeSuperPanel);
 
         // Аксессуары
         IArcaneRecipe recipeRing = ThaumcraftApi.addArcaneCraftingRecipe("WORLD_RING", new ItemStack(worldRing),
@@ -203,8 +229,8 @@ public class ThaumcraftIntegration {
                         new ItemStack(ingotTitan), ExternalItems.crystalBal, new ItemStack(ingotTitan), ExternalItems.crystalBal
                 });
 
-        ThaumcraftApi.getCraftingRecipes().add(recipeInfCap);
-        ThaumcraftApi.getCraftingRecipes().add(recipeInfRod);
+        getCraftingRecipes().add(recipeInfCap);
+        getCraftingRecipes().add(recipeInfRod);
 
         InfusionRecipe recipeInfNeural = new InfusionElectricRecipe("NEURAL_INTERFACE", new ItemStack(neuralInterface), 4,
                 new AspectList()
@@ -219,7 +245,7 @@ public class ThaumcraftIntegration {
                         new ItemStack(ingotMythril),new ItemStack(ingotMythril)
                 });
 
-        ThaumcraftApi.getCraftingRecipes().add(recipeInfNeural);
+        getCraftingRecipes().add(recipeInfNeural);
 
         IArcaneRecipe recipeWandMain = ThaumcraftApi.addArcaneCraftingRecipe("AKADAEMON_WAND_INFUSION",
                 createWand(WAND_ROD_IRIDIUM_TITAN, WAND_CAP_MYTHRIL),
@@ -332,7 +358,14 @@ public class ThaumcraftIntegration {
                 .setPages(new ResearchPage("tc.research_page.NEURAL_INTERFACE.1"), new ResearchPage(recipeInfNeural))
                 .setParents("AKADAEMON_WAND").setConcealed().setRound().registerResearchItem();
 
-
+        new ResearchItem("COMPRESSED_PANEL", CAT_ID,
+                new AspectList().add(Aspect.CRYSTAL, 8).add(Aspect.ORDER, 8).add(Aspect.ENERGY, 12).add(Aspect.LIGHT, 10), -3, -4, 4, new ItemStack(compressedPanel))
+                .setPages(new ResearchPage("tc.research_page.COMPRESSED_PANEL.1"), new ResearchPage(recipePanel))
+                .setParents("SOLAR_AMULET").setRound().setConcealed().registerResearchItem();
+        new ResearchItem("COMPRESSED_SUPER_PANEL", CAT_ID,
+                new AspectList().add(Aspect.VOID, 15).add(Aspect.METAL, 12).add(Aspect.ENERGY, 20).add(Aspect.TOOL, 10), -3, -6, 4, new ItemStack(compressedSuperPanel))
+                .setPages(new ResearchPage("tc.research_page.COMPRESSED_SUPER_PANEL.1"), new ResearchPage(recipeSuperPanel))
+                .setParents("COMPRESSED_PANEL").setRound().setSpecial().setConcealed().registerResearchItem();
 
 
 
@@ -371,7 +404,7 @@ public class ThaumcraftIntegration {
 
         new ResearchItem("AKADAEMON_FLUIDS", CAT_ID,
                 new AspectList(),
-                4, -2,0, new ItemStack(AkadaemonAddon.bucketGlacialQuicksilver))
+                4, -2,0, new ItemStack(bucketGlacialQuicksilver))
                 .setSecondary()
                 .setAutoUnlock()
                 .setPages(

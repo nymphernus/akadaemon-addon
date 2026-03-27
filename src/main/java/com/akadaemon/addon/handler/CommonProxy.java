@@ -1,10 +1,7 @@
 package com.akadaemon.addon.handler;
 
 import com.akadaemon.addon.AkadaemonAddon;
-import com.akadaemon.addon.blocks.TileAmberFiber;
-import com.akadaemon.addon.blocks.TileEntityChunkLoader;
-import com.akadaemon.addon.blocks.TileEntityTitanDrill;
-import com.akadaemon.addon.blocks.TileThaumTransformer;
+import com.akadaemon.addon.blocks.*;
 import com.akadaemon.addon.entity.EntityDraugr;
 import com.akadaemon.addon.entity.EntityFocusPearl;
 import cpw.mods.fml.common.registry.EntityRegistry;
@@ -46,6 +43,7 @@ public class CommonProxy {
         GameRegistry.registerTileEntity(TileAmberFiber.class, "TileAmberFiber");
         GameRegistry.registerTileEntity(TileEntityTitanDrill.class, "TileEntityDrill");
         GameRegistry.registerTileEntity(TileEntityChunkLoader.class, "TEChunkLoader");
+        GameRegistry.registerTileEntity(TileSolarPanel.class, "TileSolarPanel");
     }
 
     public void registerRenderers() {}

@@ -20,24 +20,25 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.akadaemon.addon.AkadaemonAddon.*;
+import static com.akadaemon.addon.blocks.ModBlocks.*;
+import static com.akadaemon.addon.items.ModItems.*;
 
 
 public class MainRecipes {
     public static void init() {
-        // Шницель
+
         GameRegistry.addShapelessRecipe(new ItemStack(goldenSchnitzel), Blocks.gold_block, Items.cooked_beef);
-        // Слиток алюмита
+
         GameRegistry.addRecipe(new net.minecraftforge.oredict.ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 3, 15),
                 "ingotAluminum", "ingotIron", Blocks.obsidian));
-        // Эндер пыль
+
         GameRegistry.addRecipe(new ItemStack(enderDust, 9),
                 "RLR", "LAL", "RLR",
                 'R', Items.redstone,
                 'L', ExternalItems.dustLapis,
                 'A', ExternalItems.dustDiamond
         );
-        // Блок Мифрила
+
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockMythril),
                 "MMM",
                 "MMM",
@@ -54,14 +55,12 @@ public class MainRecipes {
                 'E', Items.ender_pearl
                 ));
 
-        // Блок Титана
         GameRegistry.addRecipe(new ItemStack(blockTitan),
                 "TTT",
                 "TTT",
                 "TTT",
                 'T', ingotTitan);
 
-        // Блок Адамантита
         GameRegistry.addRecipe(new ItemStack(blockAdamantit),
                 "AAA",
                 "AAA",
@@ -77,7 +76,6 @@ public class MainRecipes {
                 'S', new ItemStack(Items.skull, 1, 0)
         );
 
-        // Иридиевый композит
         GameRegistry.addRecipe(new net.minecraftforge.oredict.ShapedOreRecipe(new ItemStack(iridiumComposite),
                 "MMM",
                 "TTT",

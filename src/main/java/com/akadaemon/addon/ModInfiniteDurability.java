@@ -1,5 +1,6 @@
 package com.akadaemon.addon;
 
+import com.akadaemon.addon.items.ModItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
@@ -15,7 +16,7 @@ public class ModInfiniteDurability extends ItemModifier {
     public boolean matches(ItemStack[] recipe, ItemStack tool) {
         boolean hasItem = false;
         for (ItemStack stack : recipe) {
-            if (stack != null && stack.getItem() == AkadaemonAddon.compositeMod) {
+            if (stack != null && stack.getItem() == ModItems.compositeMod) {
                 hasItem = true;
                 break;
             }
