@@ -31,7 +31,7 @@ import java.util.List;
 public class AkadaemonAddon {
     public static final String MODID = "akadaemon";
     public static final String NAME = "Akadaemon Addon";
-    public static final String VERSION = "1.8.1";
+    public static final String VERSION = "1.8.2";
     public static final Logger logger = LogManager.getLogger(NAME);
     public static SimpleNetworkWrapper network;
 
@@ -57,7 +57,7 @@ public class AkadaemonAddon {
         public void displayAllReleventItems(List list) {
             super.displayAllReleventItems(list);
 
-            list.add(ThaumcraftIntegration.createWand(ThaumcraftIntegration.WAND_ROD_IRIDIUM, ThaumcraftIntegration.WAND_CAP_MANULLYN));
+            list.add(ThaumcraftIntegration.createWand(ThaumcraftIntegration.WAND_ROD_IRIDIUM, ThaumcraftIntegration.WAND_CAP_MANYULLYN));
             list.add(ThaumcraftIntegration.createWand(ThaumcraftIntegration.WAND_ROD_IRIDIUM_TITAN, ThaumcraftIntegration.WAND_CAP_MYTHRIL));
         }
     };

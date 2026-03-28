@@ -3,6 +3,7 @@ package com.akadaemon.addon.items;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import com.akadaemon.addon.AkadaemonAddon;
+import com.akadaemon.addon.handler.ReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.EntityLivingBase;
@@ -45,9 +46,33 @@ public class ItemWorldRing extends Item implements IBauble, IRunicArmor {
     @Override
     public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
         if (!player.worldObj.isRemote) {
-            player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 200, 0, true));
-            player.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 200, 0, true));
-            player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 200, 0, true));
+            ReflectionHelper.setImmuneToFire(player, true);
+            if (player.isBurning()) {
+                player.extinguish();
+            }
+
+            if (player.ticksExisted % 20 == 0) {
+                player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 200, 0, true));
+                player.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 200, 0, true));
+            }
+        }
+    }
+
+    @Override
+    public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
+        if (!player.worldObj.isRemote) {
+            if (!player.isPotionActive(Potion.fireResistance)) {
+                ReflectionHelper.setImmuneToFire(player, false);
+            }
+            player.removePotionEffect(Potion.nightVision.id);
+            player.removePotionEffect(Potion.waterBreathing.id);
+        }
+    }
+
+    @Override
+    public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+        if (!player.worldObj.isRemote) {
+            ReflectionHelper.setImmuneToFire(player, true);
         }
     }
 
@@ -58,8 +83,6 @@ public class ItemWorldRing extends Item implements IBauble, IRunicArmor {
         list.add(EnumChatFormatting.GOLD + StatCollector.translateToLocal("tooltip.world_ring.extra"));
     }
 
-    @Override public void onEquipped(ItemStack itemstack, EntityLivingBase player) {}
-    @Override public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {}
     @Override public boolean canEquip(ItemStack itemstack, EntityLivingBase player) { return true; }
     @Override public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) { return true; }
 }

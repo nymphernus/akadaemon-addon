@@ -13,7 +13,7 @@ import static com.akadaemon.addon.items.ModItems.*;
 public class ThaumcraftAspects {
 
     public static void register() {
-        ThaumcraftApi.registerObjectTag(ExternalItems.ingotManullyn, new AspectList().add(Aspect.METAL, 3).add(Aspect.CRYSTAL, 2).add(Aspect.ENTROPY, 1));
+        ThaumcraftApi.registerObjectTag(ExternalItems.ingotManyullyn, new AspectList().add(Aspect.METAL, 3).add(Aspect.CRYSTAL, 2).add(Aspect.ENTROPY, 1));
         ThaumcraftApi.registerObjectTag(ExternalItems.ingotCobalt, new AspectList().add(Aspect.METAL, 3).add(Aspect.CRYSTAL, 2).add(Aspect.ORDER, 1));
         ThaumcraftApi.registerObjectTag(ExternalItems.ingotArdite, new AspectList().add(Aspect.METAL, 3).add(Aspect.CRYSTAL, 2).add(Aspect.FIRE, 1));
         reg(ingotMythril, new AspectList().add(Aspect.METAL, 3).add(Aspect.MAGIC, 2).add(Aspect.ENTROPY, 1).add(Aspect.CRYSTAL, 1));
@@ -34,7 +34,7 @@ public class ThaumcraftAspects {
         reg(titanDrill, new AspectList().add(Aspect.MECHANISM, 12).add(Aspect.METAL, 10).add(Aspect.MINE, 15).add(Aspect.ENERGY, 6));
 
         reg(wandRodIridium, new AspectList().add(Aspect.METAL, 4).add(Aspect.ENERGY, 4).add(Aspect.TOOL, 2));
-        reg(wandCapManullyn, new AspectList().add(Aspect.METAL, 2).add(Aspect.WEAPON, 2).add(Aspect.DARKNESS, 2));
+        reg(wandCapManyullyn, new AspectList().add(Aspect.METAL, 2).add(Aspect.WEAPON, 2).add(Aspect.DARKNESS, 2));
         reg(wandRodIridiumTitan, new AspectList().add(Aspect.METAL, 6).add(Aspect.ENERGY, 4).add(Aspect.TOOL, 3));
         reg(wandCapMythril, new AspectList().add(Aspect.METAL, 3).add(Aspect.WEAPON, 2).add(Aspect.LIGHT, 3));
 

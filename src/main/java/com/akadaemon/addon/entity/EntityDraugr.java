@@ -2,6 +2,7 @@ package com.akadaemon.addon.entity;
 
 import com.akadaemon.addon.AkadaemonAddon;
 import com.akadaemon.addon.ExternalItems;
+import com.akadaemon.addon.items.ModItems;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
@@ -98,18 +99,43 @@ public class EntityDraugr extends EntityZombie implements IRangedAttackMob {
             this.setCurrentItemOrArmor(0, new ItemStack(ConfigItems.itemBowBone));
         }
         if (this.rand.nextFloat() < 0.15F) {
-            int piece = this.rand.nextInt(4);
-            switch(piece) {
-                case 0: this.setCurrentItemOrArmor(4, new ItemStack(ConfigItems.itemHelmetThaumium)); break;
-                case 1: this.setCurrentItemOrArmor(3, new ItemStack(ConfigItems.itemChestThaumium)); break;
-                case 2: this.setCurrentItemOrArmor(2, new ItemStack(ConfigItems.itemLegsThaumium)); break;
-                case 3: this.setCurrentItemOrArmor(1, new ItemStack(ConfigItems.itemBootsThaumium)); break;
+            int tier = this.rand.nextInt(3);
+            int piecesToWear = 1 + this.rand.nextInt(4);
+
+            for (int i = 0; i < piecesToWear; i++) {
+                int slot = 1 + this.rand.nextInt(4);
+
+                ItemStack armorPiece = getArmorByTierAndSlot(tier, slot);
+                if (armorPiece != null) {
+                    this.setCurrentItemOrArmor(slot, armorPiece);
+                }
             }
         }
         for (int i = 0; i < 5; i++) {
             this.equipmentDropChances[i] = 0.05F;
         }
         this.setCombatTask();
+    }
+
+    private ItemStack getArmorByTierAndSlot(int tier, int slot) {
+        switch (tier) {
+            case 1:
+                if (slot == 4) return new ItemStack(ModItems.manyullynHelmet);
+                if (slot == 3) return new ItemStack(ModItems.manyullynChest);
+                if (slot == 2) return new ItemStack(ModItems.manyullynLegs);
+                if (slot == 1) return new ItemStack(ModItems.manyullynBoots);
+            case 2:
+                if (slot == 4) return new ItemStack(ModItems.titanHelmet);
+                if (slot == 3) return new ItemStack(ModItems.titanChest);
+                if (slot == 2) return new ItemStack(ModItems.titanLegs);
+                if (slot == 1) return new ItemStack(ModItems.titanBoots);
+            default:
+                if (slot == 4) return new ItemStack(ConfigItems.itemHelmetThaumium);
+                if (slot == 3) return new ItemStack(ConfigItems.itemChestThaumium);
+                if (slot == 2) return new ItemStack(ConfigItems.itemLegsThaumium);
+                if (slot == 1) return new ItemStack(ConfigItems.itemBootsThaumium);
+        }
+        return null;
     }
 
     @Override

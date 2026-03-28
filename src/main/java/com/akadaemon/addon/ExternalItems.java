@@ -8,7 +8,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class ExternalItems {
     public static ItemStack emptyBucket;
-    public static ItemStack ingotManullyn, ingotCobalt, ingotArdite, netherBone, greenHeart, greenHeartCan, yellowHeartCan, yellowHeart;
+    public static ItemStack ingotManyullyn, ingotCobalt, ingotArdite, netherBone, greenHeart, greenHeartCan, yellowHeartCan, yellowHeart;
 
     public static ItemStack iridiumDrill, lapotronCrystal, energyCrystal, jetpack;
 
@@ -23,7 +23,7 @@ public class ExternalItems {
 
         Item tinkerMaterials = GameRegistry.findItem("TConstruct", "materials");
         Item heartItem = GameRegistry.findItem("TConstruct", "heartCanister");
-        ingotManullyn = new ItemStack(tinkerMaterials, 1, 5);
+        ingotManyullyn = new ItemStack(tinkerMaterials, 1, 5);
         ingotCobalt = new ItemStack(tinkerMaterials, 1, 3);
         ingotArdite = new ItemStack(tinkerMaterials, 1, 4);
         netherBone = new ItemStack(tinkerMaterials, 1, 8);

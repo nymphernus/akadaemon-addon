@@ -51,8 +51,9 @@ public class ItemMinerBelt extends Item implements IBauble, IRunicArmor {
         if (player instanceof EntityPlayer) {
             EntityPlayer p = (EntityPlayer) player;
 
-            p.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 200, 1, true));
-
+            if (p.ticksExisted % 20 == 0) {
+                p.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 200, 1, true));
+            }
             if (itemstack.hasTagCompound() && itemstack.getTagCompound().getBoolean("MagnetOn")) {
                 List<EntityItem> items = p.worldObj.getEntitiesWithinAABB(EntityItem.class, p.boundingBox.expand(7.0D, 7.0D, 7.0D));
                 for (EntityItem item : items) {
@@ -61,6 +62,13 @@ public class ItemMinerBelt extends Item implements IBauble, IRunicArmor {
                     }
                 }
             }
+        }
+    }
+
+    @Override
+    public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
+        if (!player.worldObj.isRemote) {
+            player.removePotionEffect(Potion.digSpeed.id);
         }
     }
 
@@ -84,7 +92,6 @@ public class ItemMinerBelt extends Item implements IBauble, IRunicArmor {
 
     @Override public BaubleType getBaubleType(ItemStack itemstack) { return BaubleType.BELT; }
     @Override public void onEquipped(ItemStack itemstack, EntityLivingBase player) {}
-    @Override public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {}
     @Override public boolean canEquip(ItemStack itemstack, EntityLivingBase player) { return true; }
     @Override public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) { return true; }
 }

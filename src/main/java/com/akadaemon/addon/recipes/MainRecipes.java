@@ -1,6 +1,7 @@
 package com.akadaemon.addon.recipes;
 
 import com.akadaemon.addon.ExternalItems;
+import com.akadaemon.addon.items.ModItems;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import ic2.api.recipe.RecipeInputItemStack;
@@ -31,6 +32,11 @@ public class MainRecipes {
 
         GameRegistry.addRecipe(new net.minecraftforge.oredict.ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 3, 15),
                 "ingotAluminum", "ingotIron", Blocks.obsidian));
+
+        GameRegistry.addRecipe(new net.minecraftforge.oredict.ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 3, 3),
+                "ingotSilver", "ingotObsidian"));
+        GameRegistry.addRecipe(new net.minecraftforge.oredict.ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 3, 4),
+                "ingotAlumite", "ingotBronze"));
 
         GameRegistry.addRecipe(new ItemStack(enderDust, 9),
                 "RLR", "LAL", "RLR",
@@ -96,7 +102,7 @@ public class MainRecipes {
 
         GameRegistry.addSmelting(Items.egg, new ItemStack(friedEggs), 0.35F);
 
-        GameRegistry.addRecipe(new ShapelessOreRecipe(ExternalItems.ingotManullyn, "ingotArdite", "ingotCobalt"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(ExternalItems.ingotManyullyn, "ingotArdite", "ingotCobalt"));
 
         addOreDictSmelting(arditeDust, "ingotArdite", 0.5F);
         addOreDictSmelting(cobaltDust, "ingotCobalt", 0.5F);
@@ -130,6 +136,19 @@ public class MainRecipes {
         if (Loader.isModLoaded("AdvancedSolarPanel")) {
             fixMTCore();
         }
+
+        registerArmorRecipes("ingotManyullyn",
+                ModItems.manyullynHelmet, ModItems.manyullynChest,
+                ModItems.manyullynLegs, ModItems.manyullynBoots);
+        registerArmorRecipes("ingotTitan",
+                ModItems.titanHelmet, ModItems.titanChest,
+                ModItems.titanLegs, ModItems.titanBoots);
+        registerArmorRecipes("ingotAdamantit",
+                ModItems.adamantitHelmet, ModItems.adamantitChest,
+                ModItems.adamantitLegs, ModItems.adamantitBoots);
+        registerArmorRecipes("ingotMythril",
+                ModItems.mythrilHelmet, ModItems.mythrilChest,
+                ModItems.mythrilLegs, ModItems.mythrilBoots);
     }
 
     public static void addOreDictSmelting(Item inputDust, String oreDictName, float xp) {
@@ -165,5 +184,11 @@ public class MainRecipes {
                 'G', glassPane,
                 'R', safeReflector
         );
+    }
+    public static void registerArmorRecipes(Object ingot, Item helmet, Item chest, Item legs, Item boots) {
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(helmet), "III", "I I", 'I', ingot));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(chest), "I I", "III", "III", 'I', ingot));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(legs), "III", "I I", "I I", 'I', ingot));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(boots), "I I", "I I", 'I', ingot));
     }
 }

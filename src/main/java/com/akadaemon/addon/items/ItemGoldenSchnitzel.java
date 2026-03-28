@@ -26,7 +26,7 @@ public class ItemGoldenSchnitzel extends ItemFood {
     @Override
     protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
         if (!world.isRemote) {
-            player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 2000, 1, true));
+            player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 1000, 1, true));
             player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 100, 2, true));
         }
     }

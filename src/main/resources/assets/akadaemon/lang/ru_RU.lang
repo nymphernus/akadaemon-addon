@@ -14,9 +14,9 @@ item.ardite_dust.name=Ардитовая пыль
 item.ender_dust.name=Пыль Края
 item.iridium_composite.name=Иридиевый композит
 tile.amber_fiber.name=Янтарное волокно
-item.wand_cap_manullyn.name=Мануллиновый наконечник
+item.wand_cap_manyullyn.name=Мануллиновый наконечник
 item.wand_rod_iridium.name=Иридиевый стержень
-item.Wand.manullyn.cap=Окаймленный Мануллином
+item.Wand.manyullyn.cap=Окаймленный Мануллином
 item.Wand.iridium.rod=Иридиевый
 item.mythril_ingot.name=Мифриловый слиток
 tile.block_mythril.name=Мифриловый блок
@@ -48,6 +48,26 @@ item.ore_exchanger.name=Рудный трансмутатор
 tile.chunk_loader.name=Загрузчик чанков
 tile.compressed_panel.name=Сжатая адамантитовая солнечная панель
 tile.compressed_super_panel.name=Сверхсжатая мифриловая солнечная панель
+
+item.manyullyn_helmet.name=Мануллиновый шлем
+item.manyullyn_chestplate.name=Мануллиновый нагрудник
+item.manyullyn_leggings.name=Мануллиновые поножи
+item.manyullyn_boots.name=Мануллиновые ботинки
+
+item.titan_helmet.name=Титановый шлем
+item.titan_chestplate.name=Титановый нагрудник
+item.titan_leggings.name=Титановые поножи
+item.titan_boots.name=Титановые ботинки
+
+item.adamantit_helmet.name=Адамантитовый шлем
+item.adamantit_chestplate.name=Адамантитовый нагрудник
+item.adamantit_leggings.name=Адамантитовые поножи
+item.adamantit_boots.name=Адамантитовые ботинки
+
+item.mythril_helmet.name=Мифриловый шлем
+item.mythril_chestplate.name=Мифриловый нагрудник
+item.mythril_leggings.name=Мифриловые поножи
+item.mythril_boots.name=Мифриловые ботинки
 
 # GUI
 gui.titan_drill.depth=Глубина
