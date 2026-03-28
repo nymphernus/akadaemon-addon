@@ -33,22 +33,21 @@ public class ItemSwordBase extends ItemSword {
         if (this.localMaterial == ModItems.toolMatTitan) return repair.getItem() == ModItems.ingotTitan;
         if (this.localMaterial == ModItems.toolMatAdamantit) return repair.getItem() == ModItems.ingotAdamantit;
         if (this.localMaterial == ModItems.toolMatMythril) return repair.getItem() == ModItems.ingotMythril;
-        if (this.localMaterial == ModItems.toolMatTrinity) return repair.getItem() == ModItems.ingotMythril;
 
         return super.getIsRepairable(toRepair, repair);
     }
 
     @Override
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-        if (this.localMaterial == ModItems.toolMatAdamantit || this.localMaterial == ModItems.toolMatTrinity) {
+        if (this.localMaterial == ModItems.toolMatAdamantit) {
             target.setFire(5);
         }
-        if (this.localMaterial == ModItems.toolMatMythril || this.localMaterial == ModItems.toolMatTrinity) {
+        if (this.localMaterial == ModItems.toolMatMythril) {
             if (attacker instanceof EntityPlayer) {
                 target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) attacker), 2.0F);
             }
         }
-        if (this.localMaterial == ModItems.toolMatTitan || this.localMaterial == ModItems.toolMatTrinity) {
+        if (this.localMaterial == ModItems.toolMatTitan) {
             target.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 80, 1));
         }
 

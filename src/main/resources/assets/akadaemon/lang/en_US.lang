@@ -130,6 +130,10 @@ tooltip.golden_schnitzel.extra=Removes negative effects, restores health, and gr
 
 tooltip.solar_output.gen=Energy generation
 
+message.trinity.fire_module=Thermal Module: %s
+tooltip.trinity.active=ACTIVATED
+tooltip.trinity.inactive=DEACTIVATED
+
 # Technical
 akadaemon.modifier.unbreakable=Unbreakable
 
@@ -229,7 +233,7 @@ tc.research_page.COMPRESSED_SUPER_PANEL.1=Is it possible to pack even more power
 
 tc.research_name.TRINITY_SWORD=Sword of Trinity
 tc.research_text.TRINITY_SWORD=The apex of metallurgical art
-tc.research_page.TRINITY_SWORD.1=For a long time, you studied the properties of Titanium, Adamantite, and Mythril separately, but the true power lay in their synergy. The Sword of Trinity is not just a weapon; it is a magical resonator. <BR> By using an Alumite rod as a base and infusing it with iridium energy on the altar, the blade acquires incredible properties: it ignites enemies, slows them down with its weight, and ignores any armor, dealing pure damage.
+tc.research_page.TRINITY_SWORD.1=For a long time, you studied the properties of Titanium, Adamantite, and Mythril separately, but the true power lay in their synergy. The Sword of Trinity is not just a weapon; it is a magical resonator. <BR> By using an Iridium rod as a base and infusing it with iridium energy on the altar, the blade acquires incredible properties: it ignites enemies, slows them down with its weight, and ignores any armor, dealing pure damage.
 
 tc.research_name.HEART_CONTAINER=Core Heart Synthesis
 tc.research_text.HEART_CONTAINER=Artificial imitation of vital functions

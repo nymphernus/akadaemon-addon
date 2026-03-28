@@ -68,7 +68,7 @@ public class ModItems {
     public static ItemTool.ToolMaterial toolMatTitan = EnumHelper.addToolMaterial("TITAN", 4, 4000, 10.0F, 5.0F, 15);
     public static ItemTool.ToolMaterial toolMatAdamantit = EnumHelper.addToolMaterial("ADAMANTIT", 4, 2500, 12.0F, 6.0F, 18);
     public static ItemTool.ToolMaterial toolMatMythril = EnumHelper.addToolMaterial("MYTHRIL", 5, 2000, 16.0F, 7.0F, 20);
-    public static ItemTool.ToolMaterial toolMatTrinity = EnumHelper.addToolMaterial("TRINITY", 6, 6000, 20.0F, 25.0F, 25);
+    public static ItemTool.ToolMaterial toolMatTrinity = EnumHelper.addToolMaterial("TRINITY", 6, 6000, 20.0F, 0.0F, 25);
 
     public static Item titanSword;
     public static Item adamantitSword;
@@ -148,7 +148,7 @@ public class ModItems {
         titanSword = new ItemSwordBase(toolMatTitan, "titan_sword", EnumChatFormatting.GRAY);
         adamantitSword = new ItemSwordBase(toolMatAdamantit, "adamantit_sword", EnumChatFormatting.RED);
         mythrilSword = new ItemSwordBase(toolMatMythril, "mythril_sword", EnumChatFormatting.AQUA);
-        trinitySword = new ItemSwordBase(toolMatTrinity, "trinity_sword", EnumChatFormatting.GOLD);
+        trinitySword = new ItemSwordTrinity(toolMatTrinity, "trinity_sword", EnumChatFormatting.GOLD);
     }
 
     private static void registerItems() {
