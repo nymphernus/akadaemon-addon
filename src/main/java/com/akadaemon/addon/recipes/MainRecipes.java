@@ -149,6 +149,13 @@ public class MainRecipes {
         registerArmorRecipes("ingotMythril",
                 ModItems.mythrilHelmet, ModItems.mythrilChest,
                 ModItems.mythrilLegs, ModItems.mythrilBoots);
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(titanSword),
+                "  I", " I ", "S  ", 'I', "ingotTitan", 'S', ExternalItems.alumiteRod));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(adamantitSword),
+                "  I", " I ", "S  ", 'I', "ingotAdamantit", 'S', ExternalItems.alumiteRod));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(mythrilSword),
+                "  I", " I ", "S  ", 'I', "ingotMythril", 'S', ExternalItems.alumiteRod));
     }
 
     public static void addOreDictSmelting(Item inputDust, String oreDictName, float xp) {
@@ -186,9 +193,9 @@ public class MainRecipes {
         );
     }
     public static void registerArmorRecipes(Object ingot, Item helmet, Item chest, Item legs, Item boots) {
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(helmet), "III", "I I", 'I', ingot));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(chest), "I I", "III", "III", 'I', ingot));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(legs), "III", "I I", "I I", 'I', ingot));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(boots), "I I", "I I", 'I', ingot));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(helmet), "IHI", "I I", 'I', ingot, 'H', heartContainer));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(chest), "I I", "IHI", "III", 'I', ingot, 'H', heartContainer));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(legs), "IHI", "I I", "I I", 'I', ingot, 'H', heartContainer));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(boots), "I I", "I I", 'I', ingot, 'H', heartContainer));
     }
 }

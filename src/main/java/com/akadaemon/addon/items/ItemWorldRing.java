@@ -51,10 +51,8 @@ public class ItemWorldRing extends Item implements IBauble, IRunicArmor {
                 player.extinguish();
             }
 
-            if (player.ticksExisted % 20 == 0) {
-                player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 200, 0, true));
-                player.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 200, 0, true));
-            }
+            player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 200, 0, true));
+            player.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 200, 0, true));
         }
     }
 

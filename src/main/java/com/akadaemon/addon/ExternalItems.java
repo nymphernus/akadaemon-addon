@@ -8,7 +8,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class ExternalItems {
     public static ItemStack emptyBucket;
-    public static ItemStack ingotManyullyn, ingotCobalt, ingotArdite, netherBone, greenHeart, greenHeartCan, yellowHeartCan, yellowHeart;
+    public static ItemStack ingotManyullyn, ingotCobalt, ingotArdite, netherBone, greenHeart, greenHeartCan, yellowHeartCan, yellowHeart, alumiteRod;
 
     public static ItemStack iridiumDrill, lapotronCrystal, energyCrystal, jetpack;
 
@@ -23,6 +23,7 @@ public class ExternalItems {
 
         Item tinkerMaterials = GameRegistry.findItem("TConstruct", "materials");
         Item heartItem = GameRegistry.findItem("TConstruct", "heartCanister");
+        Item tinkerRod = GameRegistry.findItem("TConstruct", "toolRod");
         ingotManyullyn = new ItemStack(tinkerMaterials, 1, 5);
         ingotCobalt = new ItemStack(tinkerMaterials, 1, 3);
         ingotArdite = new ItemStack(tinkerMaterials, 1, 4);
@@ -31,6 +32,7 @@ public class ExternalItems {
         greenHeartCan = new ItemStack(heartItem, 1, 6);
         yellowHeartCan = new ItemStack(heartItem, 1, 4);
         yellowHeart = new ItemStack(heartItem, 1, 3);
+        alumiteRod = new ItemStack(tinkerRod, 1, 15);
 
         iridiumOre = ic2.api.item.IC2Items.getItem("iridiumOre");
         solarPanel = ic2.api.item.IC2Items.getItem("solarPanel");

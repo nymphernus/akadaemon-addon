@@ -68,6 +68,18 @@ public class ThaumcraftAspects {
         reg(focusTeleport, new AspectList().add(Aspect.TRAVEL, 8).add(Aspect.ELDRITCH, 4).add(Aspect.MAGIC, 4));
         reg(focusSunstrike, new AspectList().add(Aspect.LIGHT, 8).add(Aspect.FIRE, 4).add(Aspect.WEAPON, 4));
 
+        reg(heartContainer, new AspectList().add(Aspect.LIFE, 4).add(Aspect.CRYSTAL, 2));
+
+        addArmorAspects(titanHelmet, titanChest, titanLegs, titanBoots, Aspect.ORDER);
+        addArmorAspects(adamantitHelmet, adamantitChest, adamantitLegs, adamantitBoots, Aspect.FIRE);
+        addArmorAspects(mythrilHelmet, mythrilChest, mythrilLegs, mythrilBoots, Aspect.MAGIC);
+        addArmorAspects(manyullynHelmet, manyullynChest, manyullynLegs, manyullynBoots, Aspect.DARKNESS);
+
+        reg(titanSword, new AspectList().add(Aspect.WEAPON, 4).add(Aspect.METAL, 6).add(Aspect.ORDER, 2));
+        reg(adamantitSword, new AspectList().add(Aspect.WEAPON, 4).add(Aspect.METAL, 6).add(Aspect.FIRE, 4));
+        reg(mythrilSword, new AspectList().add(Aspect.WEAPON, 5).add(Aspect.METAL, 6).add(Aspect.MAGIC, 3));
+        reg(trinitySword, new AspectList().add(Aspect.WEAPON, 15).add(Aspect.METAL, 10).add(Aspect.MAGIC, 8).add(Aspect.ENERGY, 4));
+
         ThaumcraftApi.registerEntityTag("Draugr", new AspectList().add(Aspect.UNDEAD, 10).add(Aspect.EARTH, 5).add(Aspect.WEAPON, 8).add(Aspect.SOUL, 5).add(Aspect.ELDRITCH, 4));
     }
 
@@ -81,6 +93,13 @@ public class ThaumcraftAspects {
         } else if (item instanceof ItemStack) {
             ThaumcraftApi.registerObjectTag((ItemStack) item, aspects);
         }
+    }
+
+    private static void addArmorAspects(net.minecraft.item.Item h, net.minecraft.item.Item c, net.minecraft.item.Item l, net.minecraft.item.Item b, Aspect special) {
+        reg(h, new AspectList().add(Aspect.ARMOR, 4).add(Aspect.METAL, 4).add(special, 2));
+        reg(c, new AspectList().add(Aspect.ARMOR, 8).add(Aspect.METAL, 6).add(special, 3));
+        reg(l, new AspectList().add(Aspect.ARMOR, 6).add(Aspect.METAL, 5).add(special, 2));
+        reg(b, new AspectList().add(Aspect.ARMOR, 4).add(Aspect.METAL, 3).add(special, 2));
     }
 
     private static void regWildcard(net.minecraft.item.Item item, AspectList aspects) {

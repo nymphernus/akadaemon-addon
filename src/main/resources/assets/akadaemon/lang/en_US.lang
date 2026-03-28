@@ -48,6 +48,7 @@ item.ore_exchanger.name=Ore exchanger
 tile.chunk_loader.name=Chunk loader
 tile.compressed_panel.name=Compressed Adamantite Solar Panel
 tile.compressed_super_panel.name=Super-compressed Mythril Solar Panel
+item.heart_container.name=Core Heart
 
 item.manyullyn_helmet.name=Manyullyn Helmet
 item.manyullyn_chestplate.name=Manyullyn Chestplate
@@ -68,6 +69,11 @@ item.mythril_helmet.name=Mythril Helmet
 item.mythril_chestplate.name=Mythril Chestplate
 item.mythril_leggings.name=Mythril Leggings
 item.mythril_boots.name=Mythril Boots
+
+item.titan_sword.name=Titanium Claymore
+item.adamantit_sword.name=Adamantite Flamberge
+item.mythril_sword.name=Mythril Katana
+item.trinity_sword.name=Sword of Trinity
 
 # GUI
 gui.titan_drill.depth=Depth
@@ -220,6 +226,14 @@ tc.research_page.COMPRESSED_PANEL.1=By applying your knowledge of Adamantite and
 tc.research_name.COMPRESSED_SUPER_PANEL=Super-Compressed Mythril Array
 tc.research_text.COMPRESSED_SUPER_PANEL=Breaking the Solar Limits
 tc.research_page.COMPRESSED_SUPER_PANEL.1=Is it possible to pack even more power into a single block? Using Mythril as a stabilizer and a complex infusion process, you have created a Super-Compressed array. The density of energy within this block is so high that it borders on a spatial anomaly, allowing it to output immense amounts of EU per tick. This is the pinnacle of your solar research.
+
+tc.research_name.TRINITY_SWORD=Sword of Trinity
+tc.research_text.TRINITY_SWORD=The apex of metallurgical art
+tc.research_page.TRINITY_SWORD.1=For a long time, you studied the properties of Titanium, Adamantite, and Mythril separately, but the true power lay in their synergy. The Sword of Trinity is not just a weapon; it is a magical resonator. <BR> By using an Alumite rod as a base and infusing it with iridium energy on the altar, the blade acquires incredible properties: it ignites enemies, slows them down with its weight, and ignores any armor, dealing pure damage.
+
+tc.research_name.HEART_CONTAINER=Core Heart Synthesis
+tc.research_text.HEART_CONTAINER=Artificial imitation of vital functions
+tc.research_page.HEART_CONTAINER.1=While studying the remains of the undead, you noticed that even after death, tissues retain a residual memory of life force. By combining the organic structure of a zombie brain with the conductivity of redstone, you found a way to create a device capable of storing and stabilizing life energy. <BR> For now, this "container" seems inert, but it will certainly become a key component for creating more complex living mechanisms or strengthening your own body.
 
 
 

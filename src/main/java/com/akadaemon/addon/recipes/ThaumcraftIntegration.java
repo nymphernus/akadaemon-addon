@@ -136,6 +136,10 @@ public class ThaumcraftIntegration {
                 new AspectList().add(Aspect.ORDER, 5),
                 "GPG", "PBP", "GPG", 'G', Items.gold_nugget, 'P', enderDust, 'B', Items.paper);
 
+        IArcaneRecipe recipeHeart = ThaumcraftApi.addArcaneCraftingRecipe("HEART_CONTAINER", new ItemStack(heartContainer),
+                new AspectList().add(Aspect.WATER, 5).add(Aspect.EARTH, 5),
+                "RZR", "ZRZ", "RZR", 'R', Items.redstone, 'Z', ExternalItems.zombieBrain);
+
 
         Object basePanel = ExternalItems.solarPanel;
         if (Loader.isModLoaded("AdvancedSolarPanel")) {
@@ -157,7 +161,6 @@ public class ThaumcraftIntegration {
                 });
         getCraftingRecipes().add(recipeSuperPanel);
 
-        // Аксессуары
         IArcaneRecipe recipeRing = ThaumcraftApi.addArcaneCraftingRecipe("WORLD_RING", new ItemStack(worldRing),
                 new AspectList().add(Aspect.AIR, 20).add(Aspect.WATER, 20).add(Aspect.EARTH, 20).add(Aspect.FIRE, 20),
                 "MAM", "AEA", "MMM", 'M', "ingotMithril", 'E', Items.ender_eye, 'A', ExternalItems.amber);
@@ -204,7 +207,6 @@ public class ThaumcraftIntegration {
                 "AGA", "GIG", "AGA",
                 'I', ConfigItems.itemFocusFire, 'G', ingotAdamantit, 'A', ExternalItems.amber);
 
-                // Палочка
         IArcaneRecipe recipeCap = ThaumcraftApi.addArcaneCraftingRecipe("AKADAEMON_WAND", new ItemStack(wandCapManyullyn),
                 new AspectList().add(Aspect.FIRE, 20).add(Aspect.ENTROPY, 20),
                 "MMM", "M M", 'M', "ingotManyullyn");
@@ -238,12 +240,22 @@ public class ThaumcraftIntegration {
                         .add(Aspect.ENERGY, 8),
                 ExternalItems.gogglesRevealing,
                 new ItemStack[] {
-                        ExternalItems.zombieBrain, new ItemStack(ingotMythril),new ItemStack(ingotMythril),
-                        ExternalItems.advCircuit, ExternalItems.zombieBrain, ExternalItems.advCircuit,
+                        new ItemStack(heartContainer), new ItemStack(ingotMythril),new ItemStack(ingotMythril),
+                        ExternalItems.advCircuit, new ItemStack(heartContainer), ExternalItems.advCircuit,
                         new ItemStack(ingotMythril),new ItemStack(ingotMythril)
                 });
 
         getCraftingRecipes().add(recipeInfNeural);
+
+        InfusionRecipe recipeTrinitySword = new InfusionElectricRecipe("TRINITY_SWORD", new ItemStack(trinitySword), 5,
+                new AspectList().add(Aspect.WEAPON, 16).add(Aspect.METAL, 32).add(Aspect.MAGIC, 16).add(Aspect.FIRE, 16).add(Aspect.ENERGY, 32),
+                new ItemStack(wandRodIridiumTitan),
+                new ItemStack[] {
+                        new ItemStack(mythrilSword), new ItemStack(heartContainer), new ItemStack(iridiumComposite),
+                        new ItemStack(titanSword), ExternalItems.lapotronCrystal,
+                        new ItemStack(adamantitSword), new ItemStack(iridiumComposite), new ItemStack(heartContainer)
+                });
+        getCraftingRecipes().add(recipeTrinitySword);
 
         IArcaneRecipe recipeWandMain = ThaumcraftApi.addArcaneCraftingRecipe("AKADAEMON_WAND_INFUSION",
                 createWand(WAND_ROD_IRIDIUM_TITAN, WAND_CAP_MYTHRIL),
@@ -328,6 +340,10 @@ public class ThaumcraftIntegration {
                 new AspectList().add(Aspect.MIND, 10).add(Aspect.ORDER, 5), 3, 2, 1, ExternalItems.knowledgeFragment)
                 .setPages(new ResearchPage("tc.research_page.KNOWLEDGE_CRAFT.1"), new ResearchPage(recipeKnowledge)).setParentsHidden("TRINITY_ALLOYS").setSecondary().registerResearchItem();
 
+        new ResearchItem("HEART_CONTAINER", CAT_ID,
+                new AspectList().add(Aspect.EARTH, 3).add(Aspect.WATER, 3), 5, 2, 1, new ItemStack(heartContainer))
+                .setPages(new ResearchPage("tc.research_page.HEART_CONTAINER.1"), new ResearchPage(recipeHeart)).setParentsHidden("TRINITY_ALLOYS").setSecondary().registerResearchItem();
+
         new ResearchItem("AMBER_FIBER", CAT_ID,
                 new AspectList().add(Aspect.VOID, 10).add(Aspect.ENERGY, 10).add(Aspect.MAGIC, 10), -3, 2, 3, new ItemStack(amberFiber))
                 .setPages(new ResearchPage("tc.research_page.AMBER_FIBER.1"), new ResearchPage(recipeFiber)).setParents("AKADAEMON_WAND").setConcealed().registerResearchItem();
@@ -344,13 +360,21 @@ public class ThaumcraftIntegration {
                 new AspectList().add(Aspect.CRAFT, 15).add(Aspect.TOOL, 15).add(Aspect.MINE, 20), 4, 0, 1, new ItemStack(expansionChip))
                 .setPages(new ResearchPage("tc.research_page.TINKER_MODS.1"), new ResearchPage(recipeChip), new ResearchPage(recipeMod)).setParentsHidden("AKADAEMON_WAND").setConcealed().setSecondary().registerResearchItem();
 
-        new ResearchItem("FOCUS_TELEPORT", CAT_ID, new AspectList().add(Aspect.TRAVEL, 20).add(Aspect.AIR, 10), 1, 6, 2, new ItemStack(focusTeleport))
+        new ResearchItem("FOCUS_TELEPORT", CAT_ID, new AspectList().add(Aspect.TRAVEL, 20).add(Aspect.AIR, 10), 2, 6, 2, new ItemStack(focusTeleport))
                 .setPages(new ResearchPage("tc.research_page.FOCUS_TELEPORT.1"), new ResearchPage(recipeFocusTeleport))
                 .setParents("AKADAEMON_WAND_INFUSION").setConcealed().setRound().registerResearchItem();
 
-        new ResearchItem("FOCUS_SUNSTRIKE", CAT_ID, new AspectList().add(Aspect.FIRE, 10).add(Aspect.ORDER, 15), 2, 4, 2, new ItemStack(focusSunstrike))
+        new ResearchItem("FOCUS_SUNSTRIKE", CAT_ID, new AspectList().add(Aspect.FIRE, 10).add(Aspect.ORDER, 15), 3, 4, 2, new ItemStack(focusSunstrike))
                 .setPages(new ResearchPage("tc.research_page.FOCUS_SUNSTRIKE.1"), new ResearchPage(recipeFocusSunstrike))
                 .setParents("AKADAEMON_WAND_INFUSION").setConcealed().setRound().registerResearchItem();
+
+        new ResearchItem("TRINITY_SWORD", CAT_ID, new AspectList().add(Aspect.WEAPON, 15).add(Aspect.METAL, 10).add(Aspect.ENERGY, 10).add(Aspect.FIRE, 10).add(Aspect.MAGIC, 8),
+                0, 7, 2,
+                new ItemStack(trinitySword))
+                .setPages(new ResearchPage("tc.research_page.TRINITY_SWORD.1"), new ResearchPage(recipeTrinitySword))
+                .setParents("AKADAEMON_WAND_INFUSION").setConcealed().setSpecial().setRound().registerResearchItem();
+
+
 
         new ResearchItem("NEURAL_INTERFACE", CAT_ID, new AspectList().add(Aspect.MIND, 10).add(Aspect.SENSES, 10).add(Aspect.ENERGY, 5).add(Aspect.TOOL, 5), -3, 4, 2, new ItemStack(neuralInterface))
                 .setPages(new ResearchPage("tc.research_page.NEURAL_INTERFACE.1"), new ResearchPage(recipeInfNeural))

@@ -11,8 +11,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemTool;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -50,6 +52,7 @@ public class ModItems {
     public static Item barleySeeds;
     public static Item oreExchanger;
     public static Item neuralInterface;
+    public static Item heartContainer;
 
     public static ItemArmor.ArmorMaterial matManyullyn = net.minecraftforge.common.util.EnumHelper.addArmorMaterial("MANYULLYN", 35, new int[]{3, 8, 6, 3}, 15);
     public static ItemArmor.ArmorMaterial matTitan = net.minecraftforge.common.util.EnumHelper.addArmorMaterial("TITAN", 50, new int[]{4, 9, 7, 4}, 10);
@@ -61,6 +64,16 @@ public class ModItems {
     public static Item titanHelmet, titanChest, titanLegs, titanBoots;
     public static Item adamantitHelmet, adamantitChest, adamantitLegs, adamantitBoots;
     public static Item mythrilHelmet, mythrilChest, mythrilLegs, mythrilBoots;
+
+    public static ItemTool.ToolMaterial toolMatTitan = EnumHelper.addToolMaterial("TITAN", 4, 4000, 10.0F, 5.0F, 15);
+    public static ItemTool.ToolMaterial toolMatAdamantit = EnumHelper.addToolMaterial("ADAMANTIT", 4, 2500, 12.0F, 6.0F, 18);
+    public static ItemTool.ToolMaterial toolMatMythril = EnumHelper.addToolMaterial("MYTHRIL", 5, 2000, 16.0F, 7.0F, 20);
+    public static ItemTool.ToolMaterial toolMatTrinity = EnumHelper.addToolMaterial("TRINITY", 6, 6000, 20.0F, 25.0F, 25);
+
+    public static Item titanSword;
+    public static Item adamantitSword;
+    public static Item mythrilSword;
+    public static Item trinitySword;
 
     public static void init() {
         initializeItems();
@@ -94,6 +107,8 @@ public class ModItems {
 
         focusTeleport = new ItemFocusTeleport();
         focusSunstrike = new ItemFocusSunstrike();
+
+        heartContainer = new ItemBase(EnumChatFormatting.DARK_RED, EnumChatFormatting.RESET).setUnlocalizedName("heart_container").setTextureName(AkadaemonAddon.MODID + ":heart_container").setCreativeTab(AkadaemonAddon.tabAkadaemon);
 
         worldRing = new ItemWorldRing();
         solarAmulet = new ItemSolarAmulet();
@@ -129,6 +144,11 @@ public class ModItems {
         mythrilChest = new ItemArmorBase(matMythril, 1, "mythril", EnumChatFormatting.AQUA).setUnlocalizedName("mythril_chestplate").setTextureName(AkadaemonAddon.MODID + ":mythril_chestplate");
         mythrilLegs = new ItemArmorBase(matMythril, 2, "mythril", EnumChatFormatting.AQUA).setUnlocalizedName("mythril_leggings").setTextureName(AkadaemonAddon.MODID + ":mythril_leggings");
         mythrilBoots = new ItemArmorBase(matMythril, 3, "mythril", EnumChatFormatting.AQUA).setUnlocalizedName("mythril_boots").setTextureName(AkadaemonAddon.MODID + ":mythril_boots");
+
+        titanSword = new ItemSwordBase(toolMatTitan, "titan_sword", EnumChatFormatting.GRAY);
+        adamantitSword = new ItemSwordBase(toolMatAdamantit, "adamantit_sword", EnumChatFormatting.RED);
+        mythrilSword = new ItemSwordBase(toolMatMythril, "mythril_sword", EnumChatFormatting.AQUA);
+        trinitySword = new ItemSwordBase(toolMatTrinity, "trinity_sword", EnumChatFormatting.GOLD);
     }
 
     private static void registerItems() {
@@ -161,6 +181,7 @@ public class ModItems {
         reg(barleyBread, "barley_bread");
         reg(barleySeeds, "barley_seeds");
         reg(oreExchanger, "ore_exchanger");
+        reg(heartContainer, "heart_container");
 
         reg(manyullynHelmet, "manyullyn_helmet");
         reg(manyullynChest, "manyullyn_chestplate");
@@ -178,6 +199,11 @@ public class ModItems {
         reg(mythrilChest, "mythril_chestplate");
         reg(mythrilLegs, "mythril_leggings");
         reg(mythrilBoots, "mythril_boots");
+
+        reg(titanSword, "titan_sword");
+        reg(adamantitSword, "adamantit_sword");
+        reg(mythrilSword, "mythril_sword");
+        reg(trinitySword, "trinity_sword");
 
         FluidContainerRegistry.registerFluidContainer(
                 new FluidStack(ModFluids.fluidGlacialQuicksilver, FluidContainerRegistry.BUCKET_VOLUME),
