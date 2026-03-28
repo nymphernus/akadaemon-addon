@@ -33,9 +33,9 @@ public class MainRecipes {
         GameRegistry.addRecipe(new net.minecraftforge.oredict.ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 3, 15),
                 "ingotAluminum", "ingotIron", Blocks.obsidian));
 
-        GameRegistry.addRecipe(new net.minecraftforge.oredict.ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 3, 3),
+        GameRegistry.addRecipe(new net.minecraftforge.oredict.ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 1, 3),
                 "ingotSilver", "ingotObsidian"));
-        GameRegistry.addRecipe(new net.minecraftforge.oredict.ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 3, 4),
+        GameRegistry.addRecipe(new net.minecraftforge.oredict.ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 1, 4),
                 "ingotAlumite", "ingotBronze"));
 
         GameRegistry.addRecipe(new ItemStack(enderDust, 9),
