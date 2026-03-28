@@ -37,6 +37,7 @@ public class ModItems {
     public static Item ingotAdamantit;
     public static Item cobaltDust;
     public static Item arditeDust;
+    public static Item obsidianDust;
     public static Item enderDust;
     public static Item bucketGlacialQuicksilver;
     public static Item bucketEtherealPhoton;
@@ -116,6 +117,7 @@ public class ModItems {
         goldenSchnitzel = new ItemGoldenSchnitzel();
         cobaltDust = new ItemDust("cobalt_dust");
         arditeDust = new ItemDust("ardite_dust");
+        obsidianDust = new ItemDust("obsidian_dust");
         enderDust = new ItemDust("ender_dust");
         barleySeeds = new ItemBarleySeeds(ModBlocks.barleyCrop);
 
@@ -160,6 +162,7 @@ public class ModItems {
         reg(goldenSchnitzel, "golden_schnitzel");
         reg(cobaltDust, "cobalt_dust");
         reg(arditeDust, "ardite_dust");
+        reg(obsidianDust, "obsidian_dust");
         reg(enderDust, "ender_dust");
         reg(iridiumComposite, "iridium_composite");
         reg(wandRodIridium, "wand_rod_iridium");
@@ -231,6 +234,7 @@ public class ModItems {
         OreDictionary.registerOre("foodBread", barleyBread);
         OreDictionary.registerOre("dustCobalt", cobaltDust);
         OreDictionary.registerOre("dustArdite", arditeDust);
+        OreDictionary.registerOre("dustObsidian", obsidianDust);
         OreDictionary.registerOre("dustEnder", enderDust);
 
         for (String name : ConfigHandler.titanNames) { OreDictionary.registerOre(name, ingotTitan); }

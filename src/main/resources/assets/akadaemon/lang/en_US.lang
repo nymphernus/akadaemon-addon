@@ -11,6 +11,7 @@ item.golden_schnitzel.name=Golden Schnitzel
 tile.thaum_transformer.name=Thaumic Transformer
 item.cobalt_dust.name=Cobalt Dust
 item.ardite_dust.name=Ardite Dust
+item.obsidian_dust.name=Obsidian Dust
 item.ender_dust.name=Ender Dust
 item.iridium_composite.name=Iridium Composite
 tile.amber_fiber.name=Amber Fiber
