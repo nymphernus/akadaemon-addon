@@ -50,6 +50,7 @@ tile.chunk_loader.name=Загрузчик чанков
 tile.compressed_panel.name=Сжатая адамантитовая солнечная панель
 tile.compressed_super_panel.name=Сверхсжатая мифриловая солнечная панель
 item.heart_container.name=Сердце-ядро
+tile.aether_torch.name=Эфирный факел
 
 item.manyullyn_helmet.name=Мануллиновый шлем
 item.manyullyn_chestplate.name=Мануллиновый нагрудник
@@ -136,8 +137,11 @@ message.trinity.fire_module=Термический модуль: %s
 tooltip.trinity.active=АКТИВИРОВАН
 tooltip.trinity.inactive=ДЕАКТИВИРОВАН
 
-# Technical
-akadaemon.modifier.unbreakable=Неразрушимость
+tooltip.expansion.name=Модернизация
+tooltip.expansion.extra=Расширение слотов
+
+tooltip.composite.name=Неразрушимость
+tooltip.composite.extra=Композитный модификатор
 
 # Thaumcraft Research
 tc.research_category.AKADAEMON=Акадэмоника

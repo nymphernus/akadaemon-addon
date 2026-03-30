@@ -4,6 +4,7 @@ import com.akadaemon.addon.items.ModItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.StatCollector;
 import tconstruct.library.modifier.ItemModifier;
 
 public class ModInfiniteDurability extends ItemModifier {
@@ -40,6 +41,9 @@ public class ModInfiniteDurability extends ItemModifier {
             tags.setInteger("Modifiers", m - 1);
         }
 
-        addToolTip(tool, EnumChatFormatting.DARK_RED + "Unbreakable", EnumChatFormatting.DARK_RED + "Composite Modifier");
+        addToolTip(tool,
+                EnumChatFormatting.DARK_RED + StatCollector.translateToLocal("tooltip.composite.name"),
+                EnumChatFormatting.DARK_RED + StatCollector.translateToLocal("tooltip.composite.extra")
+        );
     }
 }

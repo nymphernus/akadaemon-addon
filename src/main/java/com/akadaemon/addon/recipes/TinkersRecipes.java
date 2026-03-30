@@ -5,6 +5,7 @@ import com.akadaemon.addon.blocks.ModBlocks;
 import com.akadaemon.addon.items.ModItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import tconstruct.library.TConstructRegistry;
@@ -13,66 +14,50 @@ import tconstruct.library.crafting.Smeltery;
 import static com.akadaemon.addon.fluids.ModFluids.*;
 
 public class TinkersRecipes {
+
     public static void init() {
-        int blockAmount = 500;
-        int resAmount = 125;
+        final int BLOCK = 500;
+        final int ITEM = 125;
+        final int BUCKET = 1000;
 
-        Smeltery.addMelting(Blocks.ice, 0, 100, new FluidStack(fluidIce, blockAmount));
-        Smeltery.addMelting(new ItemStack(Items.snowball, 1, 0), Blocks.snow, 0, 50, new FluidStack(fluidSnow, resAmount));
-        Smeltery.addMelting(ExternalItems.quicksilver, ModBlocks.blockTitan, 0, 800, new FluidStack(fluidQuicksilver, resAmount));
-        Smeltery.addMelting(new ItemStack(Items.dye, 1, 4), Blocks.lapis_block, 0, 400, new FluidStack(fluidLapis, resAmount));
+        melt(Blocks.ice, 100, fluidIce, BLOCK);
+        melt(new ItemStack(Items.snowball), Blocks.snow, 50, fluidSnow, ITEM);
+        melt(ExternalItems.quicksilver, ModBlocks.blockTitan, 800, fluidQuicksilver, ITEM);
+        melt(new ItemStack(Items.dye, 1, 4), Blocks.lapis_block, 400, fluidLapis, ITEM);
+        melt(Blocks.glowstone, 600, fluidGlowstone, BLOCK);
+        melt(ExternalItems.amber, ModBlocks.blockEtherealPhoton, 800, fluidAmber, ITEM);
+        melt(new ItemStack(Items.redstone), Blocks.redstone_block, 400, fluidRedstone, ITEM);
 
+        Smeltery.addAlloyMixing(new FluidStack(fluidGlacialQuicksilver, BUCKET),
+                f(fluidIce, 500), f(fluidSnow, 125), f(fluidQuicksilver, 250), f(fluidLapis, 125));
 
-        Smeltery.addMelting(Blocks.glowstone, 0, 600, new FluidStack(fluidGlowstone, blockAmount));
-        Smeltery.addMelting(ExternalItems.amber, ModBlocks.blockEtherealPhoton, 0, 800, new FluidStack(fluidAmber, resAmount));
+        Smeltery.addAlloyMixing(new FluidStack(fluidEtherealPhoton, BUCKET),
+                f(fluidGlowstone, 500), f(fluidAmber, 500));
 
-        Smeltery.addMelting(new ItemStack(Items.redstone), Blocks.redstone_block, 0, 400, new FluidStack(fluidRedstone, resAmount));
+        Smeltery.addAlloyMixing(new FluidStack(fluidRubyFlux, BUCKET),
+                f(fluidRedstone, 750), f(fluidAmber, 250));
 
+        castBucket(ModItems.bucketGlacialQuicksilver, fluidGlacialQuicksilver);
+        castBucket(ModItems.bucketEtherealPhoton, fluidEtherealPhoton);
+        castBucket(ModItems.bucketRubyFlux, fluidRubyFlux);
+    }
 
+    private static FluidStack f(net.minecraftforge.fluids.Fluid fluid, int amount) {
+        return new FluidStack(fluid, amount);
+    }
 
-        Smeltery.addAlloyMixing(
-                new FluidStack(fluidGlacialQuicksilver, 1000),
-                new FluidStack(fluidIce, 500),
-                new FluidStack(fluidSnow, 125),
-                new FluidStack(fluidQuicksilver, 250),
-                new FluidStack(fluidLapis, 125)
-        );
+    private static void melt(Object input, int temp, net.minecraftforge.fluids.Fluid fluid, int amount) {
+        if (input instanceof net.minecraft.block.Block)
+            Smeltery.addMelting((net.minecraft.block.Block)input, 0, temp, f(fluid, amount));
+        else if (input instanceof ItemStack)
+            Smeltery.addMelting((ItemStack)input, Blocks.iron_block, 0, temp, f(fluid, amount));
+    }
 
-        Smeltery.addAlloyMixing(
-                new FluidStack(fluidEtherealPhoton, 1000),
-                new FluidStack(fluidGlowstone, 500),
-                new FluidStack(fluidAmber, 500)
-        );
+    private static void melt(ItemStack stack, net.minecraft.block.Block render, int temp, net.minecraftforge.fluids.Fluid fluid, int amount) {
+        Smeltery.addMelting(stack, render, 0, temp, f(fluid, amount));
+    }
 
-        Smeltery.addAlloyMixing(
-                new FluidStack(fluidRubyFlux, 1000),
-                new FluidStack(fluidRedstone, 750),
-                new FluidStack(fluidAmber, 250)
-        );
-
-        TConstructRegistry.getTableCasting().addCastingRecipe(
-                new ItemStack(ModItems.bucketGlacialQuicksilver),
-                new FluidStack(fluidGlacialQuicksilver, 1000),
-                ExternalItems.emptyBucket,
-                true,
-                20
-        );
-
-        TConstructRegistry.getTableCasting().addCastingRecipe(
-                new ItemStack(ModItems.bucketEtherealPhoton),
-                new FluidStack(fluidEtherealPhoton, 1000),
-                ExternalItems.emptyBucket,
-                true,
-                20
-        );
-
-        TConstructRegistry.getTableCasting().addCastingRecipe(
-                new ItemStack(ModItems.bucketRubyFlux),
-                new FluidStack(fluidRubyFlux, 1000),
-                ExternalItems.emptyBucket,
-                true,
-                20
-        );
-
+    private static void castBucket(Item bucket, net.minecraftforge.fluids.Fluid fluid) {
+        TConstructRegistry.getTableCasting().addCastingRecipe(new ItemStack(bucket), f(fluid, 1000), ExternalItems.emptyBucket, true, 20);
     }
 }

@@ -63,4 +63,9 @@ public class ItemFocusTeleport extends ItemFocusBasic {
     public AspectList getVisCost(ItemStack focusstack) {
         return new AspectList().add(Aspect.AIR, 100).add(Aspect.WATER, 100);
     }
+
+    @Override
+    public String getSortingHelper(ItemStack focusstack) {
+        return "TELEPORT";
+    }
 }

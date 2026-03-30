@@ -21,6 +21,11 @@ public class ClientProxy extends CommonProxy {
         MinecraftForge.EVENT_BUS.register(this);
     }
 
+    @Override
+    public void registerClientHandlers() {
+        MinecraftForge.EVENT_BUS.register(new TabHandler());
+    }
+
     @SubscribeEvent
     public void onTextureStitch(TextureStitchEvent.Pre event) {
         if (event.map.getTextureType() == 0) {

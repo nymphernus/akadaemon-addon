@@ -100,4 +100,9 @@ public class ItemFocusSunstrike extends ItemFocusBasic {
     public AspectList getVisCost(ItemStack focusstack) {
         return new AspectList().add(Aspect.FIRE, 500).add(Aspect.ORDER, 200);
     }
+
+    @Override
+    public String getSortingHelper(ItemStack focusstack) {
+        return "SUNSTRIKE";
+    }
 }

@@ -49,7 +49,7 @@ public class ConfigHandler {
         convertEuVis = config.getInt("convertEuVis", balCat,
                 1000, 5, 5000, "The amount of EU received per 1 Vis");
         solarEu = config.getInt("solarEu", balCat,
-                500, 100, 5000, "The amount of EU charged by the solar amulet");
+                200, 50, 5000, "The amount of EU charged by the solar amulet");
         solarVis = config.getInt("solarVis", balCat,
                 5, 1, 50, "The amount of Vis charged by the solar amulet");
         drillTick = config.getInt("drillTick", balCat,
@@ -69,7 +69,7 @@ public class ConfigHandler {
                 2, 0, 100, "Gravity of the teleport pearl (Value / 100). Default 2 (0.02). 0 = no gravity.");
         teleportGravity = gravityInt / 100.0F;
         int dmgInt = config.getInt("sunstrikeDamage", focusCat,
-                10, 1, 50, "Damage dealt by Sunstrike");
+                12, 1, 50, "Damage dealt by Sunstrike");
         sunstrikeDamage = (float) dmgInt;
         int distInt = config.getInt("sunstrikeDistance", focusCat,
                 32, 8, 256, "Max range of Sunstrike focus");

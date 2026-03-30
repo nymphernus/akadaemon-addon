@@ -24,6 +24,7 @@ public class ModBlocks {
     public static Block blockRubyFlux;
     public static Block compressedPanel;
     public static Block compressedSuperPanel;
+    public static Block aetherTorch;
 
     public static void init() {
         initializeBlocks();
@@ -66,6 +67,7 @@ public class ModBlocks {
         titanDrill = new BlockTitanDrill();
         barleyCrop = new BlockBarley();
         chunkLoader = new BlockChunkLoader();
+        aetherTorch = new BlockAetherTorch();
 
         blockGlacialQuicksilver = new BlockFluid(ModFluids.fluidGlacialQuicksilver, Material.water, 6, 20)
                 .setBlockName("glacial_quicksilver_block")
@@ -93,6 +95,8 @@ public class ModBlocks {
 
         regBlock(compressedPanel, "compressed_panel", EnumChatFormatting.RED, EnumChatFormatting.RESET);
         regBlock(compressedSuperPanel, "compressed_super_panel", EnumChatFormatting.AQUA, EnumChatFormatting.RESET);
+
+        regBlock(aetherTorch, "aether_torch",  EnumChatFormatting.YELLOW, EnumChatFormatting.RESET);
 
         for (String name : ConfigHandler.mythrilBlockNames) { OreDictionary.registerOre(name, blockMythril); }
 

@@ -4,13 +4,24 @@ import com.akadaemon.addon.AkadaemonAddon;
 import com.akadaemon.addon.blocks.*;
 import com.akadaemon.addon.entity.EntityDraugr;
 import com.akadaemon.addon.entity.EntityFocusPearl;
+import com.akadaemon.addon.recipes.ThaumcraftIntegration;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.ForgeChunkManager;
+import net.minecraftforge.common.MinecraftForge;
 
 public class CommonProxy {
+    public void registerHandlers() {
+        MinecraftForge.EVENT_BUS.register(new BucketHandler());
+        MinecraftForge.EVENT_BUS.register(new DurabilityEventHandler());
+        MinecraftForge.EVENT_BUS.register(new ThaumcraftIntegration());
+        ForgeChunkManager.setForcedChunkLoadingCallback(AkadaemonAddon.instance, new ChunkLoaderHandler());
+    }
+
     public void registerEntities() {
         EntityRegistry.registerModEntity(EntityFocusPearl.class, "FocusPearl", 0, AkadaemonAddon.instance, 64, 10, true);
 
@@ -46,5 +57,10 @@ public class CommonProxy {
         GameRegistry.registerTileEntity(TileSolarPanel.class, "TileSolarPanel");
     }
 
+    public void registerGuiHandler() {
+        NetworkRegistry.INSTANCE.registerGuiHandler(AkadaemonAddon.instance, new GuiHandler());
+    }
+
     public void registerRenderers() {}
+    public void registerClientHandlers() {}
 }

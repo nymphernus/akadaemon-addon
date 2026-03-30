@@ -1,6 +1,8 @@
 package com.akadaemon.addon.items;
 
 import com.akadaemon.addon.AkadaemonAddon;
+import com.akadaemon.addon.ModExtraSlot;
+import com.akadaemon.addon.ModInfiniteDurability;
 import com.akadaemon.addon.blocks.ModBlocks;
 import com.akadaemon.addon.fluids.ModFluids;
 import com.akadaemon.addon.handler.ConfigHandler;
@@ -14,10 +16,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
+import tconstruct.library.crafting.ModifyBuilder;
 
 import java.util.List;
 
@@ -240,6 +244,10 @@ public class ModItems {
         for (String name : ConfigHandler.titanNames) { OreDictionary.registerOre(name, ingotTitan); }
         for (String name : ConfigHandler.mythrilNames) { OreDictionary.registerOre(name, ingotMythril); }
         for (String name : ConfigHandler.adamantitNames) { OreDictionary.registerOre(name, ingotAdamantit); }
+
+        MinecraftForge.addGrassSeed(new ItemStack(ModItems.barleySeeds), 10);
+        ModifyBuilder.registerModifier(new ModInfiniteDurability(new ItemStack[] { new ItemStack(compositeMod) }));
+        ModifyBuilder.registerModifier(new ModExtraSlot(new ItemStack[] { new ItemStack(expansionChip) }));
     }
 
     private static Item createColoredInfoItem(String name, final EnumChatFormatting color, final EnumChatFormatting style, final String tooltipKey) {

@@ -50,6 +50,7 @@ tile.chunk_loader.name=Chunk loader
 tile.compressed_panel.name=Compressed Adamantite Solar Panel
 tile.compressed_super_panel.name=Super-compressed Mythril Solar Panel
 item.heart_container.name=Core Heart
+tile.aether_torch.name=Aether Torch
 
 item.manyullyn_helmet.name=Manyullyn Helmet
 item.manyullyn_chestplate.name=Manyullyn Chestplate
@@ -135,8 +136,12 @@ message.trinity.fire_module=Thermal Module: %s
 tooltip.trinity.active=ACTIVATED
 tooltip.trinity.inactive=DEACTIVATED
 
-# Technical
-akadaemon.modifier.unbreakable=Unbreakable
+tooltip.expansion.name=Expansion
+tooltip.expansion.extra=Slot Expansion
+
+tooltip.composite.name=Unbreakable
+tooltip.composite.extra=Composite modifier
+
 
 # Thaumcraft Research
 tc.research_category.AKADAEMON=Akadaemonica

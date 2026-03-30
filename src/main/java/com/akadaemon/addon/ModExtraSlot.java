@@ -4,6 +4,7 @@ import com.akadaemon.addon.items.ModItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.StatCollector;
 import tconstruct.library.modifier.ItemModifier;
 
 public class ModExtraSlot extends ItemModifier {
@@ -36,6 +37,9 @@ public class ModExtraSlot extends ItemModifier {
 
         tags.setInteger("Modifiers", currentModifiers + 1);
 
-        addToolTip(tool, EnumChatFormatting.GOLD + "Slot Expansion", EnumChatFormatting.GOLD + "Expansion");
+        addToolTip(tool,
+                EnumChatFormatting.GOLD + StatCollector.translateToLocal("tooltip.expansion.name"),
+                EnumChatFormatting.GOLD + StatCollector.translateToLocal("tooltip.expansion.extra")
+        );
     }
 }

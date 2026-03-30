@@ -10,28 +10,43 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class TileSolarPanel extends TileEntity implements IEnergySource {
-    private boolean initialized = false;
+    private boolean addedToEnergyNet = false;
     private int tier;
 
+    public TileSolarPanel() {
+        super();
+    }
+
     public TileSolarPanel(int tier) {
+        this();
         this.tier = tier;
     }
 
     @Override
     public void updateEntity() {
-        if (!worldObj.isRemote && !initialized) {
+        if (!worldObj.isRemote && !addedToEnergyNet) {
             MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(this));
-            initialized = true;
+            addedToEnergyNet = true;
         }
     }
 
     @Override
+    public void onChunkUnload() {
+        unloadFromEnergyNet();
+        super.onChunkUnload();
+    }
+
+    @Override
     public void invalidate() {
-        if (initialized) {
-            MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent(this));
-            initialized = false;
-        }
+        unloadFromEnergyNet();
         super.invalidate();
+    }
+
+    private void unloadFromEnergyNet() {
+        if (addedToEnergyNet) {
+            MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent(this));
+            addedToEnergyNet = false;
+        }
     }
 
     @Override

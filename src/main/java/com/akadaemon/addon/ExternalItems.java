@@ -1,6 +1,7 @@
 package com.akadaemon.addon;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import ic2.api.item.IC2Items;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -34,22 +35,22 @@ public class ExternalItems {
         yellowHeart = new ItemStack(heartItem, 1, 3);
         alumiteRod = new ItemStack(tinkerRod, 1, 15);
 
-        iridiumOre = ic2.api.item.IC2Items.getItem("iridiumOre");
-        solarPanel = ic2.api.item.IC2Items.getItem("solarPanel");
-        mfe = ic2.api.item.IC2Items.getItem("mfeUnit");
+        iridiumOre = IC2Items.getItem("iridiumOre");
+        solarPanel = IC2Items.getItem("solarPanel");
+        mfe = IC2Items.getItem("mfeUnit");
         energyCrystal = getIc2Wildcard("energyCrystal");
         lapotronCrystal = getIc2Wildcard("lapotronCrystal");
         jetpack = getIc2Wildcard("electricJetpack");
-        advCircuit = ic2.api.item.IC2Items.getItem("advancedCircuit");
-        carbonPlate = ic2.api.item.IC2Items.getItem("carbonPlate");
-        dustDiamond = ic2.api.item.IC2Items.getItem("diamondDust");
-        dustLapis = ic2.api.item.IC2Items.getItem("lapiDust");
+        advCircuit = IC2Items.getItem("advancedCircuit");
+        carbonPlate = IC2Items.getItem("carbonPlate");
+        dustDiamond = IC2Items.getItem("diamondDust");
+        dustLapis = IC2Items.getItem("lapiDust");
         iridiumDrill = getIc2Wildcard("iridiumDrill");
 
-        qHelmet = ic2.api.item.IC2Items.getItem("quantumHelmet");
-        qChest = ic2.api.item.IC2Items.getItem("quantumBodyarmor");
-        qLegs = ic2.api.item.IC2Items.getItem("quantumLeggings");
-        qBoots = ic2.api.item.IC2Items.getItem("quantumBoots");
+        qHelmet = IC2Items.getItem("quantumHelmet");
+        qChest = IC2Items.getItem("quantumBodyarmor");
+        qLegs = IC2Items.getItem("quantumLeggings");
+        qBoots = IC2Items.getItem("quantumBoots");
 
         Item resourceItem = (Item) Item.itemRegistry.getObject("Thaumcraft:ItemResource");
         Item shardItem = (Item) Item.itemRegistry.getObject("Thaumcraft:ItemShard");
@@ -68,7 +69,7 @@ public class ExternalItems {
     }
 
     private static ItemStack getIc2Wildcard(String name) {
-        ItemStack stack = ic2.api.item.IC2Items.getItem(name);
+        ItemStack stack = IC2Items.getItem(name);
         if (stack != null) stack.setItemDamage(OreDictionary.WILDCARD_VALUE);
         return stack;
     }

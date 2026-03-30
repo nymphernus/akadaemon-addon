@@ -12,7 +12,7 @@ import static com.akadaemon.addon.items.ModItems.*;
 
 public class ThaumcraftAspects {
 
-    public static void register() {
+    public static void init() {
         ThaumcraftApi.registerObjectTag(ExternalItems.ingotManyullyn, new AspectList().add(Aspect.METAL, 3).add(Aspect.CRYSTAL, 2).add(Aspect.ENTROPY, 1));
         ThaumcraftApi.registerObjectTag(ExternalItems.ingotCobalt, new AspectList().add(Aspect.METAL, 3).add(Aspect.CRYSTAL, 2).add(Aspect.ORDER, 1));
         ThaumcraftApi.registerObjectTag(ExternalItems.ingotArdite, new AspectList().add(Aspect.METAL, 3).add(Aspect.CRYSTAL, 2).add(Aspect.FIRE, 1));
@@ -25,6 +25,7 @@ public class ThaumcraftAspects {
         reg(cobaltDust, new AspectList().add(Aspect.METAL, 1).add(Aspect.ENTROPY, 1));
         reg(arditeDust, new AspectList().add(Aspect.METAL, 1).add(Aspect.EARTH, 1));
         reg(enderDust, new AspectList().add(Aspect.ELDRITCH, 1).add(Aspect.TRAVEL, 1).add(Aspect.ENTROPY, 1));
+        reg(obsidianDust, new AspectList().add(Aspect.EARTH, 1).add(Aspect.FIRE, 1).add(Aspect.DARKNESS, 1).add(Aspect.ENTROPY, 1));
 
         reg(blockMythril, new AspectList().add(Aspect.METAL, 27).add(Aspect.MAGIC, 18));
         reg(blockTitan, new AspectList().add(Aspect.METAL, 27).add(Aspect.MAGIC, 18));
@@ -69,6 +70,7 @@ public class ThaumcraftAspects {
         reg(focusSunstrike, new AspectList().add(Aspect.LIGHT, 8).add(Aspect.FIRE, 4).add(Aspect.WEAPON, 4));
 
         reg(heartContainer, new AspectList().add(Aspect.LIFE, 4).add(Aspect.CRYSTAL, 2));
+        reg(aetherTorch, new AspectList().add(Aspect.LIGHT, 4).add(Aspect.MAGIC, 2));
 
         addArmorAspects(titanHelmet, titanChest, titanLegs, titanBoots, Aspect.ORDER);
         addArmorAspects(adamantitHelmet, adamantitChest, adamantitLegs, adamantitBoots, Aspect.FIRE);

@@ -3,6 +3,7 @@ package com.akadaemon.addon.world;
 import com.akadaemon.addon.ExternalItems;
 import com.akadaemon.addon.handler.ConfigHandler;
 import cpw.mods.fml.common.IWorldGenerator;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -16,6 +17,10 @@ import thaumcraft.common.config.ConfigItems;
 import java.util.Random;
 
 public class WorldGenerator implements IWorldGenerator {
+    public static void init() {
+        initLoot();
+        GameRegistry.registerWorldGenerator(new WorldGenerator(), 10);
+    }
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {

@@ -57,15 +57,14 @@ public class MainRecipes {
     }
 
     private static void registerCraftingRecipes() {
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 3, 15),
-                "ingotAluminum", "ingotIron", Blocks.obsidian));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 1, 3),
-                "ingotSilver", "ingotObsidian"));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 1, 4),
-                "ingotAlumite", "ingotBronze"));
-        GameRegistry.addShapelessRecipe(ExternalItems.yellowHeart, ExternalItems.greenHeart);
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 3, 15), "ingotAluminum", "ingotIron", Blocks.obsidian));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 1, 3), "ingotSilver", "ingotObsidian"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 1, 4), "ingotAlumite", "ingotBronze"));
         GameRegistry.addRecipe(new ShapelessOreRecipe(ExternalItems.ingotManyullyn, "ingotArdite", "ingotCobalt"));
-        GameRegistry.addRecipe(new net.minecraftforge.oredict.ShapelessOreRecipe(new ItemStack(barleyBread), "cropBarley", "cropBarley", "cropBarley"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(barleyBread), "cropBarley", "cropBarley", "cropBarley"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(ExternalItems.yellowHeart, ExternalItems.greenHeart));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(ExternalItems.greenHeartCan, ExternalItems.yellowHeartCan, ExternalItems.greenHeart, Items.emerald, ExternalItems.zombieBrain));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(aetherTorch, 3), Items.glowstone_dust, Items.stick));
 
         registerArmorRecipes("ingotManyullyn", manyullynHelmet, manyullynChest, manyullynLegs, manyullynBoots);
         registerArmorRecipes("ingotTitan", titanHelmet, titanChest, titanLegs, titanBoots);
@@ -87,11 +86,15 @@ public class MainRecipes {
                 'G', Blocks.gold_block,
                 'B', Items.cooked_beef
         );
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockMythril),
-                "MMM",
-                "MMM",
-                "MMM",
-                'M', "ingotMithril"));
+        GameRegistry.addRecipe(new ItemStack(Items.skull, 1, 1),
+                " B ",
+                "CSC",
+                " C ",
+                'B', ExternalItems.netherBone,
+                'C', Items.coal,
+                'S', new ItemStack(Items.skull, 1, 0)
+        );
+
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(chunkLoader),
                 "IDI",
                 "GEG",
@@ -101,25 +104,22 @@ public class MainRecipes {
                 'D', "gemDiamond",
                 'E', Items.ender_pearl
         ));
-        GameRegistry.addRecipe(new ItemStack(blockTitan),
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockMythril),
+                "MMM",
+                "MMM",
+                "MMM",
+                'M', "ingotMithril"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTitan),
                 "TTT",
                 "TTT",
                 "TTT",
-                'T', ingotTitan);
-        GameRegistry.addRecipe(new ItemStack(blockAdamantit),
+                'T', "ingotTitan"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockAdamantit),
                 "AAA",
                 "AAA",
                 "AAA",
-                'A', ingotAdamantit);
-        GameRegistry.addRecipe(new ItemStack(Items.skull, 1, 1),
-                " B ",
-                "CSC",
-                " C ",
-                'B', ExternalItems.netherBone,
-                'C', Items.coal,
-                'S', new ItemStack(Items.skull, 1, 0)
-        );
-        GameRegistry.addRecipe(new net.minecraftforge.oredict.ShapedOreRecipe(new ItemStack(iridiumComposite),
+                'A', "ingotAdamantit"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(iridiumComposite),
                 "MMM",
                 "TTT",
                 "SSS",
@@ -127,11 +127,6 @@ public class MainRecipes {
                 'T', ExternalItems.thaumIngot,
                 'S', "ingotSilver"
         ));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(ExternalItems.greenHeartCan,
-                ExternalItems.yellowHeartCan,
-                ExternalItems.greenHeart,
-                Items.emerald,
-                ExternalItems.zombieBrain));
     }
 
     public static void addOreSmelting(Item inputItem, String dustName, String ingotName, float xp, boolean isUniversal) {

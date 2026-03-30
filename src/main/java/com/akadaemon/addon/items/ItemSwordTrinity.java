@@ -111,7 +111,7 @@ public class ItemSwordTrinity extends ItemSwordBase implements IElectricItem {
             target.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 80, 2));
 
             if (attacker instanceof EntityPlayer) {
-                target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) attacker), 5.0F);
+                target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) attacker), 10.0F);
             }
             return true;
         }

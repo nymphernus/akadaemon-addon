@@ -16,7 +16,6 @@ public class OreDump {
             PrintWriter writer = new PrintWriter(dumpFile);
 
             writer.println("Total Ore Names found: " + OreDictionary.getOreNames().length);
-            writer.println("____________________________________________");
 
             String[] oreNames = OreDictionary.getOreNames();
             Arrays.sort(oreNames);
@@ -41,8 +40,6 @@ public class OreDump {
 
             writer.close();
             System.out.print("Ore Dictionary dump saved to: " + dumpFile.getAbsolutePath());
-        } catch (Exception e) {
-            System.out.print("Failed to dump Ore Dictionary: " + e.getMessage());
-        }
+        } catch (Exception ignored) {}
     }
 }
