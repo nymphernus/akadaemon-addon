@@ -125,7 +125,7 @@ public class ThaumcraftIntegration {
         IArcaneRecipe recipeTransformer = ThaumcraftApi.addArcaneCraftingRecipe("THAUM_TRANSFORMER", new ItemStack(thaumTransformer),
                     new AspectList().add(Aspect.EARTH, 30).add(Aspect.AIR, 30).add(Aspect.ORDER, 20),
                     "SPS", "SMS", "TTT",
-                    'T', blockTitan, 'S', ingotMythril, 'M', ExternalItems.mfe, 'P', ExternalItems.solarPanel);
+                    'T', blockTitan, 'S', ExternalItems.mythrilIngots, 'M', ExternalItems.mfe, 'P', ExternalItems.solarPanel);
 
         IArcaneRecipe recipeFiber = ThaumcraftApi.addArcaneCraftingRecipe("AMBER_FIBER", new ItemStack(amberFiber, 2),
                 new AspectList().add(Aspect.ORDER, 10).add(Aspect.AIR, 10),
@@ -163,44 +163,38 @@ public class ThaumcraftIntegration {
 
         IArcaneRecipe recipeRing = ThaumcraftApi.addArcaneCraftingRecipe("WORLD_RING", new ItemStack(worldRing),
                 new AspectList().add(Aspect.AIR, 20).add(Aspect.WATER, 20).add(Aspect.EARTH, 20).add(Aspect.FIRE, 20),
-                "MAM", "AEA", "MMM", 'M', "ingotMithril", 'E', Items.ender_eye, 'A', ExternalItems.amber);
+                "MAM", "AEA", "MMM",
+                'M', ExternalItems.mythrilIngots, 'E', Items.ender_eye, 'A', ExternalItems.amber);
 
         IArcaneRecipe recipeAmulet = ThaumcraftApi.addArcaneCraftingRecipe("SOLAR_AMULET", new ItemStack(solarAmulet),
                 new AspectList().add(Aspect.AIR, 40).add(Aspect.ORDER, 20).add(Aspect.FIRE, 50),
-                "LPL", "SAS", "SSS", 'P', ExternalItems.solarPanel, 'L', "ingotAdamantit", 'S', "ingotMithril", 'A', ExternalItems.amber);
+                "LPL", "SAS", "SSS",
+                'P', ExternalItems.solarPanel, 'L', ExternalItems.adamantitIngots, 'S', ExternalItems.mythrilIngots, 'A', ExternalItems.amber);
 
         IArcaneRecipe recipeBelt = ThaumcraftApi.addArcaneCraftingRecipe("MINER_BELT", new ItemStack(minerBelt),
                 new AspectList().add(Aspect.ENTROPY, 40).add(Aspect.EARTH, 40).add(Aspect.FIRE, 10),
-                "MEM", "ARA", "MEM", 'R', "blockAdamantit", 'M', "ingotMithril", 'E', Items.ender_pearl, 'A', ExternalItems.amber);
+                "MEM", "ARA", "MEM",
+                'R', "blockAdamantit", 'M', ExternalItems.mythrilIngots, 'E', Items.ender_pearl, 'A', ExternalItems.amber);
 
         IArcaneRecipe recipeDrill = ThaumcraftApi.addArcaneCraftingRecipe("TITAN_DRILL", new ItemStack(titanDrill),
                 new AspectList().add(Aspect.EARTH, 30).add(Aspect.ENTROPY, 40).add(Aspect.ORDER, 10).add(Aspect.FIRE, 10),
                 "MAM", "TIT", "MTM",
-                'T', blockTitan, 'M', ingotMythril, 'I', ExternalItems.iridiumDrill, 'A', blockAdamantit);
+                'T', blockTitan, 'M', ExternalItems.mythrilIngots, 'I', ExternalItems.iridiumDrill, 'A', blockAdamantit);
 
         IArcaneRecipe recipeChip = ThaumcraftApi.addArcaneCraftingRecipe("TINKER_MODS", new ItemStack(expansionChip),
                 new AspectList().add(Aspect.ORDER, 30).add(Aspect.FIRE, 20),
-                "MAM",
-                " E ",
-                "CAC",
-                'C', ExternalItems.carbonPlate,
-                'E', ExternalItems.energyCrystal,
-                'A', ExternalItems.advCircuit,
-                'M', "ingotMithril");
+                "MAM", " E ", "CAC",
+                'C', ExternalItems.carbonPlate, 'E', ExternalItems.energyCrystal, 'A', ExternalItems.advCircuit, 'M', ExternalItems.mythrilIngots);
 
         IArcaneRecipe recipeMod = ThaumcraftApi.addArcaneCraftingRecipe("TINKER_MODS", new ItemStack(compositeMod),
                 new AspectList().add(Aspect.ENTROPY, 50).add(Aspect.WATER, 30).add(Aspect.EARTH, 40),
-                "MMM",
-                "TTT",
-                "AAA",
-                'M', "blockMithril",
-                'T', "blockTitan",
-                'A', "blockAdamantit");
+                "MMM", "TTT", "AAA",
+                'M', "blockMithril", 'T', "blockTitan", 'A', "blockAdamantit");
 
         IArcaneRecipe recipeFocusTeleport = ThaumcraftApi.addArcaneCraftingRecipe("FOCUS_TELEPORT", new ItemStack(focusTeleport),
                 new AspectList().add(Aspect.AIR, 20).add(Aspect.ORDER, 20),
                 "EME", "TFT", "EME",
-                'E', Items.ender_pearl, 'F', ConfigItems.itemFocusPortableHole, 'T', ingotTitan, 'M', "ingotMithril");
+                'E', Items.ender_pearl, 'F', ConfigItems.itemFocusPortableHole, 'T', ingotTitan, 'M', ExternalItems.mythrilIngots);
 
         IArcaneRecipe recipeFocusSunstrike = ThaumcraftApi.addArcaneCraftingRecipe("FOCUS_SUNSTRIKE", new ItemStack(focusSunstrike),
                 new AspectList().add(Aspect.FIRE, 50).add(Aspect.ORDER, 30),
@@ -261,7 +255,7 @@ public class ThaumcraftIntegration {
                 createWand(WAND_ROD_IRIDIUM_TITAN, WAND_CAP_MYTHRIL),
                 new AspectList().add(Aspect.ORDER, 100).add(Aspect.ENTROPY, 100).add(Aspect.FIRE, 100)
                         .add(Aspect.AIR, 100).add(Aspect.EARTH, 100).add(Aspect.WATER, 100),
-                " EC", "MRE", "CM ", 'C', wandCapMythril, 'R', wandRodIridiumTitan, 'E', ExternalItems.lapotronCrystal, 'M', "ingotMithril");
+                " EC", "MRE", "CM ", 'C', wandCapMythril, 'R', wandRodIridiumTitan, 'E', ExternalItems.lapotronCrystal, 'M', ExternalItems.mythrilIngots);
 
         IArcaneRecipe recipeWandMan = ThaumcraftApi.addArcaneCraftingRecipe("AKADAEMON_WAND",
                 createWand(WAND_ROD_IRIDIUM, WAND_CAP_MANYULLYN),

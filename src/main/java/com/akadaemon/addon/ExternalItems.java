@@ -1,11 +1,15 @@
 package com.akadaemon.addon;
 
+import com.akadaemon.addon.handler.ConfigHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import ic2.api.item.IC2Items;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ExternalItems {
     public static ItemStack emptyBucket;
@@ -18,6 +22,10 @@ public class ExternalItems {
     public static ItemStack qHelmet, qChest, qLegs, qBoots;
 
     public static ItemStack knowledgeFragment, amber, blockTube, blockAmber, thaumIngot, quicksilver, crystalBal, zombieBrain, gogglesRevealing;
+
+    public static List<ItemStack> mythrilIngots;
+    public static List<ItemStack> titanIngots;
+    public static List<ItemStack> adamantitIngots;
 
     public static void init() {
         emptyBucket = new ItemStack(Items.bucket);
@@ -66,6 +74,10 @@ public class ExternalItems {
 
         blockTube = createStackFromName("Thaumcraft:blockTube", 0);
         blockAmber = createStackFromName("Thaumcraft:blockCosmeticOpaque", 0);
+
+        mythrilIngots = getCombinedOres(ConfigHandler.mythrilNames);
+        titanIngots = getCombinedOres(ConfigHandler.titanNames);
+        adamantitIngots = getCombinedOres(ConfigHandler.adamantitNames);
     }
 
     private static ItemStack getIc2Wildcard(String name) {
@@ -77,5 +89,17 @@ public class ExternalItems {
     private static ItemStack createStackFromName(String name, int meta) {
         Item item = (Item) Item.itemRegistry.getObject(name);
         return (item != null) ? new ItemStack(item, 1, meta) : null;
+    }
+
+
+    public static List<ItemStack> getCombinedOres(String[] oreNames) {
+        List<ItemStack> combinedList = new ArrayList<ItemStack>();
+        for (String name : oreNames) {
+            List<ItemStack> ores = OreDictionary.getOres(name);
+            if (ores != null && !ores.isEmpty()) {
+                combinedList.addAll(ores);
+            }
+        }
+        return combinedList;
     }
 }
