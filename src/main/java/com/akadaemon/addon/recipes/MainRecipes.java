@@ -68,13 +68,13 @@ public class MainRecipes {
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(aetherTorch, 3), Items.glowstone_dust, Items.stick));
 
         registerArmorRecipes("ingotManyullyn", manyullynHelmet, manyullynChest, manyullynLegs, manyullynBoots);
-        registerArmorRecipes(ExternalItems.titanIngots, titanHelmet, titanChest, titanLegs, titanBoots);
-        registerArmorRecipes(ExternalItems.adamantitIngots, adamantitHelmet, adamantitChest, adamantitLegs, adamantitBoots);
-        registerArmorRecipes(ExternalItems.mythrilIngots, mythrilHelmet, mythrilChest, mythrilLegs, mythrilBoots);
+        registerArmorRecipes("ingotTitan", titanHelmet, titanChest, titanLegs, titanBoots);
+        registerArmorRecipes("ingotAdamantit", adamantitHelmet, adamantitChest, adamantitLegs, adamantitBoots);
+        registerArmorRecipes("ingotMithril", mythrilHelmet, mythrilChest, mythrilLegs, mythrilBoots);
 
-        registerSwordRecipes(ExternalItems.titanIngots, titanSword);
-        registerSwordRecipes(ExternalItems.adamantitIngots, adamantitSword);
-        registerSwordRecipes(ExternalItems.mythrilIngots, mythrilSword);
+        registerSwordRecipes("ingotTitan", titanSword);
+        registerSwordRecipes("ingotAdamantit", adamantitSword);
+        registerSwordRecipes("ingotMithril", mythrilSword);
 
         GameRegistry.addRecipe(new ItemStack(enderDust, 9),
                 "RLR", "LAL", "RLR",
@@ -109,17 +109,17 @@ public class MainRecipes {
                 "MMM",
                 "MMM",
                 "MMM",
-                'M', ExternalItems.mythrilIngots));
+                'M', "ingotMithril"));
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTitan),
                 "TTT",
                 "TTT",
                 "TTT",
-                'T', ExternalItems.titanIngots));
+                'T', "ingotTitan"));
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockAdamantit),
                 "AAA",
                 "AAA",
                 "AAA",
-                'A', ExternalItems.adamantitIngots));
+                'A', "ingotAdamantit"));
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(iridiumComposite),
                 "MMM",
                 "TTT",
