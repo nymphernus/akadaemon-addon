@@ -240,6 +240,7 @@ public class ModItems {
         OreDictionary.registerOre("dustArdite", arditeDust);
         OreDictionary.registerOre("dustObsidian", obsidianDust);
         OreDictionary.registerOre("dustEnder", enderDust);
+        OreDictionary.registerOre("dustEnderPearl", enderDust);
 
         for (String name : ConfigHandler.titanNames) { OreDictionary.registerOre(name, ingotTitan); }
         for (String name : ConfigHandler.mythrilNames) { OreDictionary.registerOre(name, ingotMythril); }
