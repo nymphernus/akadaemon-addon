@@ -41,3 +41,7 @@
 1. Скачайте актуальную версию `.jar` файла из раздела [Releases](../../releases).
 2. Поместите файл в папку `/mods/` вашего игрового клиента или сервера.
 3. При первом запуске будет сгенерирован файл конфигурации `config/akadaemon.cfg`
+
+---
+
+[CurseForge](https://www.curseforge.com/minecraft/mc-mods/akadaemon-addon)
