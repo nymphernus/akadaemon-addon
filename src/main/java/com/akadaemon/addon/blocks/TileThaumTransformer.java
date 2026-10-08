@@ -169,9 +169,28 @@ public class TileThaumTransformer extends TileEntity implements IEnergySink, IIn
         }
     }
 
+    @Override
+    public net.minecraft.network.Packet getDescriptionPacket() {
+        NBTTagCompound nbt = new NBTTagCompound();
+        writeToNBT(nbt);
+        return new net.minecraft.network.play.server.S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 1, nbt);
+    }
+
+    @Override
+    public void onDataPacket(net.minecraft.network.NetworkManager net, net.minecraft.network.play.server.S35PacketUpdateTileEntity pkt) {
+        if (pkt == null || pkt.func_148857_g() == null) return;
+        readFromNBT(pkt.func_148857_g());
+    }
+
     @Override public int getSizeInventory() { return 1; }
     @Override public ItemStack getStackInSlot(int s) { return inventory[s]; }
     @Override public void setInventorySlotContents(int s, ItemStack st) { inventory[s] = st; }
+    @Override public void markDirty() {
+        super.markDirty();
+        if (worldObj != null && !worldObj.isRemote) {
+            worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+        }
+    }
     @Override public String getInventoryName() { return "Thaumic Transformer"; }
     @Override public boolean hasCustomInventoryName() { return false; }
     @Override public int getInventoryStackLimit() { return 1; }

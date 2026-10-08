@@ -1,0 +1,16 @@
+[
+{
+  "modid": "akadaemon",
+  "name": "Akadaemon Addon",
+  "description": "TechnoMagic Addon",
+  "version": "1.9.0",
+  "mcversion": "1.7.10",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["nymphernus"],
+  "credits": "",
+  "logoFile": "logo.png",
+  "screenshots": [],
+  "dependencies": ["TConstruct", "IC2", "Thaumcraft"]
+}
+]

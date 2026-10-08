@@ -30,7 +30,7 @@ import java.util.List;
 public class AkadaemonAddon {
     public static final String MODID = "akadaemon";
     public static final String NAME = "Akadaemon Addon";
-    public static final String VERSION = "1.8.2";
+    public static final String VERSION = "1.9.0";
     public static final Logger logger = LogManager.getLogger(NAME);
     public static SimpleNetworkWrapper network;
 

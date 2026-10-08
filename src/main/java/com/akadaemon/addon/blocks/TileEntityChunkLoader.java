@@ -46,6 +46,18 @@ public class TileEntityChunkLoader extends TileEntity {
     }
 
     @Override
+    public void writeToNBT(net.minecraft.nbt.NBTTagCompound nbt) {
+        super.writeToNBT(nbt);
+        // Chunk ticket is reconstructed on chunk load; no persistent state needed
+    }
+
+    @Override
+    public void readFromNBT(net.minecraft.nbt.NBTTagCompound nbt) {
+        super.readFromNBT(nbt);
+        // Chunk ticket is reconstructed on chunk load; no persistent state needed
+    }
+
+    @Override
     public void onChunkUnload() {
         if (chunkTicket != null) {
             chunkTicket = null;

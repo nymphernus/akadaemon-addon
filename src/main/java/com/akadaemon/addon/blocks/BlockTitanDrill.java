@@ -71,6 +71,7 @@ public class BlockTitanDrill extends BlockContainer {
 
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+        if (world == null || player == null) return false;
         if (!world.isRemote) {
             player.openGui(AkadaemonAddon.instance, GuiHandler.DRILL_ID, world, x, y, z);
         }

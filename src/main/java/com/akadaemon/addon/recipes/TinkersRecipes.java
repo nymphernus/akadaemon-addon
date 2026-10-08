@@ -16,6 +16,7 @@ import static com.akadaemon.addon.fluids.ModFluids.*;
 public class TinkersRecipes {
 
     public static void init() {
+        if (!cpw.mods.fml.common.Loader.isModLoaded("TConstruct")) return;
         final int BLOCK = 500;
         final int ITEM = 125;
         final int BUCKET = 1000;

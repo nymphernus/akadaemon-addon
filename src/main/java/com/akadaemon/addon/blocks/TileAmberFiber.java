@@ -67,6 +67,18 @@ public class TileAmberFiber extends TileEntity implements IAspectContainer {
         return amount;
     }
 
+    @Override
+    public void writeToNBT(net.minecraft.nbt.NBTTagCompound nbt) {
+        super.writeToNBT(nbt);
+        // No persistent state required for amber fiber
+    }
+
+    @Override
+    public void readFromNBT(net.minecraft.nbt.NBTTagCompound nbt) {
+        super.readFromNBT(nbt);
+        // No persistent state required for amber fiber
+    }
+
     @Override public boolean takeFromContainer(Aspect tag, int amount) { return false; }
     @Override public boolean takeFromContainer(AspectList ot) { return false; }
     @Override public boolean doesContainerContainAmount(Aspect tag, int amount) { return false; }

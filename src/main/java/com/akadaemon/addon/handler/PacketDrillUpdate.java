@@ -43,9 +43,19 @@ public class PacketDrillUpdate implements IMessage {
         buf.writeBoolean(active);
     }
 
+    public int getX() { return x; }
+    public int getY() { return y; }
+    public int getZ() { return z; }
+    public int getDepthLimit() { return depth; }
+    public boolean isSilkTouch() { return silk; }
+    public boolean isActive() { return active; }
+
     public static class Handler implements IMessageHandler<PacketDrillUpdate, IMessage> {
         @Override
         public IMessage onMessage(PacketDrillUpdate message, MessageContext ctx) {
+            if (ctx.getServerHandler() == null || ctx.getServerHandler().playerEntity == null) {
+                return null;
+            }
             TileEntity te = ctx.getServerHandler().playerEntity.worldObj.getTileEntity(message.x, message.y, message.z);
             if (te instanceof TileEntityTitanDrill) {
                 TileEntityTitanDrill drill = (TileEntityTitanDrill) te;

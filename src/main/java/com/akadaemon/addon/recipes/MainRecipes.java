@@ -28,7 +28,7 @@ public class MainRecipes {
     public static void init() {
         registerCraftingRecipes();
         registerSmeltingRecipes();
-        registerIC2Recipes();
+        if (Loader.isModLoaded("IC2")) registerIC2Recipes();
         if (Loader.isModLoaded("AdvancedSolarPanel")) fixMTCore();
     }
 

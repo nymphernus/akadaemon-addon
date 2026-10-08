@@ -33,6 +33,7 @@ public class ConfigHandler {
         mythrilNames = config.getStringList("mythrilIngot", oreCat,
                 new String[]{"ingotMythril", "ingotMithril"},
                 "OreDictionary name list for Mythril");
+        if (mythrilNames == null || mythrilNames.length == 0) mythrilNames = new String[]{"ingotMythril"};
         titanNames = config.getStringList("titanIngot", oreCat,
                 new String[]{"ingotTitan", "ingotTitanium"},
                 "OreDictionary name list for Titan");

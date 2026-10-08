@@ -40,6 +40,7 @@ public class ThaumcraftIntegration {
     public static final String CAT_ID = "AKADAEMON";
 
     public static void init() {
+        if (!Loader.isModLoaded("Thaumcraft")) return;
         initWandComponents();
         registerCategory();
         registerRecipes();

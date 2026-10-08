@@ -199,4 +199,10 @@ public class TileEntityTitanDrill extends TileEntity implements IEnergySink, IIn
     @Override public void closeInventory() {}
     @Override public boolean isItemValidForSlot(int s, ItemStack st) { return true; }
     @Override public ItemStack getStackInSlotOnClosing(int s) { return null; }
+    @Override public void markDirty() {
+        super.markDirty();
+        if (worldObj != null && !worldObj.isRemote) {
+            worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+        }
+    }
 }
